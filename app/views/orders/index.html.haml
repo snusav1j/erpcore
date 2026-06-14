@@ -1,0 +1,17 @@
+= link_to new_modal_orders_path, remote: true do 
+  тест модалка
+
+%table
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= order.client_id
+        %td= order.status
+        %td= order.amount
+        %td= order.expense
+        %td= order.profit
+        %td= order.comment
+        %td= order.closed_at
+        %td= order.manager_id
+
+#order-modal-outer

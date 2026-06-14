@@ -1,0 +1,14 @@
+= link_to new_modal_interactions_path, remote: true do 
+  тест модалка
+
+%table
+  %tbody
+    - @interactions.each do |interaction|
+      %tr
+        %td= interaction.client_id
+        %td= interaction.interaction_type
+        %td= interaction.status
+        %td= interaction.comment
+        %td= interaction.manager_id
+
+#interaction-modal-outer

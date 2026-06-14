@@ -1,0 +1,11 @@
+= simple_form_for @client, local: false do |f|
+  .form
+    = f.input :name
+    = f.input :phone
+    = f.input :email
+    = f.input :status
+    = f.input :source
+    = f.input :comment
+
+  .form-actions
+    = f.button :submit, tgm(:save)

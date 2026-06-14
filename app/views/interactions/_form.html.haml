@@ -1,0 +1,9 @@
+= simple_form_for @interaction, local: false do |f|
+  .form
+    = f.input :client_id
+    = f.input :interaction_type
+    = f.input :status
+    = f.input :comment
+
+  .form-actions
+    = f.button :submit, tgm(:save)

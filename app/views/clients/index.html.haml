@@ -1,0 +1,15 @@
+= link_to new_modal_clients_path, remote: true do 
+  тест модалка
+
+%table
+  %tbody
+    - @clients.each do |client|
+      %tr
+        %td= client.name
+        %td= client.phone
+        %td= client.email
+        %td= client.status
+        %td= client.source
+        %td= client.comment
+
+#client-modal-outer

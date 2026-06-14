@@ -1,0 +1,21 @@
+= link_to users_path do
+  = g_icon(:user_attributes)
+  
+= link_to clients_path do
+  = g_icon(:groups_2)
+  
+= link_to orders_path do
+  = g_icon(:receipt_long)
+  
+= link_to interactions_path do
+  = g_icon(:phone)
+  
+- if current_user
+  = link_to user_path(current_user) do
+    = g_icon(:account_circle)
+  = link_to destroy_user_session_path, method: :delete do
+    = g_icon(:logout)
+- else
+  = link_to new_user_session_path do
+    = g_icon(:login)
+  

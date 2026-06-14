@@ -1,0 +1,11 @@
+= simple_form_for @user, local: false do |f|
+  .form
+    = f.input :email
+    = f.input :password
+    = f.input :password_confirmation
+    = f.input :name
+    = f.input :username
+    = f.input :role
+
+  .form-actions
+    = f.button :submit, tgm(:save)

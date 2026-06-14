@@ -1,0 +1,13 @@
+= simple_form_for @order, local: false do |f|
+  .form
+    = f.input :client_id
+    = f.input :status
+    = f.input :amount
+    = f.input :expense
+    = f.input :profit
+    = f.input :comment
+    -# = f.input :closed_at
+    = f.input :manager_id
+
+  .form-actions
+    = f.button :submit, tgm(:save)

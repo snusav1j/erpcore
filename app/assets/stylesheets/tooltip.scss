@@ -1,0 +1,76 @@
+// ============================================================================
+// Кастомный tooltip только на CSS — БЕЗ стрелочки
+// ============================================================================
+
+*[data-title] {
+  position: relative;
+  // cursor: help;
+
+  // Пытаемся максимально подавить/замедлить нативный браузерный tooltip
+  &::-moz-tooltip,
+  &::-webkit-tooltip {
+    display: none;
+  }
+
+  title {
+    display: none;
+  }
+
+  // Маленькая задержка, чтобы наш tooltip появлялся раньше нативного
+  transition: all 0.001s 0.35s;
+
+  // ─── Наш кастомный tooltip ──────────────────────────────────────────────
+  &::after {
+    content: attr(data-title);
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%) translateY(-8px);
+    padding: 6px 10px;
+    background: var(--toastr-bg);
+    color: var(--toastr-color);
+    font-size: 0.86rem;
+    line-height: 1.45;
+    white-space: nowrap;
+    max-width: 380px;
+    border-radius: 8px;
+    border: 1px solid var(--light-border-color);
+    box-shadow: var(--shadow), 0 8px 28px rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    z-index: 10001;
+    text-align: center;
+  }
+
+  // Появление при наведении / фокусе
+  &:hover::after,
+  &:focus-visible::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-8px);
+  }
+
+  // Чтобы нативный тултип не "перебивал" слишком быстро
+  &:hover {
+    transition-delay: 0s;
+  }
+}
+
+// ============================================================================
+// Вариант — тултип снизу (если элемент внизу страницы)
+// ============================================================================
+
+*[data-title][data-tooltip-pos="bottom"] {
+  &::after {
+    top: 100%;
+    bottom: auto;
+    transform: translateX(-50%) translateY(8px);
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    transform: translateX(-50%) translateY(12px);
+  }
+}
