@@ -3,7 +3,7 @@ class CreateOrders < ActiveRecord::Migration[8.0]
     create_table :orders do |t|
       t.references :client, null: false, foreign_key: true
 
-      t.string :status
+      t.string :status, default: 'new'
 
       t.float :amount
       t.float :expense

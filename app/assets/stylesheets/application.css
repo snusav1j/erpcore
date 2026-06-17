@@ -14,5 +14,11 @@
  *= require modal
  *= require drag
  *= require tooltip
+
+ *= require general
+ *= require users
+ *= require clients
+ *= require orders
+ *= require interactions
  
  */

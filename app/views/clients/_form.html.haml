@@ -1,4 +1,4 @@
-= simple_form_for @client, local: false do |f|
+= simple_form_for @client, remote: true, html: { id: 'client-form' } do |f|
   .form
     = f.input :name
     = f.input :phone

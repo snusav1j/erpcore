@@ -20,13 +20,31 @@
     %link{ href: "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap", rel: "stylesheet"}
 
     %link{ href: "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css", rel: "stylesheet" }
-    %title= content_for(:title) || "EggsClients"
+    %title= content_for(:title) || "EggClients"
   %body
-    - if current_user
-      .header
-        = render partial: '/layouts/header'
-    .content
-      = yield
+    #wrap
+      - if current_user
+        = render partial: '/layouts/sidebar'
+      #content
+        - if current_user
+          .content-header
+            %strong= current_page_name
+            .content-header-items
+              .content-header-item
+                = link_to user_path(current_user) do
+                  = g_icon(:account_circle)
+
+              .content-header-item
+                = link_to destroy_user_session_path, method: :delete do
+                  = g_icon(:logout)
+
+              -# - else
+              -#   .content-header-item
+              -#     = link_to new_user_session_path do
+              -#       = g_icon(:login)
+
+        .content-body
+          = yield
     .footer
 
 

@@ -1,4 +1,15 @@
 class Interaction < ApplicationRecord
+  include ApplicationHelper
+  include TranslateHelper
   belongs_to :client
   belongs_to :manager, class_name: 'User', foreign_key: :manager_id, optional: true
+
+  INTERACTION_TYPE_CALL = 1
+  INTERACTION_TYPE_MESSAGE = 2
+  INTERACTION_TYPE_MEETING = 3
+  INTERACTION_TYPES = [INTERACTION_TYPE_CALL, INTERACTION_TYPE_MESSAGE, INTERACTION_TYPE_MEETING]
+
+  def interaction_type_name
+    tm(Interaction, "interaction_type_#{self.interaction_type}")
+  end
 end

@@ -1,15 +1,25 @@
-= link_to new_modal_clients_path, remote: true do 
-  тест модалка
-
-%table
-  %tbody
-    - @clients.each do |client|
-      %tr
-        %td= client.name
-        %td= client.phone
-        %td= client.email
-        %td= client.status
-        %td= client.source
-        %td= client.comment
+.box
+  .box-header
+    = link_to new_modal_clients_path, remote: true, data: { disable_with: "<i class='fa fa-circle-o-notch fa-spin'></i>" } do 
+      = fa_icon(:plus)
+  .box-body
+    %table
+      %thead
+        %tr
+          %th= tm(Client, :name)
+          %th= tm(Client, :phone)
+          %th= tm(Client, :email)
+          %th= tm(Client, :status)
+          %th= tm(Client, :source)
+          %th= tm(Client, :comment)
+      %tbody
+        - @clients.each do |client|
+          %tr
+            %td= client.name
+            %td= client.phone
+            %td= client.email
+            %td= client.status
+            %td= client.source
+            %td= client.comment
 
 #client-modal-outer

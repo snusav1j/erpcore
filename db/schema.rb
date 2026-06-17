@@ -21,7 +21,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_14_144402) do
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "status"
+    t.string "status", default: "new"
     t.string "source"
     t.index ["phone"], name: "index_clients_on_phone"
   end
@@ -29,7 +29,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_14_144402) do
   create_table "interactions", force: :cascade do |t|
     t.bigint "client_id", null: false
     t.string "interaction_type"
-    t.string "status"
+    t.string "status", default: "new"
     t.text "comment"
     t.datetime "occurred_at"
     t.datetime "created_at", null: false
@@ -41,7 +41,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_06_14_144402) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "client_id", null: false
-    t.string "status"
+    t.string "status", default: "new"
     t.float "amount"
     t.float "expense"
     t.float "profit"

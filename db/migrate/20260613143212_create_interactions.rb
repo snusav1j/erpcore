@@ -4,7 +4,7 @@ class CreateInteractions < ActiveRecord::Migration[8.0]
       t.references :client, null: false, foreign_key: true
 
       t.string :interaction_type
-      t.string :status
+      t.string :status, default: 'new'
       t.text :comment
 
       t.datetime :occurred_at

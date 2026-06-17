@@ -1,17 +1,30 @@
-= link_to new_modal_orders_path, remote: true do 
-  тест модалка
+.box
+  .box-header
+    = link_to new_modal_orders_path, remote: true, data: { disable_with: "<i class='fa fa-circle-o-notch fa-spin'></i>" } do 
+      = fa_icon(:plus)
 
-%table
-  %tbody
-    - @orders.each do |order|
-      %tr
-        %td= order.client_id
-        %td= order.status
-        %td= order.amount
-        %td= order.expense
-        %td= order.profit
-        %td= order.comment
-        %td= order.closed_at
-        %td= order.manager_id
+  .box-body
+    %table
+      %thead
+        %tr
+          %th= tm(Order, :client)
+          %th= tm(Order, :status)
+          %th= tm(Order, :amount)
+          %th= tm(Order, :expense)
+          %th= tm(Order, :profit)
+          %th= tm(Order, :comment)
+          %th= tm(Order, :closed_at)
+          %th= tm(Order, :manager)
+      %tbody
+        - @orders.each do |order|
+          %tr
+            %td= order.client&.name
+            %td= order.status
+            %td= order.amount
+            %td= order.expense
+            %td= order.profit
+            %td= order.comment
+            %td= order.closed_at
+            %td= order.manager&.email
 
 #order-modal-outer

@@ -1,6 +1,4 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -10,34 +8,30 @@ class User < ApplicationRecord
   after_initialize :set_default_role, if: :new_record?
 
   scope :active, -> { where.not(banned: true) }
-  
-  ROLES = {
-    user:     0,
-    worker:   1,
-    director: 2,
-    manager:  3
-  }.freeze
-  validates :role, inclusion: { in: ROLES.values }
-  
+
+  ROLES = %w[user worker director manager].freeze
+
+  validates :role, inclusion: { in: ROLES }
+
   def user?
-    role == ROLES[:user]
+    role == 'user'
   end
 
   def worker?
-    role == ROLES[:worker]
+    role == 'worker'
   end
 
   def director?
-    role == ROLES[:director]
+    role == 'director'
   end
 
   def manager?
-    role == ROLES[:manager]
+    role == 'manager'
   end
 
   private
 
   def set_default_role
-    self.role ||= :user
+    self.role ||= 'user'
   end
 end

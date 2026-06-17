@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
+  include TranslateHelper
+
   before_action :authenticate_user!
   before_action :set_global_vars
 
@@ -11,4 +13,5 @@ class ApplicationController < ActionController::Base
 
     @http_address = "#{@http_host}/#{@cur_url}"
   end
+
 end

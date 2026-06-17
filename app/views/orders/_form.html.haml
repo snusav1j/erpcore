@@ -1,6 +1,6 @@
-= simple_form_for @order, local: false do |f|
+= simple_form_for @order, remote: true, html: { id: 'order-form' } do |f|
   .form
-    = f.input :client_id
+    = f.input :client_id, as: :select, collection: Client.all.map { |wu| [wu.name, wu.id] }
     = f.input :status
     = f.input :amount
     = f.input :expense
@@ -8,6 +8,3 @@
     = f.input :comment
     -# = f.input :closed_at
     = f.input :manager_id
-
-  .form-actions
-    = f.button :submit, tgm(:save)

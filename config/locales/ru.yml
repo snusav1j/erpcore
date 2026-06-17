@@ -11,46 +11,51 @@ ru:
     success: Успешно сохранено
     destroyed: Успешно удалено
     not_found: Не найдено
-    twitch_message_presets: Пресеты
 
   activerecord:
     attributes:
       user:
-        email: Электронная почта
+        title: Пользователи
+        email: Email
         password: Пароль
         password_confirmation: Подтверждение пароля
-        name: Имя
-        username: Логин
         role: Роль
-        avatar: Аватар
-      post:
-        title: Заголовок
-        content: Содержание
-      twitch_channel:
-        login: Логин канала
-        display_name: Отображаемое имя
-      twitch_order:
-        bots_count: Назначить количество ботов
-        stream_url: Ссылка на стрим
-        description: Описание заказа
-      twitch_bot:
-        username: "Имя пользователя"
-        access_token: "Access токен"
-        refresh_token: "Refresh токен"
-        expires_at: "Токен стекает"
-        busy: "Доступность"
-        created_at: "Создан"
-        updated_at: "Обновлён"
-        status: "Статус"
-        user_id: "Пользователь"
-        last_validated_at: "Последняя проверка"
-        client_id: "Client ID"
-        email: "E-mail"
-        password: "Пароль"
-        email_password: "Пароль от почты"
-        chat_listener: "Слушает чат"
-        proxy_datum_id: "Прокси"
-        busy: "Занят"
+        login: Вход
+        logout: Выход
+        profile: Профиль
+
+      client:
+        title: Клиенты
+        name: Имя
+        phone: Телефон
+        email: Email
+        status: Статус
+        source: Источник
+        comment: Комментарий
+
+      order:
+        title: Заказы
+        client: Клиент
+        status: Статус
+        amount: Сумма
+        expense: Расходы
+        profit: Прибыль
+        comment: Комментарий
+        closed_at: Дата закрытия
+        manager: Менеджер
+
+      interaction:
+        title: Взаимодействия
+        client: Клиент
+        interaction_type: Тип обращения
+        status: Статус
+        comment: Комментарий
+        occurred_at: Дата обращения
+        manager: Менеджер
+
+        interaction_type_1: Звонок
+        interaction_type_2: Чат
+        interaction_type_3: Встреча
 
     models:
       user: Пользователь

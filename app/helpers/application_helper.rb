@@ -1,6 +1,20 @@
 module ApplicationHelper
   include TranslateHelper
-  
+
+  def current_page_name
+    if @cur_url.include?('users')
+      tm(User, :title)
+    elsif @cur_url.include?('clients')
+      tm(Client, :title)
+    elsif @cur_url.include?('orders')
+      tm(Order, :title)
+    elsif @cur_url.include?('interactions')
+      tm(Interaction, :title)
+    else
+      tm(Client, :title)
+    end
+  end
+
   def pretty_date(date)
     date.strftime("%d %B %Y") if date.present?
   end
