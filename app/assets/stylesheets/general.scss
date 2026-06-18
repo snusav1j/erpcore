@@ -34,6 +34,10 @@
   --text-color: #070707;
   --text-light-color: rgb(41, 41, 41);
 }
+button{
+  border: unset;
+  cursor: pointer;
+}
 *{
   box-sizing: border-box;
   margin: 0;
@@ -307,6 +311,7 @@ a{
   border-right: var(--border);
   box-shadow: var(--shadow);
   background: var(--secondary-color);
+  width: 250px;
   .sidebar-header{
     text-align: center;
     font-weight: 700;
@@ -335,7 +340,7 @@ a{
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 5px 10px;
+      padding: 4px 10px;
       transition: .2s ease;
       span{
         font-size: 22px;

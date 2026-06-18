@@ -1,0 +1,13 @@
+.content-user-info{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  .user-role{
+    font-size: 12px;
+  }
+  .user-logo{
+    span{
+      font-size: 28px;
+    }
+  }
+}

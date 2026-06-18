@@ -4,6 +4,3 @@
     = f.input :interaction_type, as: :select, collection: Interaction::INTERACTION_TYPES.map { |it| [tm(Interaction, "interaction_type_#{it}"), it] }
     = f.input :status
     = f.input :comment
-
-  .form-actions
-    = f.button :submit, tgm(:save)

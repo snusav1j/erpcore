@@ -1,5 +1,5 @@
 <% if current_user.can_interact_with_client?(@interaction) %>
-  $('#interaction-modal-outer').html("<%= j render partial: '/interactions/interaction_modal' %>");
+  $('#interaction-modal-outer').html("<%= j render partial: '/interactions/interaction_modal', locals: { title: tc(:edit) } %>");
   fix_text_area_height()
   $('#interaction-modal').modal('show');
 <% else %>

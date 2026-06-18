@@ -31,7 +31,6 @@ jQuery.fn.modal = (action) ->
 
   this
 
-
 $ ->
 
   $(document).on 'click', '.modal.show', (e) ->

@@ -1,2 +1,2 @@
-$('#client-modal-outer').html("<%= j render partial: '/clients/client_modal' %>");
+$('#client-modal-outer').html("<%= j render partial: '/clients/client_modal', locals: { title: tc(:new) } %>");
 $('#client-modal').modal('show');

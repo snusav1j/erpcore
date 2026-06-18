@@ -16,10 +16,9 @@
     %link{:href => "https://fonts.googleapis.com", :rel => "preconnect"}
     %link{:crossorigin => "", :href => "https://fonts.gstatic.com", :rel => "preconnect"}
     %link{ href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined", rel: "stylesheet" }
-
     %link{ href: "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap", rel: "stylesheet"}
-
     %link{ href: "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css", rel: "stylesheet" }
+    
     %title= content_for(:title) || "EggClients"
   %body
     #wrap
@@ -29,13 +28,17 @@
         - if current_user
           .content-header
             .content-header-controls
-              .content-header-item
-                = link_to user_path(current_user) do
-                  = g_icon(:account_circle)
-
-              .content-header-item
-                = link_to destroy_user_session_path, method: :delete do
-                  = g_icon(:logout)
+              .content-user-info
+                .content-user-info-item
+                  -# .user-logo
+                  -#   = link_to user_path(current_user) do
+                  -#     = g_icon(:account_circle)
+                .content-user-info-item
+                  .user-email= current_user.email
+                  .user-role.text-muted= current_user.role
+                .content-user-info-item
+                  = link_to destroy_user_session_path, method: :delete do
+                    = g_icon(:logout)
 
               -# - else
               -#   .content-header-item

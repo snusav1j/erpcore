@@ -1,2 +1,2 @@
-$('#interaction-modal-outer').html("<%= j render partial: '/interactions/interaction_modal' %>");
+$('#interaction-modal-outer').html("<%= j render partial: '/interactions/interaction_modal', locals: { title: tc(:new) } %>");
 $('#interaction-modal').modal('show');

@@ -27,3 +27,26 @@
 .modal.show .modal-dialog {
   transform: translateY(0);
 }
+.modal-header{
+  border-radius: 5px 5px 0 0 !important;
+}
+.modal-header, .modal-footer{
+  background: var(--secondary-color);
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-body{
+  background: var(--main-color);
+  padding: 15px;
+}
+.modal-footer{
+  display: flow-root;
+  border-radius: 0 0 5px 5px !important;
+}
+.modal-content {
+  border-radius: 10px !important;
+  position: relative;
+  border: 2px solid var(--border) !important;
+}

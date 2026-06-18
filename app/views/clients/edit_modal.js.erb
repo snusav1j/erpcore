@@ -1,5 +1,5 @@
 <% if current_user.can_interact_with_client?(@client) %>
-  $('#client-modal-outer').html("<%= j render partial: '/clients/client_modal' %>");
+  $('#client-modal-outer').html("<%= j render partial: '/clients/client_modal', locals: { title: tc(:edit) } %>");
   fix_text_area_height()
   $('#client-modal').modal('show');
 <% else %>

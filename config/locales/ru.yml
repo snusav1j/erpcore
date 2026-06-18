@@ -2,12 +2,16 @@ ru:
   controller:
     users:
       new: Новый пользователь
+      edit: Редактировать пользователя
     clients:
       new: Новый клиент
+      edit: Редактировать клиента
     orders:
       new: Новый заказ
+      edit: Редактировать заказ
     interactions:
       new: Новое взаимодействие
+      edit: Редактировать взаимодействие
   global:
     save: Сохранить
     cancel: Отмена
