@@ -1,33 +1,34 @@
-%table
-  %thead
-    %tr
-      %th.text-muted ID
-      %th.text-muted= tm(Client, :name)
-      %th.text-muted= tm(Client, :client_type)
-      %th.text-muted.text-center= tm(Client, :status)
-      %th.text-muted.text-center= tm(Client, :country)
-      -# %th.text-muted= tm(Client, :city)
-      %th.text-muted= tm(Client, :inn)
-      %th.text-muted= tm(Client, :ogrn)
-      %th.text-muted= tm(Client, :phone)
-      %th.text-muted= tm(Client, :email)
-      %th.text-muted= tm(Interaction, :title)
-      -# %th.text-muted= tm(Client, :source)
-      -# %th= tm(Client, :comment)
-  %tbody#clients-list
-    - clients.each do |client|
-      %tr.client-row{ data: { client_id: client.id } }
-        %td.text-muted= client.id
-        %td= client.name
-        %td= client.client_type_name
-        %td.text-center= client.status_name
-        %td.text-center= client.country
-        -# %td= client.city
-        %td= client.inn
-        %td= client.ogrn
-        %td= client.phone
-        %td= client.email
-        %td
-          = client.interactions.length > 0 ? client.interactions.length : ''
-        -# %td= client.source
-        -# %td= client.comment
+.table-responsive
+  %table
+    %thead
+      %tr
+        %th.text-center ID
+        %th= tm(Client, :name)
+        %th= tm(Client, :client_type)
+        %th.text-center= tm(Client, :status)
+        %th.text-center= tm(Client, :country)
+        -# %th= tm(Client, :city)
+        %th.text-center= tm(Client, :inn)
+        %th.text-center= tm(Client, :ogrn)
+        %th.text-center= tm(Client, :phone)
+        %th= tm(Client, :email)
+        %th= tm(Interaction, :title)
+        -# %th= tm(Client, :source)
+        -# %th= tm(Client, :comment)
+    %tbody#clients-list
+      - clients.each do |client|
+        %tr.client-row{ data: { client_id: client.id } }
+          %td.text-muted.text-center= client.id
+          %td= client.name
+          %td= client.client_type_name
+          %td.text-center= client.status_name
+          %td.text-center= client.country
+          -# %td= client.city
+          %td.text-center= client.inn
+          %td.text-center= client.ogrn
+          %td.text-center= client.phone
+          %td= client.email
+          %td
+            = client.interactions.length > 0 ? client.interactions.length : ''
+          -# %td= client.source
+          -# %td= client.comment

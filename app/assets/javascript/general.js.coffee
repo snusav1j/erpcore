@@ -14,6 +14,36 @@ window.fix_text_area_height = ->
 
 $ ->
 
+  document.querySelectorAll('.table-responsive').forEach (el) ->
+
+    el.addEventListener 'wheel', (e) ->
+
+      if el.scrollWidth > el.clientWidth
+
+        e.preventDefault()
+        e.stopPropagation()
+
+        el.scrollLeft += e.deltaY
+
+    , { passive: false }
+
+  # $(document).on 'mouseover', '#sidebar .sidebar-body', ->
+  #   sidebar_hidden = $('#sidebar').hasClass('hide')
+
+  #   console.log("mouseover: #{sidebar_hidden}")
+  #   $('#sidebar').removeClass('hide')
+  #   $('.hide-sidebar-btn').show()
+  #   $('.show-sidebar-btn').hide()
+
+  # $(document).on 'mouseleave', '#sidebar .sidebar-body', ->
+  #   sidebar_hidden = $('#sidebar').hasClass('hide')
+
+  #   console.log("mouse_leave: #{sidebar_hidden}")
+  #   if sidebar_hidden
+  #     $('#sidebar').addClass('hide')
+  #     $('.hide-sidebar-btn').hide()
+  #     $('.show-sidebar-btn').show()
+
   $(document).on 'click', '.hide-show-sidebar', ->
     $('#sidebar').toggleClass('hide')
     $('.hide-show-sidebar-btn').toggle()

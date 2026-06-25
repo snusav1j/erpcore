@@ -28,8 +28,13 @@
         - if current_user
           .content-header
             .sidebar-controls.hide-show-sidebar
-              .hide-show-sidebar-btn{ style: current_user.get_sidebar_state ? "display: none;" : "display: block;" }= g_icon(:chevron_left)
-              .hide-show-sidebar-btn{ style: current_user.get_sidebar_state ? "display: block;" : "display: none;" }= g_icon(:chevron_right)
+
+              .hide-show-sidebar-btn.hide-sidebar-btn{ style: current_user.get_sidebar_state ? "display: none;" : "display: block;" }
+                = g_icon(:chevron_left)
+
+              .hide-show-sidebar-btn.show-sidebar-btn{ style: current_user.get_sidebar_state ? "display: block;" : "display: none;" }
+                = g_icon(:chevron_right)
+
             .content-header-controls
               .content-user-info
                 .content-user-info-item

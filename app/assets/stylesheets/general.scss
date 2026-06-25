@@ -4,19 +4,19 @@
   --text-primary: #2789E4;
   --light-primary: #E7F1FB;
   --primary: #0176E0;
-  --hover-primary: #0c7ce6;
+  --hover-primary: #1281e9;
   
   --danger: #c41f2d;
-  --hover-danger: #cf2634;
+  --hover-danger: #da2d3b;
   
   --default: #ddd;
   --hover-default: #e0e0e0;
 
   --success: #25b670;
-  --hover-success: #2cc97d;
+  --hover-success: #29cf7f;
 
   --warnig: #e0a422;
-  --hover-warnig: #e9ac2a;
+  --hover-warnig: #ebb136;
 
   --main-color: #fff;
   --secondary-color: #fbfbfb;
@@ -41,6 +41,7 @@
   --text-color: #070707;
   --text-light-color: rgb(41, 41, 41);
 }
+
 *{
   box-sizing: border-box;
   margin: 0;
@@ -301,20 +302,20 @@ select:disabled{
 .scroll-hidden::-webkit-scrollbar{
   display: none; /* Chrome / Safari / Edge */
 }
-// ::-webkit-scrollbar{
-//   width: 5px;
-//   background: var(--tertiary-color) !important;
-//   border-radius: 10px !important;
-// }
-// ::-webkit-scrollbar-track{
-//   background: var(--main-color) !important;
-//   border-radius: 10px !important;
-// }
-// ::-webkit-scrollbar-thumb{
-//   border-radius: 10px !important;
-//   height: 50px;
-//   background: var(--tertiary-color) !important;
-// }
+::-webkit-scrollbar{
+  width: 5px;
+  background: var(--tertiary-color) !important;
+  border-radius: 10px !important;
+}
+::-webkit-scrollbar-track{
+  background: var(--main-color) !important;
+  border-radius: 10px !important;
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 10px !important;
+  height: 50px;
+  background: var(--tertiary-color) !important;
+}
 
 .break-all{
   word-break: break-all;
@@ -331,8 +332,12 @@ a{
 
 //
 
-#wrap{
+#wrap {
   display: flex;
+}
+
+#content {
+  min-width: 0;
 }
 
 #content{
@@ -382,6 +387,7 @@ a{
   }
   .sidebar-body{
     padding: 15px;
+    height: 100vh;
   }
   .sidebar-item{
     color: var(--material-icon-color);
@@ -495,19 +501,25 @@ a{
     }
   }
 }
-
+.table-responsive {
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge legacy */
+}
+.table-responsive::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
 table{
   border-collapse: collapse;
-  thead tr,
-  tbody tr:not(:last-child){
-    border-bottom: 2px solid var(--border-color);
-  }
+  border-collapse: collapse;
+  
   th,td{
+    border: 1px solid var(--border-color);
     padding: 10px;
     text-align: left;
   }
   tbody tr:nth-child(odd){
-    // background: var(--secondary-color);
+    background: var(--secondary-color);
   }
 
 }
@@ -524,7 +536,7 @@ table{
 }
 .nav-tabs-custom{
   transition: .2s ease;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   border-bottom: 2px solid var(--border);
   .tabs{
     display: flex;

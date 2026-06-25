@@ -1,5 +1,4 @@
 .custom-toastr-block {
-  background: var(--toastr-bg);
   color: var(--toastr-color);
   width: fit-content;
   display: flex;
@@ -7,41 +6,41 @@
   padding: 7px 14px 7px 7px;
   border-radius: 10px;
   align-items: center;
-  border: 2px solid #393a41;
+  border: 2px solid var(--border-color);
+  box-shadow: var(--shadow);
+  background: #fff;
+  font-weight: 700;
   .fa{
-    font-size: 14px !important;
+    color: #fff;
   }
 }
 
 .custom-toastr-icon{
-  width: 25px;
-  height: 25px;
-  padding: 3px;
-  border-radius: 100%;
+  width: 25px; height: 25px;
+  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--toastr-color);
 }
 
 .custom-toastr-primary .custom-toastr-icon{
-  background: var(--primary);
+  background: var(--hover-primary);
 }
 .custom-toastr-danger .custom-toastr-icon{
-  background: var(--danger);
+  background: var(--hover-danger);
 }
 .custom-toastr-warning .custom-toastr-icon{
-  background: var(--warnig);
+  background: var(--hover-warnig);
 }
 .custom-toastr-success .custom-toastr-icon{
-  background: var(--success);
+  background: var(--hover-success);
   min-width: 25px;
 }
 
 .custom-toastr-container {
   width: 100%;
   position: fixed;
-  top: 10px;
+  top: 15px;
   display: flex;
   justify-content: center;
   transform: translateY(-40px);
@@ -57,5 +56,5 @@
   z-index: 1111;
 }
 .custom-toastr-block{
-  pointer-events: none;
+  // pointer-events: none;
 }
