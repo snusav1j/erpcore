@@ -1,7 +1,7 @@
 #sidebar{ class: current_user.get_sidebar_state ? "hide" : "" }
   .sidebar-header
     .logo
-      .logo-icon= g_icon(:egg)
+      .logo-icon= g_icon(:deployed_code)
       .logo-text ErpCore
   .sidebar-body
     .sidebar-item{ class: clients_path.include?(@cur_url) ? 'active' : '' }
