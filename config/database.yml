@@ -15,10 +15,20 @@ test:
   database: erpcore_test
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: erpcore
-  username: snusavij
-  password: 6310
-  host: localhost
-  pool: 5
+  primary:
+    adapter: postgresql
+    encoding: unicode
+    database: erpcore
+    username: snusavij
+    password: 6310
+    host: localhost
+    pool: 5
+
+  queue:
+    adapter: postgresql
+    encoding: unicode
+    database: erpcore_queue
+    username: snusavij
+    password: 6310
+    host: localhost
+    pool: 5
