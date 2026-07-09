@@ -16,19 +16,13 @@ test:
 
 production:
   primary:
-    adapter: postgresql
-    encoding: unicode
+    <<: *default
     database: erpcore
-    username: snusavij
-    password: 6310
-    host: localhost
-    pool: 5
 
   queue:
-    adapter: postgresql
-    encoding: unicode
+    <<: *default
     database: erpcore_queue
-    username: snusavij
-    password: 6310
-    host: localhost
-    pool: 5
+
+  cache:
+    <<: *default
+    database: erpcore_cache
