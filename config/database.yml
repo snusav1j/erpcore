@@ -8,11 +8,11 @@ default: &default
 
 development:
   <<: *default
-  database: eggs_clients_development
+  database: erpcore_development
 
 test:
   <<: *default
-  database: eggs_clients_test
+  database: erpcore_test
 
 production:
   adapter: postgresql
