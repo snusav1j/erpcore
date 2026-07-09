@@ -22,6 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-# eggs_clients
-# eggs_clients
-# eggs_clients
+# erpcore
+# erpcore
+# erpcore

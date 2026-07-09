@@ -1,3 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: snusavij
+  password: 6310
+  host: localhost
+
+development:
+  <<: *default
+  database: eggs_clients_development
+
+test:
+  <<: *default
+  database: eggs_clients_test
+
 production:
   adapter: postgresql
   encoding: unicode
