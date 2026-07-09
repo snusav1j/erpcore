@@ -22,3 +22,12 @@ production:
   password: 6310
   host: localhost
   pool: 5
+
+development:
+  adapter: async
+
+test:
+  adapter: test
+
+production:
+  adapter: async
