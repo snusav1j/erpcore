@@ -8,21 +8,6 @@
       = tc(:new)
 
   .box-body
-    %table
-      %thead
-        %tr
-          %th= tm(Interaction, :client)
-          %th= tm(Interaction, :interaction_type)
-          %th= tm(Interaction, :status)
-          %th= tm(Interaction, :comment)
-          %th= tm(Interaction, :manager)
-      %tbody#interactions-list
-        - @interactions.each do |interaction|
-          %tr.interaction-row{ data: { interaction_id: interaction.id } }
-            %td= interaction.client&.name
-            %td= interaction.interaction_type_name
-            %td= interaction.status
-            %td= interaction.comment
-            %td= interaction.manager&.email
+    = render partial: '/interactions/table', locals: { interactions: @interactions }
 
 #interaction-modal-outer

@@ -1,12 +1,12 @@
-= simple_form_for @client, remote: true, html: { id: 'client-form' } do |f|
+= simple_form_for @client, remote: true, html: { id: 'client-form', novalidate: false } do |f|
   .form
     .row
       .col-md-12
-        = f.input :name
+        = f.input :name, required: true
 
     .row
       .col-md-6
-        = f.input :phone
+        = f.input :phone, required: true
       .col-md-6
         = f.input :email
 

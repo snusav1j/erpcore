@@ -21,9 +21,9 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.manager_id = current_user.id
-    @saved = @order.save
+    @created = @order.save
 
-    @order.client.update(status: Client::CLIENT_STATUS_ACTIVE) if @saved
+    @order.client.update(status: Client::CLIENT_STATUS_ACTIVE) if @created
     
     @orders = Order.all
     respond_to :js
@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
 
   def destroy
     @order = Order.find(params[:id])
-    @order.destroy
+    @destroyed = @order.destroy
 
     @orders = Order.all
     respond_to :js

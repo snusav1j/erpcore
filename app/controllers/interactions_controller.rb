@@ -21,9 +21,9 @@ class InteractionsController < ApplicationController
   def create
     @interaction = Interaction.new(interaction_params)
     @interaction.manager_id = current_user.id
-    @saved = @interaction.save
+    @created = @interaction.save
 
-    @interaction.client.update(status: Client::CLIENT_STATUS_POTENTIAL) if @saved
+    @interaction.client.update(status: Client::CLIENT_STATUS_POTENTIAL) if @created
     
     @interactions = Interaction.all
     respond_to :js
@@ -39,7 +39,7 @@ class InteractionsController < ApplicationController
 
   def destroy
     @interaction = Interaction.find(params[:id])
-    @interaction.destroy
+    @destroyed = @interaction.destroy
 
     @interactions = Interaction.all
     respond_to :js

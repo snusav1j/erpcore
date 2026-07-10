@@ -1,0 +1,12 @@
+%table
+  %thead
+    %tr
+      %th= tm(Interaction, :client)
+      %th= tm(Interaction, :interaction_type)
+      %th= tm(Interaction, :status)
+      %th= tm(Interaction, :comment)
+      %th= tm(Interaction, :manager)
+      %th
+  %tbody#interactions-list
+    - interactions.each do |interaction|
+      = render partial: '/interactions/item', locals: { interaction: interaction }

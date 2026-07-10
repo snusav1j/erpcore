@@ -8,27 +8,6 @@
       = tc(:new)
 
   .box-body
-    %table
-      %thead
-        %tr
-          %th= tm(Order, :client)
-          %th= tm(Order, :status)
-          %th= tm(Order, :amount)
-          %th= tm(Order, :expense)
-          %th= tm(Order, :profit)
-          %th= tm(Order, :comment)
-          %th= tm(Order, :closed_at)
-          %th= tm(Order, :manager)
-      %tbody#orders-list
-        - @orders.each do |order|
-          %tr.order-row{ data: { order_id: order.id } }
-            %td= order.client&.name
-            %td= order.status
-            %td= order.amount
-            %td= order.expense
-            %td= order.profit
-            %td= order.comment
-            %td= order.closed_at
-            %td= order.manager&.email
+    = render partial: '/orders/table', locals: { orders: @orders }
 
 #order-modal-outer

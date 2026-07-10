@@ -1,0 +1,6 @@
+<% if @destroyed %>
+  $("tr.order-row[data-order-id='<%= @order.id %>']").remove()
+  toastr.success('<%= tm(Order, :order_destroyed) %>')
+<% else %>
+  toastr.danger('Произошла ошибка');
+<% end %>

@@ -1,4 +1,9 @@
 ru:
+  date:
+    order:
+      - :day
+      - :month
+      - :year
   controller:
     users:
       new: Новый пользователь
@@ -91,6 +96,10 @@ ru:
         closed_at: Дата закрытия
         manager: Менеджер
 
+        order_created: Заказ создан
+        order_updated: Заказ обновлен
+        order_destroyed: Заказ удален
+
       interaction:
         title: Взаимодействия
         client: Клиент
@@ -103,6 +112,10 @@ ru:
         interaction_type_1: Звонок
         interaction_type_2: Чат
         interaction_type_3: Встреча
+
+        interaction_created: Взаимодействие создано
+        interaction_updated: Взаимодействие обновлено
+        interaction_destroyed: Взаимодействие удалено
 
     models:
       user: Пользователь

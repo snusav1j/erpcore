@@ -1,0 +1,12 @@
+%table
+  %thead
+    %tr
+      %th= tm(Order, :client)
+      %th= tm(Order, :status)
+      %th= tm(Order, :comment)
+      %th= tm(Order, :closed_at)
+      %th= tm(Order, :manager)
+      %th
+  %tbody#orders-list
+    - @orders.each do |order|
+      = render partial: '/orders/item', locals: { order: order }

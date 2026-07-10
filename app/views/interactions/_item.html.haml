@@ -1,0 +1,9 @@
+%tr.interaction-row{ data: { interaction_id: interaction.id } }
+  %td= interaction.client&.name
+  %td= interaction.interaction_type_name
+  %td= interaction.status
+  %td= interaction.comment
+  %td= interaction.manager&.email
+  %td
+    = link_to interaction_path(interaction), method: :delete, class: 'text-danger', remote: true do
+      = g_icon(:delete)

@@ -1,0 +1,9 @@
+%tr.order-row{ data: { order_id: order.id } }
+  %td= order.client&.name
+  %td= order.status
+  %td= order.comment
+  %td= order.closed_at
+  %td= order.manager&.email
+  %td
+    = link_to order_path(order), method: :delete, class: 'text-danger', remote: true do
+      = g_icon(:delete)

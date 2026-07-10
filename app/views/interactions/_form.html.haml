@@ -1,6 +1,6 @@
-= simple_form_for @interaction, remote: true, html: { id: 'interaction-form' } do |f|
+= simple_form_for @interaction, remote: true, html: { id: 'interaction-form', novalidate: false } do |f|
   .form
-    = f.input :client_id, as: :select, collection: Client.all.map { |wu| [wu.name, wu.id] }
-    = f.input :interaction_type, as: :select, collection: Interaction::INTERACTION_TYPES.map { |it| [tm(Interaction, "interaction_type_#{it}"), it] }
+    = f.input :client_id, as: :select, collection: Client.all.map { |wu| [wu.name, wu.id] }, required: true
+    = f.input :interaction_type, as: :select, collection: Interaction::INTERACTION_TYPES.map { |it| [tm(Interaction, "interaction_type_#{it}"), it] }, required: true
     = f.input :status
     = f.input :comment
