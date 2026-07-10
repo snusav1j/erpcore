@@ -8,8 +8,6 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-
-
 # User.create!(
 #   email: "snusavij@gmail.com",
 #   password: "123456",
