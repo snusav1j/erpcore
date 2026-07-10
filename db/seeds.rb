@@ -8,23 +8,6 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-<<<<<<< HEAD
-
-
 # User.create!(email: "snusavij@gmail.com",password: "123456",password_confirmation: "123456",role: 'director')
 # User.create!(email: "arcaneward@gmail.com", password: "123456", password_confirmation: "123456", role: 'director')
 # User.create!(email: "doroshin@gmail.com", password: "123456", password_confirmation: "123456", role: 'director')
-=======
-# User.create!(
-#   email: "snusavij@gmail.com",
-#   password: "123456",
-#   password_confirmation: "123456",
-#   role: 'director'
-# )
-# User.create!(
-#   email: "arcaneward@gmail.com",
-#   password: "123456",
-#   password_confirmation: "123456",
-#   role: 'director'
-# )
->>>>>>> 1d771883d007b7c0db5f8288e33005ea1d4ec628
