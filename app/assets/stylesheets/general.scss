@@ -567,7 +567,12 @@ table{
     }
   }
 }
-
+@media screen and (max-width: 767px){
+  #authorization-form{
+    margin: 10% 15px 0 15px !important;
+    width: unset !important;
+  }
+}
 #authorization-form{
   width: 25%;
   margin: 0 auto;
