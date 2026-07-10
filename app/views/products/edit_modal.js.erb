@@ -1,0 +1,8 @@
+<% if current_user.can_interact_with_client?(@product) %>
+  $('#product-modal-outer').html("<%= j render partial: '/products/product_modal', locals: { title: tc(:edit) } %>");
+  fix_text_area_height()
+  $('#product-modal').modal('show');
+<% else %>
+  toastr.danger('Не ваш клиент')
+<% end %>
+

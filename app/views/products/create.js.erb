@@ -1,0 +1,8 @@
+<% if @created %>
+  $("#products-list").append("<%= j render partial: '/products/item', locals: { product: @product } %>");
+  $('#product-modal').modal('hide');
+  toastr.success('<%= tm(Product, :product_created) %>')
+<% else %>
+  toastr.danger('<%= tgm(:error) %>')
+<% end %>
+

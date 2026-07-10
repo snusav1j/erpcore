@@ -21,3 +21,9 @@
         = g_icon(:receipt_long)
         .sidebar-title
           = tm(Order, :title)
+        
+    .sidebar-item{ class: products_path.include?(@cur_url) ? 'active' : '' }
+      = link_to products_path do
+        = g_icon(:package_2)
+        .sidebar-title
+          = tm(Product, :title)

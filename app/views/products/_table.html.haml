@@ -1,0 +1,12 @@
+%table
+  %thead
+    %tr
+      %th= tm(Product, :name)
+      %th= tm(Product, :sku)
+      %th= tm(Product, :price)
+      %th= tm(Product, :in_stock)
+      %th= tm(Product, :manager)
+      %th
+  %tbody#products-list
+    - products.each do |product|
+      = render partial: '/products/item', locals: { product: product }

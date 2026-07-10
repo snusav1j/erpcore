@@ -580,7 +580,11 @@ table{
     }
   }
 }
-
+.form-group{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
 #authorization-form{
   width: 25%;
   margin: 0 auto;
@@ -615,12 +619,19 @@ table{
   gap: 5px;
 }
 
-
+.flex{
+  display: flex;
+}
+.justify-end{
+  display: flex;
+  justify-content: end;
+}
 .switch {
   position: relative;
   display: inline-block;
   appearance: none;
   width: 40px;
+  min-width: 40px;
   height: 22px;
   margin: 0;
   padding: 2px;

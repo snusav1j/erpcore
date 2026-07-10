@@ -1,0 +1,9 @@
+%tr.product-row{ data: { product_id: product.id } }
+  %td= product.name
+  %td= product.sku
+  %td= product.price
+  %td= product.in_stock 
+  %td= product.manager&.email
+  %td
+    = link_to product_path(product), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true do
+      = g_icon(:delete, 'sm-g-icon')

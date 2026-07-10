@@ -16,6 +16,16 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :products do
+    collection do
+      get :new_modal
+      get :edit_modal
+    end
+    
+    member do
+    end
+  end
+
   resources :orders do
     collection do
       get :new_modal

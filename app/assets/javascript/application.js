@@ -15,3 +15,4 @@
 //= require interactions
 //= require orders
 //= require users
+//= require products

@@ -1,0 +1,6 @@
+<% if @destroyed %>
+  $("tr.product-row[data-product-id='<%= @product.id %>']").remove()
+  toastr.success('<%= tm(Product, :product_destroyed) %>')
+<% else %>
+  toastr.danger('Произошла ошибка');
+<% end %>
