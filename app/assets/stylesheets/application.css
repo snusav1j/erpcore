@@ -14,6 +14,8 @@
  *= require modal
  *= require drag
  *= require tooltip
+ 
+ *= require adaptive
 
  *= require general
  *= require users

@@ -13,6 +13,7 @@ ru:
       new: Новое взаимодействие
       edit: Редактировать взаимодействие
   global:
+    error: Произошла ошибка
     save: Сохранить
     cancel: Отмена
     edit: Редактировать
@@ -50,6 +51,8 @@ ru:
         status: Статус
         source: Источник
         comment: Комментарий
+        manager: Менеджер
+        manager_id: ID Менеджера
 
         client_status_1: Новый
         client_status_2: Потенциальный
@@ -72,6 +75,10 @@ ru:
         client_type_13: Госучреждение
         client_type_14: Маркетплейс / онлайн
         client_type_15: Прочее
+
+        client_created: Клиент создан
+        client_updated: Клиент обновлен
+        client_destroyed: Клиент удален
 
       order:
         title: Заказы
@@ -114,6 +121,12 @@ ru:
           attributes:
             title:
               blank: обязательно
+        client:
+          attributes:
+            base:
+              restrict_dependent_destroy:
+                has_many: "Невозможно удалить запись, так как существуют связанные записи «%{record}»."
+                has_one: "Невозможно удалить запись, так как существует связанная запись «%{record}»."
   devise:
     confirmations:
       confirmed: "Ваш адрес электронной почты успешно подтверждён."

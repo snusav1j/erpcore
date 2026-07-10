@@ -26,6 +26,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
+    @client.manager_id = current_user.id
     @created = @client.save
 
     @clients = Client.all
@@ -42,7 +43,7 @@ class ClientsController < ApplicationController
 
   def destroy
     @client = Client.find(params[:id])
-    @client.destroy
+    @destroyed = @client.destroy
 
     @clients = Client.all
     respond_to :js

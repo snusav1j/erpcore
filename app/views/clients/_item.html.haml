@@ -1,0 +1,13 @@
+%tr.client-row{ data: { client_id: client.id } }
+  %td.text-muted.text-center= client.id
+  %td= client.name
+  %td= client.client_type_name
+  %td.text-center= client.status_name
+  %td.text-center= client.phone
+  %td= client.email
+  %td= client.manager&.email
+  %td
+    = client.interactions.length > 0 ? client.interactions.length : ''
+  %td
+    = link_to client_path(client), method: :delete, class: 'text-danger', remote: true do
+      = g_icon(:delete)

@@ -7,34 +7,35 @@
       = fa_icon(:plus)
       = tc(:new)
   .box-body
-    .nav-tabs-custom.table-nav
-      %ul.tabs
-        %li.active
-          %a{href: "#all"} Все
-        %li
-          %a{href: "#new_clients"} Новые
-        %li
-          %a{href: "#potential"} Потенциальные
-        %li
-          %a{href: "#active"} Активные
-        %li
-          %a{href: "#regular"} Постоянные
-        %li
-          %a{href: "#inactive"} Нективные
-    -# %input
-    .tab-content
-      #all.tab-pane.active
-        = render partial: 'list', locals: { clients: @clients }
-      #new_clients.tab-pane
-        = render partial: 'list', locals: { clients: @clients_new }
-      #potential.tab-pane
-        = render partial: 'list', locals: { clients: @clients_potential }
-      #active.tab-pane
-        = render partial: 'list', locals: { clients: @clients_active }
-      #inactive.tab-pane
-        = render partial: 'list', locals: { clients: @clients_inactive }
-      #regular.tab-pane
-        = render partial: 'list', locals: { clients: @clients_regular }
+    -# .nav-tabs-custom.table-nav
+    -#   %ul.tabs
+    -#     %li.active
+    -#       %a{href: "#all"} Все
+    -#     %li
+    -#       %a{href: "#new_clients"} Новые
+    -#     %li
+    -#       %a{href: "#potential"} Потенциальные
+    -#     %li
+    -#       %a{href: "#active"} Активные
+    -#     %li
+    -#       %a{href: "#regular"} Постоянные
+    -#     %li
+    -#       %a{href: "#inactive"} Нективные
+    -# -# %input
+    -# .tab-content
+    -#   #all.tab-pane.active
+    -#     = render partial: 'list', locals: { clients: @clients }
+    -#   #new_clients.tab-pane
+    -#     = render partial: 'list', locals: { clients: @clients_new }
+    -#   #potential.tab-pane
+    -#     = render partial: 'list', locals: { clients: @clients_potential }
+    -#   #active.tab-pane
+    -#     = render partial: 'list', locals: { clients: @clients_active }
+    -#   #inactive.tab-pane
+    -#     = render partial: 'list', locals: { clients: @clients_inactive }
+    -#   #regular.tab-pane
+    -#     = render partial: 'list', locals: { clients: @clients_regular }
+    = render partial: 'list', locals: { clients: @clients }
 
 
 

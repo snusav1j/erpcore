@@ -1,0 +1,8 @@
+<% if @created %>
+  $("#clients-list").append("<%= j render partial: '/clients/item', locals: { client: @client } %>");
+  $('#client-modal').modal('hide');
+  toastr.success('<%= tm(Client, :client_created) %>')
+<% else %>
+  toastr.danger('<%= tgm(:error) %>')
+<% end %>
+

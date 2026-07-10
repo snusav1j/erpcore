@@ -139,27 +139,27 @@ select:disabled{
   display: flex;
   justify-content: space-between;
 }
-.btn-primary{
+.btn-primary, .btn-primary .fa-icon, .btn-primary .g-icon{
   background: var(--primary) !important;
   color: #fff;
   cursor: pointer;
 }
-.btn-danger{
+.btn-danger, .btn-danger .fa-icon, .btn-danger .g-icon{
   background: var(--danger) !important;
   color: #fff;
   cursor: pointer;
 }
-.btn-success{
+.btn-success, .btn-success .fa-icon, .btn-success .g-icon{
   background: var(--success) !important;
   color: #fff;
   cursor: pointer;
 }
-.btn-warnig{
+.btn-warnig, .btn-warnig .fa-icon, .btn-warnig .g-icon{
   background: var(--warnig) !important;
   color: #fff;
   cursor: pointer;
 }
-.btn-default{
+.btn-default, .btn-default .fa-icon, .btn-default .g-icon{
   background: var(--default) !important;
   color: #252525;
   cursor: pointer;
@@ -183,16 +183,24 @@ select:disabled{
 
 
 
-.text-primary{
+.text-primary,
+.text-primary .fa-icon,
+.text-primary .g-icon{
   color: var(--primary) !important;
 }
-.text-danger{
+.text-danger,
+.text-danger .fa-icon,
+.text-danger .g-icon{
   color: var(--danger) !important;
 }
-.text-success{
+.text-success,
+.text-success .fa-icon,
+.text-success .g-icon{
   color: var(--success) !important;
 }
-.text-warning{
+.text-warning,
+.text-warning .fa-icon,
+.text-warning .g-icon{
   color: var(--warnig) !important;
 }
 
@@ -567,12 +575,7 @@ table{
     }
   }
 }
-@media screen and (max-width: 767px){
-  #authorization-form{
-    margin: 10% 15px 0 15px !important;
-    width: unset !important;
-  }
-}
+
 #authorization-form{
   width: 25%;
   margin: 0 auto;

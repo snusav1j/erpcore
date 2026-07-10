@@ -1,8 +1,8 @@
 class Client < ApplicationRecord
   include ApplicationHelper
   include TranslateHelper
-  has_many :interactions, dependent: :destroy
-  has_many :orders, dependent: :destroy
+  has_many :interactions, dependent: :restrict_with_error
+  has_many :orders, dependent: :restrict_with_error
 
   belongs_to :manager, class_name: 'User', foreign_key: :manager_id, optional: true
 

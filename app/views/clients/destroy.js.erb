@@ -1,0 +1,6 @@
+<% if @destroyed %>
+  $("tr.client-row[data-client-id='<%= @client.id %>']").remove()
+  toastr.success('<%= tm(Client, :client_destroyed) %>')
+<% else %>
+  toastr.danger('<%= j @client.errors.full_messages.to_sentence %>');
+<% end %>
