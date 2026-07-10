@@ -4,7 +4,7 @@
   display: none;
   overflow-x: hidden;
   overflow-y: auto;
-  z-index: 1055;
+  z-index: 9999;
   background: rgba(0,0,0,0.5);  /* backdrop встроен */
   opacity: 0;
   transition: opacity 0.25s ease;
@@ -16,7 +16,7 @@
 }
 
 .modal-dialog {
-  width: 80%;
+  width: 40%;
   max-width: 900px;
   margin: 5% auto;
   pointer-events: auto;
@@ -57,4 +57,14 @@
   border-radius: 10px !important;
   position: relative;
   border: 2px solid var(--border) !important;
+}
+
+.modal-md{
+  width: 80%;
+}
+.modal-lg{
+  width: 90%;
+}
+.modal-sm{
+  width: 30%;
 }

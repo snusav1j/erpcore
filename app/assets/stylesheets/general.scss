@@ -181,7 +181,9 @@ select:disabled{
   background: var(--hover-default) !important;
 }
 
-
+.sm-g-icon{
+  font-size: 18px !important;
+}
 
 .text-primary,
 .text-primary .fa-icon,
@@ -523,13 +525,16 @@ table{
   
   th,td{
     border: 1px solid var(--border-color);
-    padding: 10px;
+    padding: 6px 8px;
     text-align: left;
   }
-  tbody tr:nth-child(odd){
+  tbody tr:nth-child(even){
     background: var(--secondary-color);
   }
 
+}
+.show-sidebar-btn .g-icon{
+  margin-left: 1.5px;
 }
 .tab-pane{
   display: none;

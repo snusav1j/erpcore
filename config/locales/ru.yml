@@ -30,6 +30,9 @@ ru:
     success: Успешно сохранено
     destroyed: Успешно удалено
     not_found: Не найдено
+    continue: Продолжить
+    confirmation: Подтвердите действие
+    are_you_sure: Вы уверены? Это действие нельзя отменить
 
   activerecord:
     attributes:

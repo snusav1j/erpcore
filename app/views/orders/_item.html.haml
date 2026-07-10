@@ -5,5 +5,5 @@
   %td= order.closed_at
   %td= order.manager&.email
   %td
-    = link_to order_path(order), method: :delete, class: 'text-danger', remote: true do
-      = g_icon(:delete)
+    = link_to order_path(order), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true do
+      = g_icon(:delete, 'sm-g-icon')

@@ -6,6 +6,7 @@
 
 //= require multiple_select
 //= require custom_toastr
+//= require confirmation_modal
 //= require drag
 //= require modal
 //= require general
