@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
 
   def index
-    @clients = Client.all
+    @clients = current_user.clients
 
     @clients_new = Client.new_clients
     @clients_potential = Client.potential
