@@ -1,0 +1,6 @@
+<% if @created %>
+  toastr.success('')
+<% else %>
+  toastr.danger('<%= tgm(:error) %>')
+<% end %>
+

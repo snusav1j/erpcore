@@ -37,7 +37,26 @@
 
   white-space: nowrap;
 
+  text-align: left;
+
+  min-height: 30px;
+
+  box-sizing: border-box;
+
 }
+
+
+.column-drag-clone th.drag-cell {
+
+  text-align: left !important;
+
+}
+
+
+.column-drag-clone td.drag-cell {
+  min-height: 30px;
+}
+
 
 
 .column-indicator {

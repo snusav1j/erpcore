@@ -2,9 +2,9 @@
   .modal-dialog.modal-md
     .modal-content
       .modal-header
-        %button.close{ "aria-label" => "Close", "data-dismiss" => "modal", "type" => "button" }
-          %span{"aria-hidden" => "true"} ×
         %h4.modal-title
+        %button.close{ "aria-label" => "Close", "data-dismiss" => "modal", "type" => "button" }
+          %span{"aria-hidden" => "true"}= g_icon(:close)
       .modal-body
         
         = link_to new_modal_custom_fields_path(entity: @entity), remote: true, class: 'btn btn-primary' do

@@ -11,6 +11,8 @@ cloneStartLeft = 0
 dropTargetKey = null
 dropPosition = null
 
+originalOrder = []
+
 
 
 $(document).on 'mousedown', '.table-position-editor thead th:not(.nodraggable)', (e) ->
@@ -23,6 +25,16 @@ $(document).on 'mousedown', '.table-position-editor thead th:not(.nodraggable)',
 
 
   table = th.closest('table')
+
+
+  originalOrder = []
+
+  table.find('thead th:not(.nodraggable)').each ->
+
+    key = $(this).data('column-key')
+
+    originalOrder.push(key.toString()) if key
+
 
 
   draggedKey = th.data('column-key')
@@ -58,8 +70,6 @@ $(document).on 'mousemove', (e) ->
   table = $('.table-position-editor').first()
 
 
-  # двигаем clone без скачка
-
   if dragClone
 
     dragClone.css(
@@ -83,17 +93,21 @@ $(document).on 'mouseup', ->
 
   if dragging and dropTargetKey
 
+    table = $('.table-position-editor').first()
+
+
     moveColumn(
-      $('.table-position-editor').first(),
+      table,
       draggedKey,
       dropTargetKey,
       dropPosition
     )
 
 
-    saveColumnPosition(
-      $('.table-position-editor').first()
-    )
+    if columnsChanged(table)
+
+      saveColumnPosition(table)
+
 
 
   destroyDrag()
@@ -266,6 +280,27 @@ moveColumn = (table, key, targetKey, position) ->
 
 
 
+columnsChanged = (table) ->
+
+  currentOrder = []
+
+
+  table.find(
+    'thead th:not(.nodraggable)'
+  ).each ->
+
+    key = $(this).data('column-key')
+
+    currentOrder.push(
+      key.toString()
+    ) if key
+
+
+
+  JSON.stringify(originalOrder) != JSON.stringify(currentOrder)
+
+
+
 saveColumnPosition = (table) ->
 
 
@@ -321,3 +356,5 @@ destroyDrag = ->
   dropTargetKey = null
 
   dropPosition = null
+
+  originalOrder = []
