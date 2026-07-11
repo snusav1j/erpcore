@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :get_columns, only: [:index, :create, :update]
 
   def index
     @orders = Order.all
@@ -46,6 +47,10 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def get_columns
+    @columns = Order.table_columns
+  end
 
   def order_params
     params.require(:order).permit!

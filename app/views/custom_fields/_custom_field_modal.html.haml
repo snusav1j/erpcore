@@ -1,4 +1,4 @@
-.modal.fade#custom-field-modal
+.modal.fade#custom-field-modal{ style: 'z-index: 10000;' }
   .modal-dialog.modal-md
     .modal-content
       .modal-header
@@ -9,4 +9,4 @@
         = render partial: 'custom_fields/form'
       .modal-footer
         %button.btn.btn-default.pull-left{"data-dismiss" => "modal", :type => "button"}= tgm(:cancel)
-        %button.btn.btn-primary.pull-right{:type => "submit", form: ''}= tgm(:save)
+        %button.btn.btn-primary.pull-right{:type => "submit", form: 'custom-field-form'}= tgm(:save)

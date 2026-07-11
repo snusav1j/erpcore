@@ -1,4 +1,5 @@
 <% if @destroyed %>
+  $("[data-column-key='<%= @custom_field.key %>']").remove()
   toastr.success('')
 <% else %>
   toastr.danger('<%= tgm(:error) %>')

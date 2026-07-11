@@ -1,4 +1,5 @@
 class ApplicationRecord < ActiveRecord::Base
+
   primary_abstract_class
 
   class_attribute :custom_fields_enabled, default: false
@@ -9,8 +10,8 @@ class ApplicationRecord < ActiveRecord::Base
     CustomField.for_entity(self.class.name)
   end
 
-  def custom_value(code)
-    CustomField.value_for(entity: self.class.name, object: self, code: code)
+  def custom_value(key)
+    CustomField.value_for(entity: self.class.name, object: self, key: key)
   end
   
   def self.table_columns
@@ -24,7 +25,10 @@ class ApplicationRecord < ActiveRecord::Base
 
       columns << {
         key: column.to_sym,
-        label: column.humanize,
+        label: I18n.t(
+          "activerecord.attributes.#{self.model_name.i18n_key}.#{column}",
+          default: column.humanize
+        ),
         position: TableSetting.position(
           entity: self.name,
           column_key: column
@@ -35,12 +39,12 @@ class ApplicationRecord < ActiveRecord::Base
     CustomField.for_entity(self.name).each do |field|
 
       columns << {
-        key: field.code.to_sym,
+        key: field.key.to_sym,
         label: field.label,
         custom: true,
         position: TableSetting.position(
           entity: self.name,
-          column_key: field.code
+          column_key: field.key
         )
       }
 
@@ -64,7 +68,7 @@ class ApplicationRecord < ActiveRecord::Base
 
     CustomField.exists?(
       entity: self.class.name,
-      code: column.to_s
+      key: column.to_s
     )
 
   end

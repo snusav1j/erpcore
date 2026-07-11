@@ -3,6 +3,6 @@
     %td{ data: { column_key: column[:key] } }
       = client.table_value(column[:key])
 
-  %td
+  %td.static-position
     = link_to client_path(client), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true do
       = g_icon(:delete, 'sm-g-icon')

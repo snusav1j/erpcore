@@ -7,11 +7,11 @@ dragOffset = 0
 originalLeft = 0
 
 
-$(document).on 'mousedown', '.table-position-editor thead th:not(.nodraggable)', (e) ->
+$(document).on 'mousedown', '.table-position-editor thead th:not(.static-position)', (e) ->
 
   th = $(this)
 
-  return if th.hasClass('nodraggable')
+  return if th.hasClass('static-position')
 
 
   draggedColumn = th
@@ -58,7 +58,7 @@ $(document).on 'mousemove', (e) ->
   dropPosition = null
 
 
-  table.find('thead th:not(.nodraggable)').each ->
+  table.find('thead th:not(.static-position)').each ->
 
     item = $(this)
 
@@ -84,7 +84,7 @@ $(document).on 'mousemove', (e) ->
   # если тянем в конец таблицы
   if !target
 
-    last = table.find('thead th:not(.nodraggable)').last()
+    last = table.find('thead th:not(.static-position)').last()
 
     if last.length
 
@@ -100,7 +100,7 @@ $(document).on 'mousemove', (e) ->
   # если тянем в начало таблицы
   if !target
 
-    first = table.find('thead th:not(.nodraggable)').first()
+    first = table.find('thead th:not(.static-position)').first()
 
     if first.length
 
@@ -208,7 +208,7 @@ saveColumnPosition = (table) ->
   columns = []
 
 
-  table.find('thead th:not(.nodraggable)').each ->
+  table.find('thead th:not(.static-position)').each ->
 
     key = $(this).data('column-key')
 

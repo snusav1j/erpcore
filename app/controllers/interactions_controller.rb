@@ -1,4 +1,5 @@
 class InteractionsController < ApplicationController
+  before_action :get_columns, only: [:index, :create, :update]
 
   def index
     @interactions = Interaction.all
@@ -46,6 +47,10 @@ class InteractionsController < ApplicationController
   end
 
   private
+
+  def get_columns
+    @columns = Interaction.table_columns
+  end
 
   def interaction_params
     params.require(:interaction).permit!

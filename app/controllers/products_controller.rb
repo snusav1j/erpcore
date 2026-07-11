@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :get_columns, only: [:index, :create, :update]
 
   def index
     @products = Product.all
@@ -47,6 +48,10 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def get_columns
+    @columns = Product.table_columns
+  end
 
   def product_params
     params.require(:product).permit!

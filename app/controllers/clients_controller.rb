@@ -1,8 +1,8 @@
 class ClientsController < ApplicationController
+  before_action :get_columns, only: [:index, :create, :update]
 
   def index
     @clients = current_user.clients
-    @columns = Client.table_columns
   end
 
   def show
@@ -64,6 +64,10 @@ class ClientsController < ApplicationController
 
 
   private
+
+  def get_columns
+    @columns = Client.table_columns
+  end
 
   def client_params
     params.require(:client).permit!

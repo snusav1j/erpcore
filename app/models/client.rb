@@ -1,6 +1,5 @@
 class Client < ApplicationRecord
   include ApplicationHelper
-  include TranslateHelper
   has_many :interactions, dependent: :restrict_with_error
   has_many :orders, dependent: :restrict_with_error
 

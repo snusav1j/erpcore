@@ -1,4 +1,4 @@
-.table-position-editor th:not(.nodraggable) {
+.table-position-editor th:not(.static-position) {
   user-select: none;
   cursor: grab;
 }

@@ -40,7 +40,7 @@
     -#     = render partial: 'list', locals: { clients: @clients_inactive }
     -#   #regular.tab-pane
     -#     = render partial: 'list', locals: { clients: @clients_regular }
-    = render partial: '/clients/table', locals: { clients: @clients }
+    #clients-table= render partial: '/clients/table', locals: { clients: @clients, columns: @columns }
 
 
 

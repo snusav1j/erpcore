@@ -1,5 +1,5 @@
 <% if @created %>
-  $("#clients-list").append("<%= j render partial: '/clients/item', locals: { client: @client } %>");
+  $("#clients-list").append("<%= j render partial: '/clients/item', locals: { client: @client, columns: @columns } %>");
   $('#client-modal').modal('hide');
   toastr.success('<%= tm(Client, :client_created) %>')
 <% else %>

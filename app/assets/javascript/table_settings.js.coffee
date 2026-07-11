@@ -15,13 +15,13 @@ originalOrder = []
 
 
 
-$(document).on 'mousedown', '.table-position-editor thead th:not(.nodraggable)', (e) ->
+$(document).on 'mousedown', '.table-position-editor thead th:not(.static-position)', (e) ->
 
   e.preventDefault()
 
   th = $(this)
 
-  return if th.hasClass('nodraggable')
+  return if th.hasClass('static-position')
 
 
   table = th.closest('table')
@@ -29,7 +29,7 @@ $(document).on 'mousedown', '.table-position-editor thead th:not(.nodraggable)',
 
   originalOrder = []
 
-  table.find('thead th:not(.nodraggable)').each ->
+  table.find('thead th:not(.static-position)').each ->
 
     key = $(this).data('column-key')
 
@@ -173,7 +173,7 @@ calculateDrop = (mouseX, table) ->
 
 
   table.find(
-    'thead th:not(.nodraggable)'
+    'thead th:not(.static-position)'
   ).each ->
 
 
@@ -286,7 +286,7 @@ columnsChanged = (table) ->
 
 
   table.find(
-    'thead th:not(.nodraggable)'
+    'thead th:not(.static-position)'
   ).each ->
 
     key = $(this).data('column-key')
@@ -308,7 +308,7 @@ saveColumnPosition = (table) ->
 
 
   table.find(
-    'thead th:not(.nodraggable)'
+    'thead th:not(.static-position)'
   ).each ->
 
     key = $(this).data('column-key')

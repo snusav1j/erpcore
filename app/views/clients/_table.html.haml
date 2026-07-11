@@ -4,8 +4,8 @@
       - @columns.each do |column|
         %th{ data: { column_key: column[:key] } }
           = column[:label]
-      %th.nodraggable
+      %th.static-position
 
   %tbody#clients-list
     - @clients.each do |client|
-      = render partial: 'item', locals: { client: client, columns: @columns }
+      = render partial: 'item', locals: { client: client, columns: columns }

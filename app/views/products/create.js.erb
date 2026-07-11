@@ -1,5 +1,5 @@
 <% if @created %>
-  $("#products-list").append("<%= j render partial: '/products/item', locals: { product: @product } %>");
+  $("#products-list").append("<%= j render partial: '/products/item', locals: { product: @product, columns: @columns } %>");
   $('#product-modal').modal('hide');
   toastr.success('<%= tm(Product, :product_created) %>')
 <% else %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_11_153445) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_11_195028) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -42,13 +42,13 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_11_153445) do
 
   create_table "custom_fields", force: :cascade do |t|
     t.string "entity", null: false
-    t.string "code", null: false
+    t.string "key", null: false
     t.string "label", null: false
     t.string "field_type", null: false
     t.boolean "required", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["entity", "code"], name: "index_custom_fields_on_entity_and_code", unique: true
+    t.index ["entity", "key"], name: "index_custom_fields_on_entity_and_key", unique: true
   end
 
   create_table "interactions", force: :cascade do |t|

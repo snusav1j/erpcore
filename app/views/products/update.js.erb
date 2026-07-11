@@ -1,5 +1,5 @@
 <% if @updated %>
-  $("tr.product-row[data-product-id='<%= @product.id %>']").replaceWith("<%= j render partial: '/products/item', locals: { product: @product } %>");
+  $("tr.product-row[data-product-id='<%= @product.id %>']").replaceWith("<%= j render partial: '/products/item', locals: { product: @product, columns: @columns } %>");
   $('#product-modal').modal('hide');
   toastr.success('<%= tm(Product, :product_updated) %>')
 <% else %>

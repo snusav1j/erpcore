@@ -1,6 +1,14 @@
 <% if @created %>
-  toastr.success('')
-<% else %>
-  toastr.danger('<%= tgm(:error) %>')
-<% end %>
 
+  addTableColumn("<%= @entity %>", <%= raw @column.to_json %>)
+
+  $("#custom-field-modal").modal('hide')
+
+  toastr.success('')
+
+
+<% else %>
+
+  toastr.danger('<%= tgm(:error) %>')
+
+<% end %>

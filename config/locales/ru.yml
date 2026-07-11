@@ -24,6 +24,7 @@ ru:
     error: Произошла ошибка
     save: Сохранить
     cancel: Отмена
+    close: Закрыть 
     edit: Редактировать
     delete: Удалить
     create: Создать
@@ -50,6 +51,7 @@ ru:
         profile: Профиль
 
       client:
+        id: ID
         title: Клиенты
         name: Наименование
         country: Страна
@@ -92,6 +94,7 @@ ru:
         client_destroyed: Клиент удален
 
       order:
+        id: ID
         title: Заказы
         client: Клиент
         status: Статус
@@ -108,6 +111,7 @@ ru:
         order_destroyed: Заказ удален
 
       product:
+        id: ID
         title: Товары
         name: Наименование
         sku: Артикул
@@ -121,6 +125,7 @@ ru:
         product_destroyed: Товар удален
 
       interaction:
+        id: ID
         title: Взаимодействия
         client: Клиент
         interaction_type: Тип обращения

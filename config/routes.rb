@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :custom_fields, only: [:index, :new, :create, :destroy] do
+  resources :custom_fields, only: [:index, :new, :create, :destroy, :update] do
     collection do
       get :new_modal
       get :index_modal

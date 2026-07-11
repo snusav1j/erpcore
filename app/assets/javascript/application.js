@@ -17,3 +17,4 @@
 //= require orders
 //= require users
 //= require products
+//= require custom_fields
