@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
   before_action :set_global_vars
+	before_action :load_custom_fields
 
   def set_global_vars
     Rails.logger.warn "=== NEW REQUEST: #{request.original_fullpath}"
@@ -90,5 +91,14 @@ class ApplicationController < ActionController::Base
 		params[name].present? ? params[name].to_a : default_value
 	end
 
+  private
+
+  def load_custom_fields
+    return unless respond_to?(:controller_name)
+
+    entity = controller_name.singularize
+
+    @custom_fields = CustomField.for_entity(entity)
+  end
 
 end

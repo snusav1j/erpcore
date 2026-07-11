@@ -3,9 +3,14 @@
     .box-header-title
       = tm(Client, :title)
       %span.box-header-count.text-muted= @clients.length > 0 ? @clients.length : ''
-    = link_to new_modal_clients_path, class: "btn btn-primary", remote: true do 
-      = fa_icon(:plus)
-      = tc(:new)
+
+    .btn-group
+      = link_to index_modal_custom_fields_path(entity: "Client"), remote: true, class: "btn btn-default" do
+        = fa_icon(:gear)
+
+      = link_to new_modal_clients_path, class: "btn btn-primary", remote: true do 
+        = fa_icon(:plus)
+        = tc(:new)
   .box-body
     -# .nav-tabs-custom.table-nav
     -#   %ul.tabs

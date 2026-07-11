@@ -6,6 +6,8 @@ class Client < ApplicationRecord
 
   belongs_to :manager, class_name: 'User', foreign_key: :manager_id, optional: true
 
+  self.custom_fields_enabled = true
+
   CLIENT_STATUS_NEW = 1
   CLIENT_STATUS_POTENTIAL = 2
   CLIENT_STATUS_ACTIVE = 3
@@ -60,6 +62,22 @@ class Client < ApplicationRecord
   scope :inactive, -> { where(status: CLIENT_STATUS_INACTIVE) }
   scope :regular, -> { where(status: CLIENT_STATUS_REGULAR) }
 
+  def table_value(column)
+
+    case column.to_sym
+    when :manager_id
+      manager&.email
+    when :status
+      self.status_name
+
+    when :client_type
+      self.client_type_name
+    else
+      super
+    end
+
+  end
+  
   def client_type_name
     tm(Client, "client_type_#{self.client_type}")
   end

@@ -1,0 +1,27 @@
+.modal.fade#custom-fields-modal
+  .modal-dialog.modal-md
+    .modal-content
+      .modal-header
+        %button.close{ "aria-label" => "Close", "data-dismiss" => "modal", "type" => "button" }
+          %span{"aria-hidden" => "true"} ×
+        %h4.modal-title
+      .modal-body
+        
+        = link_to new_modal_custom_fields_path(entity: @entity), remote: true, class: 'btn btn-primary' do
+          Добавить поле
+
+        %table.table
+          - @custom_fields.each do |field|
+            %tr
+              %td
+                = field.label
+              %td
+                = link_to edit_modal_custom_field_path(field), remote: true do
+                  = fa_icon(:edit)
+              %td
+                = link_to custom_field_path(field), method: :delete, remote: true, data: { confirm: "Удалить поле?" } do
+                  = fa_icon(:trash)
+      
+      .modal-footer
+        %button.btn.btn-default.pull-left{"data-dismiss" => "modal", :type => "button"}= tgm(:cancel)
+        %button.btn.btn-primary.pull-right{:type => "submit", form: ''}= tgm(:save)

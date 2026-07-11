@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_10_181512) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_11_153445) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -31,13 +31,13 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_10_181512) do
 
   create_table "custom_field_values", force: :cascade do |t|
     t.bigint "custom_field_id", null: false
-    t.string "entity", null: false
+    t.string "entity_type", null: false
     t.bigint "entity_id", null: false
     t.text "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["custom_field_id"], name: "index_custom_field_values_on_custom_field_id"
-    t.index ["entity", "entity_id"], name: "index_custom_field_values_on_entity_and_entity_id"
+    t.index ["entity_type", "entity_id"], name: "index_custom_field_values_on_entity"
   end
 
   create_table "custom_fields", force: :cascade do |t|
@@ -46,7 +46,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_10_181512) do
     t.string "label", null: false
     t.string "field_type", null: false
     t.boolean "required", default: false
-    t.integer "position", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["entity", "code"], name: "index_custom_fields_on_entity_and_code", unique: true
@@ -100,6 +99,16 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_10_181512) do
     t.boolean "in_stock"
     t.text "comment"
     t.index ["manager_id"], name: "index_products_on_manager_id"
+  end
+
+  create_table "table_settings", force: :cascade do |t|
+    t.string "entity", null: false
+    t.string "column_key", null: false
+    t.integer "position", default: 0, null: false
+    t.boolean "visible", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entity", "column_key"], name: "index_table_settings_on_entity_and_column_key", unique: true
   end
 
   create_table "user_settings", force: :cascade do |t|

@@ -1,16 +1,11 @@
-.table-responsive
-  %table
-    %thead
-      %tr
-        %th.text-center ID
-        %th= tm(Client, :name)
-        %th= tm(Client, :client_type)
-        %th.text-center= tm(Client, :status)
-        %th.text-center= tm(Client, :phone)
-        %th= tm(Client, :email)
-        %th= tm(Client, :manager)
-        %th= tm(Interaction, :title)
-        %th
-    %tbody#clients-list
-      - clients.each do |client|
-        = render partial: 'item', locals: { client: client }
+%table.table-position-editor{ data: { entity: 'Client' } }
+  %thead
+    %tr
+      - @columns.each do |column|
+        %th{ data: { column_key: column[:key] } }
+          = column[:label]
+      %th.nodraggable
+
+  %tbody#clients-list
+    - @clients.each do |client|
+      = render partial: 'item', locals: { client: client, columns: @columns }

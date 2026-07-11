@@ -9,6 +9,12 @@ Rails.application.routes.draw do
 
   root to: redirect('/clients')
 
+  resources :table_settings, only: [:index] do
+    collection do
+      patch :update_positions
+    end
+  end
+
   resources :users, only: [:index, :new, :create, :edit, :update, :destroy, :show] do
     collection do
       get :new_modal
@@ -23,6 +29,17 @@ Rails.application.routes.draw do
     end
     
     member do
+    end
+  end
+
+  resources :custom_fields, only: [:index, :new, :create, :destroy] do
+    collection do
+      get :new_modal
+      get :index_modal
+    end
+    
+    member do
+      get :edit_modal
     end
   end
 

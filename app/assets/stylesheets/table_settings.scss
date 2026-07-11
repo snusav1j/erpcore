@@ -1,0 +1,60 @@
+.table-position-editor th:not(.nodraggable) {
+  user-select: none;
+  cursor: grab;
+}
+
+
+.table-position-editor th,
+.table-position-editor td {
+  user-select: none;
+}
+
+
+.column-drag-clone {
+
+  position: absolute;
+
+  z-index: 9999;
+
+  pointer-events: none;
+
+  background: white;
+
+  opacity: .85;
+
+  box-shadow: 0 5px 20px rgba(0,0,0,.25);
+
+}
+
+
+.column-drag-clone .drag-cell {
+
+  display: block;
+
+  border: 1px solid #ddd;
+
+  padding: 8px;
+
+  white-space: nowrap;
+
+}
+
+
+.column-indicator {
+
+  position: absolute;
+
+  width: 3px;
+
+  background: #337ab7;
+
+  z-index: 9998;
+
+}
+
+
+.table-position-editor th.dragging {
+
+  opacity: .3;
+
+}

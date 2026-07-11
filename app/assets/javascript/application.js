@@ -12,6 +12,7 @@
 //= require general
 
 //= require clients
+//= require table_settings
 //= require interactions
 //= require orders
 //= require users

@@ -4,6 +4,8 @@ class Interaction < ApplicationRecord
   belongs_to :client
   belongs_to :manager, class_name: 'User', foreign_key: :manager_id, optional: true
 
+  self.custom_fields_enabled = true
+
   INTERACTION_TYPE_CALL = 1
   INTERACTION_TYPE_MESSAGE = 2
   INTERACTION_TYPE_MEETING = 3

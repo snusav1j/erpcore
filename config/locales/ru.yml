@@ -139,8 +139,9 @@ ru:
         interaction_destroyed: Взаимодействие удалено
 
     models:
-      user: Пользователь
-      post: Пост
+      client: Клиенты
+      product: Товары
+      order: Заказы
 
     errors:
       models:

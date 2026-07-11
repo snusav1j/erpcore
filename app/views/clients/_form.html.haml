@@ -16,6 +16,30 @@
       .col-md-6
         = f.input :client_type, as: :select, collection: Client::CLIENT_TYPES.map { |ct| [tm(Client, "client_type_#{ct}"), ct] }
     %br
+
+    - if @custom_fields.present?
+      %hr
+
+      .row
+        - @custom_fields.each do |field|
+          .col-md-6
+            - value = @client.custom_field_values.find_by(custom_field_id: field.id)&.value
+
+            = label_tag "custom_fields[#{field.id}]", field.label
+
+            - case field.field_type
+            - when "string"
+              = text_field_tag "custom_fields[#{field.id}]", value, class: "form-control", required: field.required
+
+            - when "text"
+              = text_area_tag "custom_fields[#{field.id}]", value, class: "form-control", required: field.required
+
+            - when "date"
+              = date_field_tag "custom_fields[#{field.id}]", value, class: "form-control", required: field.required
+
+            - when "number"
+              = number_field_tag "custom_fields[#{field.id}]", value, class: "form-control", required: field.required
+    %br
     .row
       .col-md-12
         = f.input :comment
