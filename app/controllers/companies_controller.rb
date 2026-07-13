@@ -21,10 +21,9 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-    
+
     @company.manager_id = current_user.id
-    @client.company_id = current_company.id
-    
+
     @created = @company.save
 
     @companies = Company.all

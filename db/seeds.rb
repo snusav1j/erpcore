@@ -8,12 +8,4 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-CustomField.delete_all
-CustomFieldValue.delete_all
-TableSetting.delete_all
-Product.delete_all
-Order.delete_all
-Interaction.delete_all
-Client.delete_all
-
-Company.create(active: true, name: 'eggs')
+Company.create(active: true, name: 'test', slug: 'test', paid_until: '3000-07-01 00:00'.to_datetime)
