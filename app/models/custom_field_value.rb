@@ -2,9 +2,7 @@ class CustomFieldValue < ApplicationRecord
 
   belongs_to :custom_field
 
-  belongs_to :entity,
-             polymorphic: true
-
+  belongs_to :entity, polymorphic: true
 
   def self.save_value(entity:, object:, field_id:, value:)
 

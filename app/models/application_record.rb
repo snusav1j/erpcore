@@ -65,12 +65,7 @@ class ApplicationRecord < ActiveRecord::Base
   private
 
   def custom_field?(column)
-
-    CustomField.exists?(
-      entity: self.class.name,
-      key: column.to_s
-    )
-
+    CustomField.exists?(entity: self.class.name, key: column.to_s)
   end
 
 end
