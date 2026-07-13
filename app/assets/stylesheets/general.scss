@@ -563,7 +563,7 @@ a{
       font-weight: 500;
     }
   }
-  .sidebar-controls{
+  .sidebar-controls, .extra-sidebar-controls{
     position: absolute;
     left: -12px;
     border: var(--border);
@@ -574,24 +574,32 @@ a{
     .material-symbols-outlined{
       font-size: 22px;
     }
-    @media screen and (max-width: 767px){
-      .material-symbols-outlined{
-        font-size: 28px;
-      }
+
+  }
+
+}
+.extra-sidebar-controls{
+  display: none;
+}
+@media screen and (max-width: 767px){
+  .extra-sidebar-controls{
+    display: block;
+    left: -5px !important;
+    width: 50px !important; height: 50px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    border: unset !important;
+    .material-symbols-outlined{
+      font-size: 28px !important;
     }
   }
-  @media screen and (max-width: 767px){
-    .sidebar-controls{
-      left: -5px !important;
-      width: 50px; height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      border: unset;
-    }
+  .sidebar-controls{
+    display: none;
   }
 }
+
 .table-responsive {
   overflow-x: auto;
   scrollbar-width: none; /* Firefox */

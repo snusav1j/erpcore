@@ -31,8 +31,11 @@
 
               .hide-show-sidebar-btn.hide-sidebar-btn{ style: current_user.get_sidebar_state ? "display: none;" : "display: block;" }
                 = g_icon(:chevron_left)
-
               .hide-show-sidebar-btn.show-sidebar-btn{ style: current_user.get_sidebar_state ? "display: block;" : "display: none;" }
+                = g_icon(:chevron_right)
+
+            .extra-sidebar-controls.show-sidebar
+              .extra-show-sidebar-btn{ style: "display: block;" }
                 = g_icon(:chevron_right)
 
             .content-header-controls
