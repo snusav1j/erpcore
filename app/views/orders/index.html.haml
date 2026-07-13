@@ -1,11 +1,12 @@
 .box
   .box-header
-    .box-header-title
-      = tm(Order, :title)
+    .flex.align-center
+      .box-header-title
+        = tm(Order, :title)
       %span.box-header-count.text-muted= @orders.length > 0 ? @orders.length : ''
-    = link_to new_modal_orders_path, class: "btn btn-primary", remote: true do 
-      = fa_icon(:plus)
-      = tc(:new)
+    .btn-group
+      = link_to new_modal_orders_path, class: "btn btn-primary", remote: true, data: { tooltip: tc(:new) } do 
+        = fa_icon(:plus)
 
   .box-body
     = render partial: '/orders/table', locals: { orders: @orders }

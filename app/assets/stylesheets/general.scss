@@ -51,6 +51,10 @@
   font-size: 14px;
   color: var(--text-light-color);
 }
+html,
+body {
+  overflow-x: hidden;
+}
 .material-symbols-outlined{
   display: inline-flex;
   align-items: center;
@@ -692,7 +696,10 @@ table{
   border: 1px solid var(--border-color);
   border-radius: 10px;
 }
-
+.custom-input-label{
+  display: flex;
+  gap: 5px;
+}
 .authorization-header{
   border-bottom: 1px solid var(--border-color);
   text-align: center;
@@ -774,4 +781,13 @@ table{
   &:focus {
     box-shadow: 0 0 0 3px rgba(var(--primary-rgb), .2);
   }
+}
+
+#form-custom-fields{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.custom-fields-title{
+  font-weight: 600;
 }

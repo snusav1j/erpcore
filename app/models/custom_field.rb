@@ -6,7 +6,8 @@ class CustomField < ApplicationRecord
                             ['Строка', 'string'],
                             ['Текст', 'text'],
                             ['Число', 'number'],
-                            ['Дата', 'date']
+                            ['Да/Нет', 'boolean'],
+                            ['Дата', 'date'],
                           ]
 
   def self.available_entities

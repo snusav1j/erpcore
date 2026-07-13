@@ -1,11 +1,12 @@
 .box
   .box-header
-    .box-header-title
-      = tm(Product, :title)
+    .flex.align-center
+      .box-header-title
+        = tm(Product, :title)
       %span.box-header-count.text-muted= @products.length > 0 ? @products.length : ''
-    = link_to new_modal_products_path, class: "btn btn-primary", remote: true do 
-      = fa_icon(:plus)
-      = tc(:new)
+    .btn-group
+      = link_to new_modal_products_path, class: "btn btn-primary", remote: true, data: { tooltip: tc(:new) } do 
+        = fa_icon(:plus)
 
   .box-body
     = render partial: '/products/table', locals: { products: @products }

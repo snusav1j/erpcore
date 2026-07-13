@@ -6,20 +6,27 @@ ru:
       - :year
   controller:
     users:
+      title: Пользователи
       new: Новый пользователь
       edit: Редактировать пользователя
     clients:
+      title: Клиенты
       new: Новый клиент
       edit: Редактировать клиента
     orders:
+      title: Заказы
       new: Новый заказ
       edit: Редактировать заказ
     products:
+      title: Товары
       new: Новый товар
       edit: Редактировать товар
     interactions:
       new: Новое взаимодействие
       edit: Редактировать взаимодействие
+    custom_fields:
+      title: Настройка таблиц
+      
   global:
     error: Произошла ошибка
     save: Сохранить
@@ -65,34 +72,13 @@ ru:
         source: Источник
         comment: Комментарий
         manager: Менеджер
-        manager_id: ID Менеджера
-
-        client_status_1: Новый
-        client_status_2: Потенциальный
-        client_status_3: Активный
-        client_status_4: Неактивный
-        client_status_5: Постоянный
-
-        client_type_1: Дистрибьютор
-        client_type_2: Оптовик
-        client_type_3: Розничный магазин
-        client_type_4: Сеть магазинов
-        client_type_5: Кафе
-        client_type_6: Ресторан
-        client_type_7: Пекарня
-        client_type_8: Кондитерское производство
-        client_type_9: Пищевое производство
-        client_type_10: Кейтеринг / столовая
-        client_type_11: Гостиница
-        client_type_12: Фермер / производитель
-        client_type_13: Госучреждение
-        client_type_14: Маркетплейс / онлайн
-        client_type_15: Прочее
+        manager_id: Менеджер
+        created_at: Создано в
+        updated_at: Обновлено в
 
         client_created: Клиент создан
         client_updated: Клиент обновлен
         client_destroyed: Клиент удален
-
       order:
         id: ID
         title: Заказы
@@ -104,7 +90,9 @@ ru:
         comment: Комментарий
         closed_at: Дата закрытия
         manager: Менеджер
-        manager_id: ID Менеджера
+        manager_id: Менеджер
+        created_at: Создано в
+        updated_at: Обновлено в
 
         order_created: Заказ создан
         order_updated: Заказ обновлен
@@ -116,15 +104,27 @@ ru:
         name: Наименование
         sku: Артикул
         manager: Добавил
-        manager_id: ID Менеджера
+        manager_id: Менеджер
         price: Цена
         in_stock: В наличии
+        created_at: Создано в
+        updated_at: Обновлено в
 
         product_created: Товар создан
         product_updated: Товар обновлен
         product_destroyed: Товар удален
 
       custom_field:
+        id: ID
+        entity: Сущность
+        key: Ключ в системе
+        label: Название
+        field_type: Тип поля
+        created_at: Создано в
+        updated_at: Обновлено в
+        title: Пользовательские поля
+        table_settings: Настройка таблиц
+
         column_created: Колонка %{label} добавлена
         column_updated: Колонка %{label} обновлена
         column_destroyed: Колонка %{label} удалена
@@ -138,11 +138,9 @@ ru:
         comment: Комментарий
         occurred_at: Дата обращения
         manager: Менеджер
-        manager_id: ID Менеджера
-
-        interaction_type_1: Звонок
-        interaction_type_2: Чат
-        interaction_type_3: Встреча
+        manager_id: Менеджер
+        created_at: Создано в
+        updated_at: Обновлено в
 
         interaction_created: Взаимодействие создано
         interaction_updated: Взаимодействие обновлено

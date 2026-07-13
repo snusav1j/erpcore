@@ -9,6 +9,8 @@
 //= require confirmation_modal
 //= require drag
 //= require modal
+//= require tooltip
+
 //= require general
 
 //= require clients

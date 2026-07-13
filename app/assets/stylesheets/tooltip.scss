@@ -1,76 +1,27 @@
-// ============================================================================
-// Кастомный tooltip только на CSS — БЕЗ стрелочки
-// ============================================================================
+.tooltip-custom {
+  position: fixed;
 
-*[data-title] {
-  position: relative;
-  // cursor: help;
+  z-index: 99999;
 
-  // Пытаемся максимально подавить/замедлить нативный браузерный tooltip
-  &::-moz-tooltip,
-  &::-webkit-tooltip {
-    display: none;
-  }
+  background: var(--text-light-color);
+  color: #fff;
 
-  title {
-    display: none;
-  }
+  padding: 6px 10px;
 
-  // Маленькая задержка, чтобы наш tooltip появлялся раньше нативного
-  transition: all 0.001s 0.35s;
+  border-radius: 6px;
 
-  // ─── Наш кастомный tooltip ──────────────────────────────────────────────
-  &::after {
-    content: attr(data-title);
-    position: absolute;
-    left: 50%;
-    bottom: 100%;
-    transform: translateX(-50%) translateY(-8px);
-    padding: 6px 10px;
-    background: var(--toastr-bg);
-    color: var(--toastr-color);
-    font-size: 0.86rem;
-    line-height: 1.45;
-    white-space: nowrap;
-    max-width: 380px;
-    border-radius: 8px;
-    border: 1px solid var(--light-border-color);
-    box-shadow: var(--shadow), 0 8px 28px rgba(0,0,0,0.5);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: all 0.2s ease;
-    z-index: 10001;
-    text-align: center;
-  }
+  font-size: 12px;
 
-  // Появление при наведении / фокусе
-  &:hover::after,
-  &:focus-visible::after {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-50%) translateY(-8px);
-  }
+  white-space: nowrap;
 
-  // Чтобы нативный тултип не "перебивал" слишком быстро
-  &:hover {
-    transition-delay: 0s;
-  }
+  pointer-events: none;
+
+  opacity: 0;
+
+  transition: opacity .15s ease;
+
 }
 
-// ============================================================================
-// Вариант — тултип снизу (если элемент внизу страницы)
-// ============================================================================
-
-*[data-title][data-tooltip-pos="bottom"] {
-  &::after {
-    top: 100%;
-    bottom: auto;
-    transform: translateX(-50%) translateY(8px);
-  }
-
-  &:hover::after,
-  &:focus-visible::after {
-    transform: translateX(-50%) translateY(12px);
-  }
+.tooltip-custom.show {
+  opacity: 1;
 }

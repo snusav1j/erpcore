@@ -59,14 +59,20 @@
   border: 2px solid var(--border) !important;
 }
 
+.modal-df{
+  width: 80% !important;
+  max-width: 800px !important;
+}
 .modal-md{
-  width: 80%;
+  width: 80% !important;
+  max-width: 1000px !important;
 }
 .modal-lg{
-  width: 90%;
+  width: 100% !important;
+  max-width: 1200px !important;
 }
 .modal-sm{
-  width: 30%;
+  width: 30% !important;
 }
 #confirm-alert-modal{
   z-index: 9999999999;

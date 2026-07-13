@@ -16,6 +16,7 @@
           .col-md-12
             .space-between.align-center
               = f.label :remember_me
+              = f.hidden_field :remember_me
               = f.check_box :remember_me, class: 'switch'
     .authorization-footer
       .actions

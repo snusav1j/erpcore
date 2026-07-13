@@ -1,15 +1,15 @@
 .modal.fade#custom-fields-modal
-  .modal-dialog.modal-md
+  .modal-dialog.modal-lg
     .modal-content
       .modal-header
-        %h4.modal-title
-        %button.close{ "aria-label" => "Close", "data-dismiss" => "modal", "type" => "button" }
-          %span{"aria-hidden" => "true"}= g_icon(:close)
-      .modal-body
         
-        = link_to new_modal_custom_fields_path(entity: @entity), remote: true, class: 'btn btn-primary' do
-          Добавить поле
-
+        %h4.modal-title= tc(:title)
+        .flex.align-center
+          = link_to new_modal_custom_fields_path(entity: @entity), remote: true, class: 'btn btn-primary' do
+            Добавить поле
+          %button.close{ "aria-label" => "Close", "data-dismiss" => "modal", "type" => "button" }
+            %span{"aria-hidden" => "true"}= g_icon(:close)
+      .modal-body
         #custom_fields_table= render partial: 'custom_fields_table', locals: { custom_fields: @custom_fields }
 
       .modal-footer

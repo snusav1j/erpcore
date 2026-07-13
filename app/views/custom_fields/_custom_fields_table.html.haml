@@ -1,11 +1,22 @@
+.text-muted.custom-fields-title{ style: "margin-bottom: 5px;" }= tm(CustomField, :title)
 %table.table
+  %thead
+    %tr
+      %th= tm(CustomField, :id)
+      %th= tm(CustomField, :key)
+      %th= tm(CustomField, :label)
+      %th= tm(CustomField, :field_type)
+      %th{ colspan: 2 }
   - custom_fields.each do |field|
     %tr{ data: { entity: field.entity, key: field.key } }
+      %td= field.id
+      %td= field.key
+      %td= field.label
+      %td= field.field_type
       %td
-        = field.label
+
+        = link_to edit_modal_custom_field_path(field), class: 'text-default', remote: true do
+          = g_icon(:edit, 'sm-g-icon')
       %td
-        = link_to edit_modal_custom_field_path(field), remote: true do
-          = fa_icon(:edit)
-      %td
-        = link_to custom_field_path(field), method: :delete, remote: true, data: { confirm: "Удалить поле?" } do
-          = fa_icon(:trash)
+        = link_to custom_field_path(field), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true do
+          = g_icon(:delete, 'sm-g-icon')

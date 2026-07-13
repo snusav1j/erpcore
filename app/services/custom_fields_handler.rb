@@ -11,6 +11,8 @@ class CustomFieldsHandler
 
     @params[:custom_fields].each do |field_id, value|
 
+      value = value.last if value.is_a?(Array)
+
       field = CustomField.find_by(id: field_id)
 
       next unless field
