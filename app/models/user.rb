@@ -22,6 +22,10 @@ class User < ApplicationRecord
     (self.id == client.manager_id) || self.director?
   end
 
+  def banned?
+    self.banned == true
+  end
+
   def user?
     role == 'user'
   end

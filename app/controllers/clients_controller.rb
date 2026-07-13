@@ -6,7 +6,7 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @client = Client.find(params[:id])
+    @client = current_user.company.clients.find(params[:id])
   end
 
 
@@ -19,7 +19,7 @@ class ClientsController < ApplicationController
 
 
   def edit_modal
-    @client = Client.find(params[:id])
+    @client = current_user.company.clients.find(params[:id])
     @custom_fields = CustomField.for_entity(:client, current_company)
 
     respond_to :js
@@ -28,6 +28,7 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params)
+    
     @client.manager_id = current_user.id
     @client.company_id = current_company.id
 
@@ -42,7 +43,7 @@ class ClientsController < ApplicationController
 
 
   def update
-    @client = Client.find(params[:id])
+    @client = current_user.company.clients.find(params[:id])
 
     @updated = @client.update(client_params) if current_user.can_interact_with_client?(@client)
 
@@ -55,7 +56,7 @@ class ClientsController < ApplicationController
 
 
   def destroy
-    @client = Client.find(params[:id])
+    @client = current_user.company.clients.find(params[:id])
     @destroyed = @client.destroy
 
     get_clients

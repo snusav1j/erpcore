@@ -21,7 +21,10 @@ class InteractionsController < ApplicationController
 
   def create
     @interaction = Interaction.new(interaction_params)
+    
     @interaction.manager_id = current_user.id
+    @client.company_id = current_company.id
+    
     @created = @interaction.save
 
     @interaction.client.update(status: Client::CLIENT_STATUS_POTENTIAL) if @created

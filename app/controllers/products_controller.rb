@@ -21,7 +21,9 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+    
     @product.manager_id = current_user.id
+    @client.company_id = current_company.id
 
     @created = @product.save
 
