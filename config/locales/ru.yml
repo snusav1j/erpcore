@@ -116,14 +116,17 @@ ru:
 
       custom_field:
         id: ID
-        entity: Сущность
+        entity: Таблица
         key: Ключ в системе
         label: Название
         field_type: Тип поля
+        required: Обязательное поле
         created_at: Создано в
         updated_at: Обновлено в
         title: Пользовательские поля
         table_settings: Настройка таблиц
+        new: Новое поле
+        edit: Редактировать поле
 
         column_created: Колонка %{label} добавлена
         column_updated: Колонка %{label} обновлена
@@ -152,6 +155,8 @@ ru:
       order: Заказы
 
     errors:
+      messages:
+        record_invalid: "Не удалось сохранить запись: %{errors}"
       models:
         user:
           attributes:

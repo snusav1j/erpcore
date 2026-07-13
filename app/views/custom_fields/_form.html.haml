@@ -1,7 +1,17 @@
 = simple_form_for @custom_field, remote: true, html: { id: 'custom-field-form', novalidate: false } do |f|
   .form
-    = f.input :entity, as: :select, collection: CustomField.available_entities, label: 'Раздел'
-    = f.input :key, label: 'Системный код', placeholder: 'inn', pattern: "[A-Za-z]+"
-    = f.input :label, label: 'Название поля', placeholder: 'ИНН клиента'
-    = f.input :field_type, as: :select, collection: CustomField::FIELD_TYPE_COLLECTION, label: 'Тип поля'
-    = f.input :required, label: 'Обязательное'
+    .row
+      .col-md-6
+        = f.input :entity, as: :select, collection: CustomField.available_entities, required: true
+      .col-md-6
+        = f.input :key, pattern: "[A-Za-z]+", required: true
+    .row
+      .col-md-6
+        = f.input :label, required: true
+      .col-md-6
+        = f.input :field_type, as: :select, collection: CustomField::FIELD_TYPE_COLLECTION, label: 'Тип поля', required: true
+    .row
+      .col-md-6
+      .col-md-6.flex.align-center.justify-end
+        = f.label :required
+        = f.checkbox :required, class: 'switch'

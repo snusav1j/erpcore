@@ -1,2 +1,2 @@
-$('#custom-field-modal-outer').html("<%= j render partial: '/custom_fields/custom_field_modal' %>");
+$('#custom-field-modal-outer').html("<%= j render partial: '/custom_fields/custom_field_modal', locals: { title: tm(CustomField, :edit) } %>");
 $('#custom-field-modal').modal('show');
