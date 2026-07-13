@@ -1,14 +1,8 @@
 <% if @created %>
-
   addTableColumn("<%= @entity %>", <%= raw @column.to_json %>)
-
+  $("#custom_fields_table").html("<%= j render partial: '/custom_fields/custom_fields_table', locals: { custom_fields: @custom_fields } %>");
   $("#custom-field-modal").modal('hide')
-
-  toastr.success('')
-
-
+  toastr.success('<%= tm(CustomField, :column_created, label: @custom_field.label) %>')
 <% else %>
-
   toastr.danger('<%= tgm(:error) %>')
-
 <% end %>

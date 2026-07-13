@@ -23,9 +23,7 @@ $(document).on 'mousedown', '.table-position-editor thead th:not(.static-positio
 
   return if th.hasClass('static-position')
 
-
   table = th.closest('table')
-
 
   originalOrder = []
 
@@ -38,6 +36,7 @@ $(document).on 'mousedown', '.table-position-editor thead th:not(.static-positio
 
 
   draggedKey = th.data('column-key')
+  td = table.find("[data-column-key='#{draggedKey}']")
 
   startX = e.pageX
 
@@ -50,9 +49,8 @@ $(document).on 'mousedown', '.table-position-editor thead th:not(.static-positio
 
   createIndicator()
 
-
   th.addClass('dragging')
-
+  td.addClass('dragging')
 
 
 $(document).on 'mousemove', (e) ->
@@ -339,10 +337,8 @@ destroyDrag = ->
 
   $('.column-indicator').remove()
 
-
-  $('.table-position-editor th')
-    .removeClass('dragging')
-
+  $('.table-position-editor th').removeClass('dragging')
+  $('.table-position-editor td').removeClass('dragging')
 
   draggedKey = null
 

@@ -15,7 +15,6 @@ class ApplicationRecord < ActiveRecord::Base
   end
   
   def self.table_columns
-
     ignore_columns = %w[created_at updated_at]
 
     columns = []
@@ -49,9 +48,7 @@ class ApplicationRecord < ActiveRecord::Base
       }
 
     end
-
     columns.sort_by { |column| column[:position] }
-
   end
 
   def table_value(column)

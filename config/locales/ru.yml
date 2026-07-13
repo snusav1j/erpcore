@@ -124,6 +124,11 @@ ru:
         product_updated: Товар обновлен
         product_destroyed: Товар удален
 
+      custom_field:
+        column_created: Колонка %{label} добавлена
+        column_updated: Колонка %{label} обновлена
+        column_destroyed: Колонка %{label} удалена
+
       interaction:
         id: ID
         title: Взаимодействия

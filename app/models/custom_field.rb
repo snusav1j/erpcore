@@ -33,15 +33,15 @@ class CustomField < ApplicationRecord
   end
   
   def self.for_entity(entity)
-    where(entity: entity.to_s.classify)
+    self.where(entity: entity.to_s.classify)
   end
 
   def self.create_field(entity:, key:, label:, field_type:, required: false)
-    create!(entity: entity.to_s.classify, key: key, label: label, field_type: field_type, required: required)
+    self.create!(entity: entity.to_s.classify, key: key, label: label, field_type: field_type, required: required)
   end
 
   def self.value_for(entity:, object:, key:)
-    field = find_by(entity: entity.to_s.classify, key: key)
+    field = self.find_by(entity: entity.to_s.classify, key: key)
     return nil unless field
 
     object.custom_field_values.find_by(custom_field_id: field.id)&.value
@@ -49,8 +49,12 @@ class CustomField < ApplicationRecord
 
   def table_column_data(records = [])
     {
-      key: key,
-      label: label,
+      key: self.key,
+      label: self.label,
+      position: TableSetting.position(
+        entity: self.entity,
+        column_key: self.key
+      ),
       custom: true,
       cells: records.map do |record|
         {
@@ -62,7 +66,7 @@ class CustomField < ApplicationRecord
   end
 
   def self.table_column_data(id:, records: [])
-    field = find(id)
+    field = self.find(id)
     field.table_column_data(records)
   end
 

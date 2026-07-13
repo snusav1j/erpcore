@@ -1,6 +1,6 @@
 %tr.client-row{ data: { client_id: client.id } }
   - columns.each do |column|
-    %td{ data: { column_key: column[:key] } }
+    %td{ data: { column_key: column[:key], position: column[:position] } }
       = client.table_value(column[:key])
 
   %td.static-position

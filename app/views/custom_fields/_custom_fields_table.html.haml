@@ -1,0 +1,11 @@
+%table.table
+  - custom_fields.each do |field|
+    %tr{ data: { entity: field.entity, key: field.key } }
+      %td
+        = field.label
+      %td
+        = link_to edit_modal_custom_field_path(field), remote: true do
+          = fa_icon(:edit)
+      %td
+        = link_to custom_field_path(field), method: :delete, remote: true, data: { confirm: "Удалить поле?" } do
+          = fa_icon(:trash)

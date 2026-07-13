@@ -22,6 +22,7 @@
   --secondary-color: #fbfbfb;
   --tertiary-color: #c5c8ce;
 
+  --sidebar-color: #fdfdfd;
   --material-icon-color: #A2A4B1;
   --shadow: 0 1px 1px rgba(112, 112, 112, 0.04);
   --border-color: #ebeff1;
@@ -370,7 +371,7 @@ a{
   height: 100vh;
   border-right: var(--border);
   box-shadow: var(--shadow);
-  background: var(--secondary-color);
+  background: var(--sidebar-color);
   width: 250px;
   .sidebar-header{
     text-align: center;
@@ -548,7 +549,9 @@ a{
   .content-header{
     position: relative;
   }
-  .box-header,
+  .box-header{
+    padding: 15px 15px 0 15px;
+  }
   .box-body{
     padding: 15px;
   }

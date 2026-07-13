@@ -5,12 +5,16 @@ window.addTableColumn = (entity, column) ->
 
   table.find('thead tr').each ->
 
-    staticTh = $(this).find('th.static-position')
-
-    $("<th>")
+    th = $("<th>")
       .attr('data-column-key', column.key)
       .text(column.label)
-      .insertBefore(staticTh)
+
+
+    insertColumn(
+      $(this),
+      th,
+      column.position
+    )
 
 
   table.find('tbody tr').each ->
@@ -22,12 +26,19 @@ window.addTableColumn = (entity, column) ->
     cell = column.cells.find (item) ->
       item.id == id
 
-    staticTd = row.find('td.static-position')
 
-    $("<td>")
+    td = $("<td>")
       .attr('data-column-key', column.key)
       .text(cell?.value || '')
-      .insertBefore(staticTd)
+
+
+    insertColumn(
+      row,
+      td,
+      column.position
+    )
+
+
 
 window.updateTableColumn = (entity, column) ->
 
@@ -44,9 +55,35 @@ window.updateTableColumn = (entity, column) ->
 
     id = row.data('client-id')
 
+
     cell = column.cells.find (item) ->
       item.id == id
 
 
     row.find("td[data-column-key='#{column.key}']")
       .text(cell?.value || '')
+
+
+
+insertColumn = (row, element, position) ->
+
+  staticElement = row.find('.static-position')
+
+
+  columns = row.children().not('.static-position')
+
+
+  # если позиции нет или она больше количества колонок
+  # вставляем перед static-position как раньше
+
+  if !position or position > columns.length
+
+    staticElement.before(element)
+
+    return
+
+
+  target = columns.eq(position - 1)
+
+
+  target.before(element)
