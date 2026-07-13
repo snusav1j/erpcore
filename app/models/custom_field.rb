@@ -1,5 +1,6 @@
 class CustomField < ApplicationRecord
-
+  
+  belongs_to :company
   has_many :custom_field_values, dependent: :destroy
 
   FIELD_TYPE_COLLECTION = [
@@ -33,28 +34,45 @@ class CustomField < ApplicationRecord
     end
   end
   
-  def self.for_entity(entity)
-    self.where(entity: entity.to_s.classify)
+  def self.for_entity(entity, company)
+    return none unless company
+
+    where(
+      entity: entity.to_s.classify,
+      company_id: company.id
+    )
   end
 
-  def self.create_field(entity:, key:, label:, field_type:, required: false)
-    self.create!(entity: entity.to_s.classify, key: key, label: label, field_type: field_type, required: required)
+  def self.create_field(entity:, key:, label:, field_type:, required: false, company:)
+    self.create!(
+      entity: entity.to_s.classify,
+      key: key,
+      label: label,
+      field_type: field_type,
+      required: required,
+      company: company
+    )
   end
 
-  def self.value_for(entity:, object:, key:)
-    field = self.find_by(entity: entity.to_s.classify, key: key)
+  def self.value_for(entity:, object:, key:, company:)
+    field = self.find_by(
+      entity: entity.to_s.classify,
+      key: key,
+      company_id: company.id
+    )
     return nil unless field
 
     object.custom_field_values.find_by(custom_field_id: field.id)&.value
   end
 
-  def table_column_data(records = [])
+  def table_column_data(records = [], company:)
     {
       key: self.key,
       label: self.label,
       position: TableSetting.position(
         entity: self.entity,
-        column_key: self.key
+        column_key: self.key,
+        company: company
       ),
       custom: true,
       cells: records.map do |record|

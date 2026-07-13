@@ -1,0 +1,12 @@
+.modal.fade#company-modal
+  .modal-dialog.modal-df
+    .modal-content
+      .modal-header
+        %h4.modal-title= title
+        %button.close{ "aria-label" => "Close", "data-dismiss" => "modal", "type" => "button" }
+          %span{"aria-hidden" => "true"}= g_icon(:close)
+      .modal-body
+        = render partial: '/companies/form'
+      .modal-footer
+        %button.btn.btn-default.pull-left{"data-dismiss" => "modal", :type => "button"}= tgm(:cancel)
+        %button.btn.btn-primary.pull-right{:type => "submit", form: 'company-form'}= tgm(:save)

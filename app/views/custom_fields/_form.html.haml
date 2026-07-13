@@ -4,7 +4,8 @@
       .col-md-6
         = f.input :entity, as: :select, collection: CustomField.available_entities, required: true
       .col-md-6
-        = f.input :key, pattern: "[A-Za-z]+", required: true
+        = f.label :key, data: { tooltip: tm(CustomField, :key_help_msg) }, style: "width: fit-content;", required: true
+        = f.input :key, pattern: "[A-Za-z]+", required: true, label: false, placeholder: tgm(:only_latin)
     .row
       .col-md-6
         = f.input :label, required: true

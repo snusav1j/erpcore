@@ -8,5 +8,6 @@
       %th= tm(Product, :manager)
       %th
   %tbody#products-list
-    - products.each do |product|
-      = render partial: '/products/item', locals: { product: product }
+    - if products
+      - products.each do |product|
+        = render partial: '/products/item', locals: { product: product }

@@ -1,0 +1,16 @@
+.box
+  .box-header
+    .flex.align-center
+      .box-header-title
+        = tm(User, :title)
+      %span.box-header-count.text-muted= @users.length > 0 ? @users.length : ''
+
+    .btn-group
+      = link_to new_modal_users_path, class: "btn btn-primary", data: { tooltip: tc(:new) }, remote: true do
+        = fa_icon(:plus)
+
+  .box-body
+    #companies-table= render partial: '/users/table', locals: { users: @users }
+
+
+#user-modal-outer

@@ -10,10 +10,12 @@
 //= require drag
 //= require modal
 //= require tooltip
+//= require datepicker
 
 //= require general
 
 //= require clients
+//= require companies
 //= require table_settings
 //= require interactions
 //= require orders

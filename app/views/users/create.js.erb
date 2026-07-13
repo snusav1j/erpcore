@@ -1,0 +1,8 @@
+<% if @created %>
+  $("#users-list").append("<%= j render partial: '/users/item', locals: { user: @user, columns: @columns } %>");
+  $('#user-modal').modal('hide');
+  toastr.success('<%= tm(user, :user_created) %>')
+<% else %>
+  toastr.danger('<%= tgm(:error) %>')
+<% end %>
+

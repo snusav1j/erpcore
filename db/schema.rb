@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_11_195028) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_13_231137) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -24,9 +24,24 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_11_195028) do
     t.integer "manager_id"
     t.integer "client_type"
     t.integer "status", default: 1, null: false
+    t.bigint "company_id", null: false
     t.index ["client_type"], name: "index_clients_on_client_type"
+    t.index ["company_id"], name: "index_clients_on_company_id"
     t.index ["manager_id"], name: "index_clients_on_manager_id"
     t.index ["phone"], name: "index_clients_on_phone"
+  end
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.boolean "active", default: true, null: false
+    t.datetime "paid_until"
+    t.bigint "manager_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["active"], name: "index_companies_on_active"
+    t.index ["manager_id"], name: "index_companies_on_manager_id"
+    t.index ["slug"], name: "index_companies_on_slug", unique: true
   end
 
   create_table "custom_field_values", force: :cascade do |t|
@@ -36,6 +51,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_11_195028) do
     t.text "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_custom_field_values_on_company_id"
     t.index ["custom_field_id"], name: "index_custom_field_values_on_custom_field_id"
     t.index ["entity_type", "entity_id"], name: "index_custom_field_values_on_entity"
   end
@@ -48,7 +65,9 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_11_195028) do
     t.boolean "required", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["entity", "key"], name: "index_custom_fields_on_entity_and_key", unique: true
+    t.bigint "company_id"
+    t.index ["company_id", "entity", "key"], name: "index_custom_fields_on_company_id_and_entity_and_key", unique: true
+    t.index ["company_id"], name: "index_custom_fields_on_company_id"
   end
 
   create_table "interactions", force: :cascade do |t|
@@ -60,7 +79,9 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_11_195028) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "manager_id"
+    t.bigint "company_id"
     t.index ["client_id"], name: "index_interactions_on_client_id"
+    t.index ["company_id"], name: "index_interactions_on_company_id"
     t.index ["manager_id"], name: "index_interactions_on_manager_id"
   end
 
@@ -72,6 +93,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_11_195028) do
     t.decimal "total", precision: 12, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_order_items_on_company_id"
     t.index ["order_id"], name: "index_order_items_on_order_id"
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
@@ -85,7 +108,9 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_11_195028) do
     t.integer "manager_id"
     t.decimal "final_price", precision: 12, scale: 2
     t.text "comment"
+    t.bigint "company_id"
     t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["company_id"], name: "index_orders_on_company_id"
     t.index ["manager_id"], name: "index_orders_on_manager_id"
   end
 
@@ -98,6 +123,8 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_11_195028) do
     t.float "price"
     t.boolean "in_stock"
     t.text "comment"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_products_on_company_id"
     t.index ["manager_id"], name: "index_products_on_manager_id"
   end
 
@@ -108,7 +135,9 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_11_195028) do
     t.boolean "visible", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["entity", "column_key"], name: "index_table_settings_on_entity_and_column_key", unique: true
+    t.bigint "company_id"
+    t.index ["company_id", "entity", "column_key"], name: "index_table_settings_on_company_id_and_entity_and_column_key", unique: true
+    t.index ["company_id"], name: "index_table_settings_on_company_id"
   end
 
   create_table "user_settings", force: :cascade do |t|
@@ -128,14 +157,38 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_11_195028) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "role"
+    t.bigint "company_id"
+    t.boolean "banned", default: false, null: false
+    t.string "last_name"
+    t.string "first_name"
+    t.string "middle_name"
+    t.date "birthday"
+    t.string "phone"
+    t.string "telegram"
+    t.bigint "telegram_chat_id"
+    t.index ["banned"], name: "index_users_on_banned"
+    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["phone"], name: "index_users_on_phone"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role"], name: "index_users_on_role"
+    t.index ["telegram"], name: "index_users_on_telegram"
+    t.index ["telegram_chat_id"], name: "index_users_on_telegram_chat_id"
   end
 
+  add_foreign_key "clients", "companies"
+  add_foreign_key "companies", "users", column: "manager_id"
+  add_foreign_key "custom_field_values", "companies"
   add_foreign_key "custom_field_values", "custom_fields"
+  add_foreign_key "custom_fields", "companies"
   add_foreign_key "interactions", "clients"
+  add_foreign_key "interactions", "companies"
+  add_foreign_key "order_items", "companies"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "clients"
+  add_foreign_key "orders", "companies"
+  add_foreign_key "products", "companies"
+  add_foreign_key "table_settings", "companies"
+  add_foreign_key "users", "companies"
 end

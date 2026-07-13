@@ -3,7 +3,8 @@
     .flex.align-center
       .box-header-title
         = tm(Client, :title)
-      %span.box-header-count.text-muted= @clients.length > 0 ? @clients.length : ''
+      %span.box-header-count.text-muted
+        = @clients ? (@clients.length > 0 ? @clients.length : '')  : ''
 
     .btn-group
       = link_to index_modal_custom_fields_path(entity: "Client"), remote: true, data: { tooltip: tm(:CustomField, :table_settings) }, class: "btn btn-default" do
@@ -11,39 +12,8 @@
       = link_to new_modal_clients_path, class: "btn btn-primary", data: { tooltip: tc(:new) }, remote: true do 
         = fa_icon(:plus)
 
-
-        -# = tc(:new)
   .box-body
-    -# .nav-tabs-custom.table-nav
-    -#   %ul.tabs
-    -#     %li.active
-    -#       %a{href: "#all"} Все
-    -#     %li
-    -#       %a{href: "#new_clients"} Новые
-    -#     %li
-    -#       %a{href: "#potential"} Потенциальные
-    -#     %li
-    -#       %a{href: "#active"} Активные
-    -#     %li
-    -#       %a{href: "#regular"} Постоянные
-    -#     %li
-    -#       %a{href: "#inactive"} Нективные
-    -# -# %input
-    -# .tab-content
-    -#   #all.tab-pane.active
-    -#     = render partial: 'list', locals: { clients: @clients }
-    -#   #new_clients.tab-pane
-    -#     = render partial: 'list', locals: { clients: @clients_new }
-    -#   #potential.tab-pane
-    -#     = render partial: 'list', locals: { clients: @clients_potential }
-    -#   #active.tab-pane
-    -#     = render partial: 'list', locals: { clients: @clients_active }
-    -#   #inactive.tab-pane
-    -#     = render partial: 'list', locals: { clients: @clients_inactive }
-    -#   #regular.tab-pane
-    -#     = render partial: 'list', locals: { clients: @clients_regular }
     #clients-table= render partial: '/clients/table', locals: { clients: @clients, columns: @columns, entity: 'Client' }
-
 
 
 #client-modal-outer

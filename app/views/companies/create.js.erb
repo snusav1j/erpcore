@@ -1,0 +1,7 @@
+<% if @created %>
+  $("#companies-list").append("<%= j render partial: '/companies/item', locals: { company: @company } %>");
+  $('#company-modal').modal('hide');
+  toastr.success('<%= tm(Company, :company_created) %>')
+<% else %>
+  toastr.danger('<%= tgm(:error) %>')
+<% end %>

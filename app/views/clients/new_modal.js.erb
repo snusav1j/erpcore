@@ -1,2 +1,3 @@
 $('#client-modal-outer').html("<%= j render partial: '/clients/client_modal', locals: { title: tc(:new) } %>");
+$('.datetime-picker').datetimePicker()
 $('#client-modal').modal('show');

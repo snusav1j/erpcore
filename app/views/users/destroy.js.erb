@@ -1,0 +1,6 @@
+<% if @destroyed %>
+  $("tr.user-row[data-user-id='<%= @user.id %>']").remove()
+  toastr.success('<%= tm(user, :user_destroyed) %>')
+<% else %>
+  toastr.danger('Произошла ошибка');
+<% end %>

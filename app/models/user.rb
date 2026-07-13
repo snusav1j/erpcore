@@ -7,7 +7,9 @@ class User < ApplicationRecord
   has_many :interactions, foreign_key: :manager_id
 
   has_one :user_setting, dependent: :destroy
-
+  
+  belongs_to :company, optional: true
+  
   after_initialize :set_default_role, if: :new_record?
 
   scope :active, -> { where.not(banned: true) }

@@ -6,7 +6,7 @@
   .sidebar-body
     .sidebar-item{ class: clients_path.include?(@cur_url) ? 'active' : '' }
       = link_to clients_path do
-        = g_icon(:groups_2)
+        = g_icon(:identity_platform)
         .sidebar-title
           = tm(Client, :title)
         
@@ -27,3 +27,15 @@
         = g_icon(:package_2)
         .sidebar-title
           = tm(Product, :title)
+        
+    .sidebar-item{ class: companies_path.include?(@cur_url) ? 'active' : '' }
+      = link_to companies_path do
+        = g_icon(:corporate_fare)
+        .sidebar-title
+          = tm(Company, :title)
+        
+    .sidebar-item{ class: users_path.include?(@cur_url) ? 'active' : '' }
+      = link_to users_path do
+        = g_icon(:groups)
+        .sidebar-title
+          = tm(User, :title)

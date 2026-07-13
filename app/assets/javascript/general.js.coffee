@@ -84,3 +84,4 @@ $ ->
 
     $('.tabs li').removeClass('active')
     $(this).parent().addClass('active')
+

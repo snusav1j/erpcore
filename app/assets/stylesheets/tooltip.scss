@@ -1,25 +1,15 @@
 .tooltip-custom {
   position: fixed;
-
   z-index: 99999;
-
   background: var(--text-light-color);
   color: #fff;
-
   padding: 6px 10px;
-
   border-radius: 6px;
-
   font-size: 12px;
-
   white-space: nowrap;
-
   pointer-events: none;
-
   opacity: 0;
-
   transition: opacity .15s ease;
-
 }
 
 .tooltip-custom.show {

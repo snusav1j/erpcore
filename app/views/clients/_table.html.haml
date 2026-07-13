@@ -1,12 +1,13 @@
-.table-responsive
-  %table.table-position-editor{ data: { entity: entity } }
-    %thead
-      %tr
-        - columns.each do |column|
-          %th{ data: { column_key: column[:key], position: column[:position] } }
-            = column[:label]
-        %th.static-position
+- if columns && clients
+  .table-responsive
+    %table.table-position-editor{ data: { entity: entity } }
+      %thead
+        %tr
+          - columns.each do |column|
+            %th{ data: { column_key: column[:key], position: column[:position] } }
+              = column[:label]
+          %th.static-position
 
-    %tbody#clients-list
-      - clients.each do |client|
-        = render partial: 'item', locals: { client: client, columns: columns }
+      %tbody#clients-list
+        - clients.each do |client|
+          = render partial: 'item', locals: { client: client, columns: columns }

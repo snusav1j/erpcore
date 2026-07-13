@@ -1,7 +1,7 @@
 class TableSettingsController < ApplicationController
 
   def update_positions
-    TableSetting.update_positions(entity: params[:entity],columns: params[:columns])
+    TableSetting.update_positions(entity: params[:entity], columns: params[:columns], company: current_company)
     respond_to :js
   end
 

@@ -2,7 +2,7 @@ class InteractionsController < ApplicationController
   before_action :get_columns, only: [:index, :create, :update]
 
   def index
-    @interactions = Interaction.all
+    get_interactions
   end
 
   def show
@@ -26,7 +26,7 @@ class InteractionsController < ApplicationController
 
     @interaction.client.update(status: Client::CLIENT_STATUS_POTENTIAL) if @created
     
-    @interactions = Interaction.all
+    get_interactions
     respond_to :js
   end
 
@@ -34,7 +34,7 @@ class InteractionsController < ApplicationController
     @interaction = Interaction.find(params[:id])
     @updated = @interaction.update(interaction_params) if current_user.can_interact_with_client?(@interaction.client)
 
-    @interactions = Interaction.all
+    get_interactions
     respond_to :js
   end
 
@@ -42,11 +42,16 @@ class InteractionsController < ApplicationController
     @interaction = Interaction.find(params[:id])
     @destroyed = @interaction.destroy
 
-    @interactions = Interaction.all
+    get_interactions
     respond_to :js
   end
 
   private
+
+  def get_interactions
+    @interactions = current_company&.interactions
+  end
+
 
   def get_columns
     @columns = Interaction.table_columns

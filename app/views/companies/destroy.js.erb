@@ -1,0 +1,6 @@
+<% if @destroyed %>
+  $("tr.company-row[data-company-id='<%= @company.id %>']").remove()
+  toastr.success('<%= tm(Company, :company_destroyed) %>')
+<% else %>
+  toastr.danger('Произошла ошибка');
+<% end %>

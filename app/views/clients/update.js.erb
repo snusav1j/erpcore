@@ -1,8 +1,7 @@
 <% if @updated %>
   $("tr.client-row[data-client-id='<%= @client.id %>']").replaceWith("<%= j render partial: '/clients/item', locals: { client: @client, columns: @columns } %>");
+  $('#client-modal').modal('hide');
   toastr.success('<%= tm(Client, :client_updated) %>')
 <% else %>
   toastr.danger('<%= tgm(:error) %>')
 <% end %>
-
-console.log('<%= params %>')

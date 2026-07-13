@@ -7,3 +7,13 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+CustomField.delete_all
+CustomFieldValue.delete_all
+TableSetting.delete_all
+Product.delete_all
+Order.delete_all
+Interaction.delete_all
+Client.delete_all
+
+Company.create(active: true, name: 'eggs')

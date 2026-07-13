@@ -1,7 +1,3 @@
-<% if current_user.can_interact_with_client?(@order.client) %>
-  $('#order-modal-outer').html("<%= j render partial: '/orders/order_modal', locals: { title: tc(:edit) } %>");
-  fix_text_area_height()
-  $('#order-modal').modal('show');
-<% else %>
-  toastr.danger('Не ваш клиент')
-<% end %>
+$('#order-modal-outer').html("<%= j render partial: '/orders/order_modal', locals: { title: tc(:edit) } %>");
+fix_text_area_height()
+$('#order-modal').modal('show');

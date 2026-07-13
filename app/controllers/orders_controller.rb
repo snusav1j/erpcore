@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   before_action :get_columns, only: [:index, :create, :update]
 
   def index
-    @orders = Order.all
+    get_orders
   end
 
   def show
@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
 
     @order.client.update(status: Client::CLIENT_STATUS_ACTIVE) if @created
     
-    @orders = Order.all
+    get_orders
     respond_to :js
   end
 
@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @updated = @order.update(order_params)
 
-    @orders = Order.all
+    get_orders
     respond_to :js
   end
 
@@ -42,11 +42,15 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @destroyed = @order.destroy
 
-    @orders = Order.all
+    get_orders
     respond_to :js
   end
 
   private
+  
+  def get_orders
+    @orders = current_company&.orders
+  end
 
   def get_columns
     @columns = Order.table_columns

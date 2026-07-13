@@ -1,6 +1,7 @@
 <% if current_user.can_interact_with_client?(@client) %>
   $('#client-modal-outer').html("<%= j render partial: '/clients/client_modal', locals: { title: tc(:edit) } %>");
   fix_text_area_height()
+  $('.datetime-picker').datetimePicker()
   $('#client-modal').modal('show');
 <% else %>
   toastr.danger('Не ваш клиент')

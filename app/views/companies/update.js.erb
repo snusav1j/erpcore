@@ -1,0 +1,7 @@
+<% if @updated %>
+  $("tr.company-row[data-company-id='<%= @company.id %>']").replaceWith("<%= j render partial: '/companies/item', locals: { company: @company } %>");
+  $('#company-modal').modal('hide');
+  toastr.success('<%= tm(Company, :company_updated) %>')
+<% else %>
+  toastr.danger('<%= tgm(:error) %>')
+<% end %>

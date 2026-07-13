@@ -1,0 +1,16 @@
+= simple_form_for @company, remote: true, html: { id: 'company-form', novalidate: false } do |f|
+  .form
+    .row
+      .col-md-12
+        = f.input :name, required: true
+
+    .row
+      .col-md-6
+        = f.input :slug, required: true
+
+      .col-md-6
+        = f.input :paid_until, as: :string, input_html: { class: 'datetime-picker' }
+
+    .row
+      .col-md-6
+        = f.input :active, as: :boolean, input_html: { class: 'switch' }

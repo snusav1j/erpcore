@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   before_action :get_columns, only: [:index, :create, :update]
 
   def index
-    @products = Product.all
+    get_products
   end
 
   def show
@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
 
     @created = @product.save
 
-    @products = Product.all
+    get_products
     respond_to :js
   end
 
@@ -34,7 +34,7 @@ class ProductsController < ApplicationController
 
     @updated = @product.update(product_params)
 
-    @products = Product.all
+    get_products
     respond_to :js
   end
 
@@ -43,11 +43,15 @@ class ProductsController < ApplicationController
 
     @destroyed = @product.destroy
 
-    @products = Product.all
+    get_products
     respond_to :js
   end
 
   private
+
+  def get_products
+    @products = current_company&.products
+  end
 
   def get_columns
     @columns = Product.table_columns

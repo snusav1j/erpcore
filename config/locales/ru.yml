@@ -22,15 +22,23 @@ ru:
       new: Новый товар
       edit: Редактировать товар
     interactions:
+      title: Взаимодействия
       new: Новое взаимодействие
       edit: Редактировать взаимодействие
     custom_fields:
       title: Настройка таблиц
+      new: Новое поле
+      edit: Редактировать поле
+    companies:
+      title: Компании
+      new: Новая компания
+      edit: Редактировать компанию
       
   global:
     error: Произошла ошибка
     save: Сохранить
     cancel: Отмена
+    only_latin: Только латинские буквы A-Z
     close: Закрыть 
     edit: Редактировать
     delete: Удалить
@@ -48,6 +56,7 @@ ru:
   activerecord:
     attributes:
       user:
+        id: ID
         title: Пользователи
         email: Email
         password: Пароль
@@ -56,6 +65,28 @@ ru:
         login: Вход
         logout: Выход
         profile: Профиль
+        banned: Заблокирован
+        last_name: Фамилия
+        first_name: Имя
+        middle_name: Отчество
+        birthday: Дата рождения
+        phone: Телефон
+        telegram: Telegram
+        telegram_chat_id: Telegram Chat ID
+        company: Компания
+        company_id: ID Компании
+        created_at: Создано в
+        updated_at: Обновлено в
+
+        inactive_company: Компания неактивна
+        banned: Аккаунт заблокирован
+        access_denied: Доступ ограничен
+        error_contact_administrator: Произошла ошибка доступа. Обратитесь к администратору
+
+        user_created: Пользователь создан
+        user_updated: Пользователь обновлен
+        user_destroyed: Пользователь удален
+
 
       client:
         id: ID
@@ -93,6 +124,7 @@ ru:
         manager_id: Менеджер
         created_at: Создано в
         updated_at: Обновлено в
+        
 
         order_created: Заказ создан
         order_updated: Заказ обновлен
@@ -118,6 +150,7 @@ ru:
         id: ID
         entity: Таблица
         key: Ключ в системе
+        key_help_msg: Уникальный идентификатор поля. Только латинские буквы A-Z
         label: Название
         field_type: Тип поля
         required: Обязательное поле
@@ -128,9 +161,24 @@ ru:
         new: Новое поле
         edit: Редактировать поле
 
-        column_created: Колонка %{label} добавлена
-        column_updated: Колонка %{label} обновлена
-        column_destroyed: Колонка %{label} удалена
+        column_created: Колонка «%{label}» добавлена
+        column_updated: Колонка «%{label}» обновлена
+        column_destroyed: Колонка «%{label}» удалена
+
+      company:
+        id: ID
+        title: Компании
+        name: Название
+        slug: SLUG
+        slug_help_msg: Уникальный ID (для URL)
+        active: Активна
+        paid_until: Оплачена до
+        manager_id: Создан пользователем с ID
+        manager: Создан пользователем
+
+        company_created: Компания добавлена
+        company_updated: Компания обновлена
+        company_destroyed: Компания удалена
 
       interaction:
         id: ID

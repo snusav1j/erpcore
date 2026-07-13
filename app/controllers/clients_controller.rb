@@ -1,8 +1,8 @@
 class ClientsController < ApplicationController
   before_action :get_columns, only: [:index, :create, :update]
-
+  
   def index
-    @clients = current_user.clients
+    get_clients
   end
 
   def show
@@ -12,7 +12,7 @@ class ClientsController < ApplicationController
 
   def new_modal
     @client = Client.new
-    @custom_fields = CustomField.for_entity(:client)
+    @custom_fields = CustomField.for_entity(:client, current_company)
 
     respond_to :js
   end
@@ -20,7 +20,7 @@ class ClientsController < ApplicationController
 
   def edit_modal
     @client = Client.find(params[:id])
-    @custom_fields = CustomField.for_entity(:client)
+    @custom_fields = CustomField.for_entity(:client, current_company)
 
     respond_to :js
   end
@@ -29,12 +29,13 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_params)
     @client.manager_id = current_user.id
+    @client.company_id = current_company.id
 
     @created = @client.save
 
-    CustomFieldsHandler.new(@client, params).save if @created
+    CustomFieldsHandler.new(@client, params, current_company).save if @created
 
-    @clients = Client.all
+    get_clients
 
     respond_to :js
   end
@@ -45,9 +46,9 @@ class ClientsController < ApplicationController
 
     @updated = @client.update(client_params) if current_user.can_interact_with_client?(@client)
 
-    CustomFieldsHandler.new(@client, params).save if @updated
+    CustomFieldsHandler.new(@client, params, current_company).save if @updated
 
-    @clients = Client.all
+    get_clients
 
     respond_to :js
   end
@@ -57,7 +58,7 @@ class ClientsController < ApplicationController
     @client = Client.find(params[:id])
     @destroyed = @client.destroy
 
-    @clients = Client.all
+    get_clients
 
     respond_to :js
   end
@@ -65,8 +66,12 @@ class ClientsController < ApplicationController
 
   private
 
+  def get_clients
+    @clients = current_company&.clients
+  end
+
   def get_columns
-    @columns = Client.table_columns
+    @columns = Client.table_columns(current_company)
   end
 
   def client_params

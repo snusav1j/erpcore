@@ -1,0 +1,14 @@
+.table-responsive
+  %table
+    %thead
+      %tr
+        %th= tm(Company, :id)
+        %th= tm(Company, :name)
+        %th{ data: { tooltip: tm(Company, :slug_help_msg) } }= tm(Company, :slug)
+        %th= tm(Company, :active)
+        %th= tm(Company, :paid_until)
+        %th= tm(Company, :manager)
+        %th
+    %tbody#companies-list
+      - companies.each do |company|
+        = render partial: '/companies/item', locals: { company: company }

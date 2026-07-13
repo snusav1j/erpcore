@@ -3,7 +3,8 @@
     .flex.align-center
       .box-header-title
         = tm(Interaction, :title)
-      %span.box-header-count.text-muted= @interactions.length > 0 ? @interactions.length : ''
+      %span.box-header-count.text-muted
+        = @interactions ? (@interactions.length > 0 ? @interactions.length : '')  : ''
       
     .btn-group
       = link_to index_modal_custom_fields_path(entity: "Interaction"), remote: true, data: { tooltip: tm(:CustomField, :table_settings) }, class: "btn btn-default" do

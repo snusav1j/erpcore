@@ -3,7 +3,8 @@
     .flex.align-center
       .box-header-title
         = tm(Order, :title)
-      %span.box-header-count.text-muted= @orders.length > 0 ? @orders.length : ''
+      %span.box-header-count.text-muted
+        = @orders ? (@orders.length > 0 ? @orders.length : '')  : ''
     .btn-group
       = link_to new_modal_orders_path, class: "btn btn-primary", remote: true, data: { tooltip: tc(:new) } do 
         = fa_icon(:plus)

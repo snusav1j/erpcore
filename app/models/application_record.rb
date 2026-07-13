@@ -7,16 +7,17 @@ class ApplicationRecord < ActiveRecord::Base
   has_many :custom_field_values, as: :entity, dependent: :destroy
 
   def custom_fields
-    CustomField.for_entity(self.class.name)
+    CustomField.for_entity(self.class.name, company)
   end
 
   def custom_value(key)
-    CustomField.value_for(entity: self.class.name, object: self, key: key)
+    CustomField.value_for(entity: self.class.name, object: self, key: key, company: company)
   end
-  
-  def self.table_columns
+    
+  def self.table_columns(company = nil)
     ignore_columns = %w[created_at updated_at]
 
+    return [] unless company
     columns = []
 
     self.column_names.each do |column|
@@ -28,26 +29,29 @@ class ApplicationRecord < ActiveRecord::Base
           "activerecord.attributes.#{self.model_name.i18n_key}.#{column}",
           default: column.humanize
         ),
-        position: TableSetting.position(
+        position: company ? TableSetting.position(
           entity: self.name,
-          column_key: column
-        )
+          column_key: column,
+          company: company
+        ) : 0
       }
     end
 
-    CustomField.for_entity(self.name).each do |field|
-
-      columns << {
-        key: field.key.to_sym,
-        label: field.label,
-        custom: true,
-        position: TableSetting.position(
-          entity: self.name,
-          column_key: field.key
-        )
-      }
-
+    if company
+      CustomField.for_entity(self.name, company).each do |field|
+        columns << {
+          key: field.key.to_sym,
+          label: field.label,
+          custom: true,
+          position: TableSetting.position(
+            entity: self.name,
+            column_key: field.key,
+            company: company
+          )
+        }
+      end
     end
+
     columns.sort_by { |column| column[:position] }
   end
 
@@ -62,7 +66,7 @@ class ApplicationRecord < ActiveRecord::Base
   private
 
   def custom_field?(column)
-    CustomField.exists?(entity: self.class.name, key: column.to_s)
+    CustomField.exists?(entity: self.class.name, key: column.to_s, company: company)
   end
 
 end

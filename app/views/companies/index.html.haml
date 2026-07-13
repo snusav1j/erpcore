@@ -1,0 +1,16 @@
+.box
+  .box-header
+    .flex.align-center
+      .box-header-title
+        = tm(Company, :title)
+      %span.box-header-count.text-muted
+        = @companies ? (@companies.length > 0 ? @companies.length : '')  : ''
+
+    .btn-group
+      = link_to new_modal_companies_path, class: "btn btn-primary", data: { tooltip: tc(:new) }, remote: true do
+        = fa_icon(:plus)
+
+  .box-body
+    #companies-table= render partial: '/companies/table', locals: { companies: @companies }
+
+#company-modal-outer

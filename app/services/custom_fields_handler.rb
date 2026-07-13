@@ -1,8 +1,9 @@
 class CustomFieldsHandler
 
-  def initialize(entity, params)
+  def initialize(entity, params, company)
     @entity = entity
     @params = params
+    @company = company
   end
 
 
@@ -13,7 +14,10 @@ class CustomFieldsHandler
 
       value = value.last if value.is_a?(Array)
 
-      field = CustomField.find_by(id: field_id)
+      field = CustomField.find_by(
+        id: field_id,
+        company: @company
+      )
 
       next unless field
       next unless field.entity == @entity.class.name
@@ -24,7 +28,8 @@ class CustomFieldsHandler
           custom_field_id: field.id
         )
         .update!(
-          value: value
+          value: value,
+          company: @company
         )
 
     end

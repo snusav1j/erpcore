@@ -1,0 +1,12 @@
+%tr.user-row{ data: { user_id: user.id } }
+  %td= user.id
+  %td= user.email
+  %td= user.first_name
+  %td= user.last_name
+  %td= user.middle_name
+  %td= user.phone
+  %td= user.role
+  %td= user.banned
+  %td
+    = link_to user_path(user), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true do
+      = g_icon(:delete, 'sm-g-icon')
