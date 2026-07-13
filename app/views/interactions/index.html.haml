@@ -1,11 +1,11 @@
 .box
   .box-header
-    .box-header-title
-      = tm(Interaction, :title)
+    .flex.align-center
+      .box-header-title
+        = tm(Interaction, :title)
       %span.box-header-count.text-muted= @interactions.length > 0 ? @interactions.length : ''
-    = link_to new_modal_interactions_path, class: "btn btn-primary", remote: true do 
-      = fa_icon(:plus)
-      = tc(:new)
+      = link_to new_modal_interactions_path, class: "btn btn-primary", remote: true do 
+        = fa_icon(:plus)
 
   .box-body
     = render partial: '/interactions/table', locals: { interactions: @interactions }

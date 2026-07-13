@@ -4,7 +4,8 @@ class Client < ApplicationRecord
   has_many :orders, dependent: :restrict_with_error
 
   belongs_to :manager, class_name: 'User', foreign_key: :manager_id, optional: true
-
+  
+  validates :name, uniqueness: true
   self.custom_fields_enabled = true
 
   CLIENT_STATUS_NEW = 1
