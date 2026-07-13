@@ -21,11 +21,8 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-
     @company.manager_id = current_user.id
-
     @created = @company.save
-
     @companies = Company.all
     respond_to :js
   end

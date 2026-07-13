@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_company
 
   def current_company
-    current_user.company
+    current_user&.company
   end
   
   def set_global_vars
