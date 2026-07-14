@@ -3,10 +3,10 @@
     = f.input :client_id, as: :select, collection: Client.all.map { |wu| [wu.name, wu.id] }, required: true
     = f.input :status
 
-    -# - if @order.id.present?
-    -#   = f.input :closed_at, as: :datetime
+    - if @order.persisted?
+      = f.input :closed_at, as: :datetime, as: :string, input_html: { class: 'datetime-picker' }
 
-    -# - if current_user.director?
-    -#   = f.input :manager_id
+    - if current_user.director?
+      = f.input :manager_id
     %br
     = f.input :comment
