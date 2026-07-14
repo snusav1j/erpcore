@@ -14,7 +14,7 @@
       .col-md-6
         = f.input :status, as: :select, collection: Client::CLIENT_STATUSES.map { |ct| [tm(Client, "client_status_#{ct}"), ct] }
       .col-md-6
-        = f.input :client_type, as: :select, collection: Client::CLIENT_TYPES.map { |ct| [tm(Client, "client_type_#{ct}"), ct] }
+        = f.input :client_type, as: :select, collection: []
     %br
 
     - if @custom_fields.present?
