@@ -3,10 +3,13 @@ class Client < ApplicationRecord
   has_many :interactions, dependent: :restrict_with_error
   has_many :orders, dependent: :restrict_with_error
 
-  belongs_to :company
   belongs_to :manager, class_name: 'User', foreign_key: :manager_id, optional: true
   
-  validates :name, uniqueness: true
+  belongs_to :company
+  belongs_to :client_type
+  belongs_to :client_status
+
+  validates :name, uniqueness: { scope: :company_id }
   self.custom_fields_enabled = true
 
   CLIENT_STATUS_NEW = 1
@@ -34,23 +37,14 @@ class Client < ApplicationRecord
     case column.to_sym
     when :manager_id
       manager&.email
-    when :status
-      self.status_name
-
-    when :client_type
-      self.client_type_name
+    when :status_id
+      self.client_status&.name
+    when :client_type_id
+      self.client_type&.name
     else
       super
     end
 
-  end
-  
-  def client_type_name
-    tm(Client, "client_type_#{self.client_type}")
-  end
-
-  def status_name
-    tm(Client, "client_status_#{self.status}")
   end
 
 end

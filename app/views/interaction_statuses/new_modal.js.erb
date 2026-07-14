@@ -1,0 +1,3 @@
+$('#interaction-status-modal-outer').html("<%= j render partial: '/interaction_statuses/interaction_status_modal', locals: { title: tc(:new) } %>");
+$('.colorpicker-input').colorPicker('<%= tgm(:last_selected_color) %>')
+$('#interaction-status-modal').modal('show');

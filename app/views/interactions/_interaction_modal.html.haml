@@ -7,8 +7,6 @@
           %span{"aria-hidden" => "true"}= g_icon(:close)
       .modal-body
         = render partial: '/interactions/form'
-
-      
       .modal-footer
         %button.btn.btn-default.pull-left{"data-dismiss" => "modal", :type => "button"}= tgm(:cancel)
         %button.btn.btn-primary.pull-right{:type => "submit", form: 'interaction-form'}= tgm(:save)

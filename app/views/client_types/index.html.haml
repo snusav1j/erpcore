@@ -1,0 +1,15 @@
+.box
+  .box-header
+    .flex.align-center
+      .box-header-title
+        = tm(ClientType, :title)
+      %span.box-header-count.text-muted= @client_types.length > 0 ? @client_types.length : ''
+
+    .btn-group
+      = link_to new_modal_client_types_path, class: "btn btn-primary", data: { tooltip: tc(:new) }, remote: true do
+        = fa_icon(:plus)
+
+  .box-body
+    #client-types-table= render partial: '/client_types/table', locals: { client_types: @client_types }
+
+#client-type-modal-outer

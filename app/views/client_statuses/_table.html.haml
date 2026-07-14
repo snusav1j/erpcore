@@ -1,0 +1,12 @@
+.table-responsive
+  %table
+    %thead
+      %tr
+        %th= tm(ClientType, :id)
+        %th= tm(ClientType, :name)
+        %th= tm(ClientType, :color)
+        %th
+
+    %tbody#client-statuses-list
+      - client_statuses.each do |client_status|
+        = render partial: '/client_statuses/item', locals: { client_status: client_status }

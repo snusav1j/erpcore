@@ -9,13 +9,38 @@
         = g_icon(:identity_platform)
         .sidebar-title
           = tm(Client, :title)
+    .sidebar-item{ class: client_types_path.include?(@cur_url) ? 'active' : '' }
+      = link_to client_types_path do
+        = g_icon(:format_list_numbered)
+        .sidebar-title
+          = tm(ClientType, :title)
+
+    .sidebar-item{ class: client_statuses_path.include?(@cur_url) ? 'active' : '' }
+      = link_to client_statuses_path do
+        = g_icon(:circle_circle)
+        .sidebar-title
+          = tm(ClientStatus, :title)
         
+    %br
     .sidebar-item{ class: interactions_path.include?(@cur_url) ? 'active' : '' }
       = link_to interactions_path do
         = g_icon(:phone)
         .sidebar-title
           = tm(Interaction, :title)
+
+    .sidebar-item{ class: interaction_types_path.include?(@cur_url) ? 'active' : '' }
+      = link_to interaction_types_path do
+        = g_icon(:format_list_numbered)
+        .sidebar-title
+          = tm(InteractionType, :title)
         
+    .sidebar-item{ class: interaction_statuses_path.include?(@cur_url) ? 'active' : '' }
+      = link_to interaction_statuses_path do
+        = g_icon(:circle_circle)
+        .sidebar-title
+          = tm(InteractionStatus, :title)
+    %br
+
     .sidebar-item{ class: orders_path.include?(@cur_url) ? 'active' : '' }
       = link_to orders_path do
         = g_icon(:receipt_long)
@@ -27,7 +52,7 @@
         = g_icon(:package_2)
         .sidebar-title
           = tm(Product, :title)
-        
+    %br
     .sidebar-item{ class: companies_path.include?(@cur_url) ? 'active' : '' }
       = link_to companies_path do
         = g_icon(:corporate_fare)
@@ -39,3 +64,4 @@
         = g_icon(:groups)
         .sidebar-title
           = tm(User, :title)
+

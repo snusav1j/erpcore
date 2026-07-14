@@ -1,0 +1,11 @@
+.table-responsive
+  %table
+    %thead
+      %tr
+        %th= tm(ClientType, :id)
+        %th= tm(ClientType, :name)
+        %th
+
+    %tbody#client-types-list
+      - client_types.each do |client_type|
+        = render partial: '/client_types/item', locals: { client_type: client_type }

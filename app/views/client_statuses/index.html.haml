@@ -1,0 +1,16 @@
+.box
+  .box-header
+    .flex.align-center
+      .box-header-title
+        = tm(ClientStatus, :title)
+      %span.box-header-count.text-muted= @client_statuses.length > 0 ? @client_statuses.length : ''
+
+    .btn-group
+      = link_to new_modal_client_statuses_path, class: "btn btn-primary", data: { tooltip: tc(:new) }, remote: true do
+        = fa_icon(:plus)
+
+  .box-body
+    #client-statuses-table= render partial: '/client_statuses/table', locals: { client_statuses: @client_statuses }
+
+
+#client-status-modal-outer

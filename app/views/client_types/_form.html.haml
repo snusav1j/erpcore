@@ -1,0 +1,9 @@
+= simple_form_for @client_type, remote: true, html: { id: 'client-type-form', novalidate: false } do |f|
+  .form
+    .row
+      .col-md-12
+        = f.input :name, required: true
+    .row
+      .col-md-12
+        = f.input :color, input_html: { class: 'colorpicker-input' }
+        %div.colorpicker

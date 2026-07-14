@@ -1,0 +1,6 @@
+<% if @destroyed %>
+  $("tr.interaction-type-row[data-interaction-type-id='<%= @interaction_type.id %>']").remove()
+  toastr.success('<%= tm(InteractionType, :interaction_type_destroyed) %>')
+<% else %>
+  toastr.danger('Произошла ошибка');
+<% end %>

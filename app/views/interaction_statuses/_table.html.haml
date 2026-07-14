@@ -1,0 +1,12 @@
+.table-responsive
+  %table
+    %thead
+      %tr
+        %th= tm(InteractionStatus, :id)
+        %th= tm(InteractionStatus, :name)
+        %th= tm(InteractionStatus, :color)
+        %th
+
+    %tbody#interaction-statuses-list
+      - interaction_statuses.each do |interaction_status|
+        = render partial: '/interaction_statuses/item', locals: { interaction_status: interaction_status }

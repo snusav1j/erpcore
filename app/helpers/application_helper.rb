@@ -1,6 +1,17 @@
 module ApplicationHelper
   include TranslateHelper
 
+  def color_badge(text = nil, color = nil)
+    text_color = contrast_color(color)
+
+    content_tag(
+      :span,
+      text,
+      class: "color-badge",
+      style: "background: #{color}; color: #{text_color}"
+    )
+  end
+
   def current_page_name
     if @cur_url.include?('users')
       tm(User, :title)
@@ -81,4 +92,21 @@ module ApplicationHelper
   def active_sidebar?(url_path)
     url_path.include?("/#{@cur_url}") || url_path == @cur_url
   end
+
+  private
+
+  def contrast_color(hex)
+    return '#000000' unless hex.present?
+
+    hex = hex.delete('#')
+
+    r = hex[0..1].to_i(16)
+    g = hex[2..3].to_i(16)
+    b = hex[4..5].to_i(16)
+
+    brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000
+
+    brightness > 150 ? '#000000' : '#ffffff'
+  end
+
 end

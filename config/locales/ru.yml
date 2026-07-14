@@ -33,13 +33,29 @@ ru:
       title: Компании
       new: Новая компания
       edit: Редактировать компанию
-      
+    client_types:
+      title: Типы клиентов
+      new: Новый тип клиента
+      edit: Редактировать тип клиента
+    client_statuses:
+      title: Статусы клиентов
+      new: Новый статус клиента
+      edit: Редактировать статус клиента
+    interaction_types:
+      title: Типы взаимодействий
+      new: Новый тип взаимодействия
+      edit: Редактировать тип взаимодействия
+    interaction_statuses:
+      title: Статусы взаимодействий
+      new: Новый статус взаимодействия
+      edit: Редактировать статус взаимодействия
   global:
     error: Произошла ошибка
     save: Сохранить
     cancel: Отмена
     only_latin: Только латинские буквы A-Z
     close: Закрыть 
+    last_selected_color: Последний выбранный цвет 
     edit: Редактировать
     delete: Удалить
     create: Создать
@@ -112,7 +128,7 @@ ru:
         client_status_3: Активный
         client_status_4: Неактивный
         client_status_5: Постоянный
-        
+
         client_created: Клиент создан
         client_updated: Клиент обновлен
         client_destroyed: Клиент удален
@@ -190,7 +206,7 @@ ru:
         id: ID
         title: Взаимодействия
         client: Клиент
-        interaction_type: Тип обращения
+        interaction_type: Тип взаимодействия
         status: Статус
         comment: Комментарий
         occurred_at: Дата обращения
@@ -203,6 +219,57 @@ ru:
         interaction_updated: Взаимодействие обновлено
         interaction_destroyed: Взаимодействие удалено
 
+      client_type:
+        id: ID
+        title: Типы клиентов
+        name: Название
+        company: Компания
+        color: Код цвета
+        created_at: Создано в
+        updated_at: Обновлено в
+
+        client_type_created: Тип клиента создан
+        client_type_updated: Тип клиента обновлен
+        client_type_destroyed: Тип клиента удален
+
+      interaction_type:
+        id: ID
+        title: Типы взаимодействий
+        name: Название
+        company: Компания
+        color: Код цвета
+        created_at: Создано в
+        updated_at: Обновлено в
+
+        interaction_type_created: Тип взаимодействия создан
+        interaction_type_updated: Тип взаимодействия обновлен
+        interaction_type_destroyed: Тип взаимодействия удален
+
+      interaction_status:
+        id: ID
+        title: Статусы взаимодействий
+        name: Название
+        company: Компания
+        color: Код цвета
+        created_at: Создано в
+        updated_at: Обновлено в
+
+        interaction_status_created: Статус взаимодействия создан
+        interaction_status_updated: Статус взаимодействия обновлен
+        interaction_status_destroyed: Статус взаимодействия удален
+
+      client_status:
+        id: ID
+        title: Статусы клиентов
+        name: Название
+        color: Код цвета
+        company: Компания
+        created_at: Создано в
+        updated_at: Обновлено в
+
+        client_status_created: Статус клиента создан
+        client_status_updated: Статус клиента обновлен
+        client_status_destroyed: Статус клиента удален
     models:
       client: Клиенты
       product: Товары

@@ -1,0 +1,8 @@
+<% if @created %>
+  $("#interaction-statuses-list").append("<%= j render partial: '/interaction_statuses/item', locals: { interaction_status: @interaction_status } %>");
+  $('#interaction-status-modal').modal('hide');
+  toastr.success('<%= tm(InteractionStatus, :interaction_status_created) %>')
+<% else %>
+  toastr.danger('<%= tgm(:error) %>')
+<% end %>
+

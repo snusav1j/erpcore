@@ -27,10 +27,9 @@ class ClientsController < ApplicationController
 
 
   def create
-    @client = Client.new(client_params)
+    @client = current_company.clients.new(client_params)
     
     @client.manager_id = current_user.id
-    @client.company_id = current_company.id
 
     @created = @client.save
 

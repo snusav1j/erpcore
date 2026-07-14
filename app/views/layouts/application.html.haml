@@ -11,6 +11,7 @@
     = stylesheet_link_tag 'application', media: 'all'
 
     %script{ src: "https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js", integrity: "sha512-K/oyQtMXpxI4+K0W7H25UopjM8pzq0yrVdFdG21Fh5dBe91I40pDd9A4lzNlHPHBIP2cwZuoxaUSX0GJSObvGA==", crossorigin: "anonymous", referrerpolicy: "no-referrer" }
+    %script{ src: "https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.9.1/dist/pickr.min.js" }
     = javascript_include_tag 'application'
     
     %link{ rel: "manifest", href: "/manifest.json" }
@@ -21,7 +22,8 @@
     %link{ href: "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap", rel: "stylesheet"}
     %link{ href: "https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css", rel: "stylesheet" }
     %link{ rel: "stylesheet", href: "https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css", integrity: "sha512-MQXduO8IQnJVq1qmySpN87QQkiR1bZHtorbJBD0tzy7/0U9+YIC93QWHeGTEoojMVHWWNkoCp8V6OzVSYrX0oQ==", crossorigin: "anonymous", referrerpolicy: "no-referrer" }
-
+    %link{ rel: "stylesheet", href: "https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.9.1/dist/themes/classic.min.css" }
+    
     %title= content_for(:title) || "ErpCore"
   %body
     #wrap

@@ -1,0 +1,11 @@
+.table-responsive
+  %table
+    %thead
+      %tr
+        %th= tm(InteractionType, :id)
+        %th= tm(InteractionType, :name)
+        %th
+
+    %tbody#interaction-types-list
+      - interaction_types.each do |interaction_type|
+        = render partial: '/interaction_types/item', locals: { interaction_type: interaction_type }

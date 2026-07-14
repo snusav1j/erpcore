@@ -11,11 +11,16 @@
 //= require modal
 //= require tooltip
 //= require datepicker
+//= require colorpicker
 
 //= require general
 
 //= require clients
 //= require companies
+//= require interaction_types
+//= require client_types
+//= require client_statuses
+//= require interaction_statuses
 //= require table_settings
 //= require interactions
 //= require orders

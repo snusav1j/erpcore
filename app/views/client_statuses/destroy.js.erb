@@ -1,0 +1,6 @@
+<% if @destroyed %>
+  $("tr.client-status-row[data-client-status-id='<%= @client_status.id %>']").remove()
+  toastr.success('<%= tm(ClientStatus, :client_status_destroyed) %>')
+<% else %>
+  toastr.danger('Произошла ошибка');
+<% end %>

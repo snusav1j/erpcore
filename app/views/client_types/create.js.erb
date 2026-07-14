@@ -1,0 +1,8 @@
+<% if @created %>
+  $("#client-types-list").append("<%= j render partial: '/client_types/item', locals: { client_type: @client_type } %>");
+  $('#client-type-modal').modal('hide');
+  toastr.success('<%= tm(ClientType, :client_type_created) %>')
+<% else %>
+  toastr.danger('<%= tgm(:error) %>')
+<% end %>
+

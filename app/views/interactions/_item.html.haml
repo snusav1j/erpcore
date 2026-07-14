@@ -1,7 +1,7 @@
 %tr.interaction-row{ data: { interaction_id: interaction.id } }
   %td= interaction.client&.name
-  %td= interaction.interaction_type_name
-  %td= interaction.status
+  %td= interaction.interaction_type&.name
+  %td= color_badge(interaction.interaction_status&.name, interaction.interaction_status&.color)
   %td= interaction.comment
   %td= interaction.manager&.email
   %td

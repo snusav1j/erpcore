@@ -1,0 +1,7 @@
+<% if @updated %>
+  $("tr.client-status-row[data-client-status-id='<%= @client_status.id %>']").replaceWith("<%= j render partial: '/client_statuses/item', locals: { client_status: @client_status } %>");
+  $('#client-status-modal').modal('hide');
+  toastr.success('<%= tm(ClientStatus, :client_status_updated) %>')
+<% else %>
+  toastr.danger('<%= tgm(:error) %>')
+<% end %>

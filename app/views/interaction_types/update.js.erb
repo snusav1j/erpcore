@@ -1,0 +1,7 @@
+<% if @updated %>
+  $("tr.interaction-type-row[data-interaction-type-id='<%= @interaction_type.id %>']").replaceWith("<%= j render partial: '/interaction_types/item', locals: { interaction_type: @interaction_type } %>");
+  $('#interaction-type-modal').modal('hide');
+  toastr.success('<%= tm(InteractionType, :interaction_type_updated) %>')
+<% else %>
+  toastr.danger('<%= tgm(:error) %>')
+<% end %>

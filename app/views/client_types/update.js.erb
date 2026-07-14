@@ -1,0 +1,7 @@
+<% if @updated %>
+  $("tr.client-type-row[data-client-type-id='<%= @client_type.id %>']").replaceWith("<%= j render partial: '/client_types/item', locals: { client_type: @client_type } %>");
+  $('#client-type-modal').modal('hide');
+  toastr.success('<%= tm(ClientType, :client_type_updated) %>')
+<% else %>
+  toastr.danger('<%= tgm(:error) %>')
+<% end %>

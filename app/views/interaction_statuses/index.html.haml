@@ -1,0 +1,15 @@
+.box
+  .box-header
+    .flex.align-center
+      .box-header-title
+        = tm(InteractionStatus, :title)
+      %span.box-header-count.text-muted= @interaction_statuses.length > 0 ? @interaction_statuses.length : ''
+
+    .btn-group
+      = link_to new_modal_interaction_statuses_path, class: "btn btn-primary", data: { tooltip: tc(:new) }, remote: true do
+        = fa_icon(:plus)
+
+  .box-body
+    #interaction-statuses-table= render partial: '/interaction_statuses/table', locals: { interaction_statuses: @interaction_statuses }
+
+#interaction-status-modal-outer

@@ -20,10 +20,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
-    
+    @order = current_company.orders.new(order_params)
     @order.manager_id = current_user.id
-    @order.company_id = current_company.id
     
     @created = @order.save
 

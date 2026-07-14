@@ -20,10 +20,8 @@ class InteractionsController < ApplicationController
   end
 
   def create
-    @interaction = Interaction.new(interaction_params)
-    
+    @interaction = current_company.interactions.new(interaction_params)
     @interaction.manager_id = current_user.id
-    @interaction.company_id = current_company.id
     
     @created = @interaction.save
 

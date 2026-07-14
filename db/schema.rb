@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_13_231137) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_14_120543) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+
+  create_table "client_statuses", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "color"
+    t.bigint "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id", "name"], name: "index_client_statuses_on_company_id_and_name", unique: true
+    t.index ["company_id"], name: "index_client_statuses_on_company_id"
+  end
+
+  create_table "client_types", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "color"
+    t.index ["company_id", "name"], name: "index_client_types_on_company_id_and_name", unique: true
+    t.index ["company_id"], name: "index_client_types_on_company_id"
+  end
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
@@ -22,10 +42,12 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_13_231137) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "manager_id"
-    t.integer "client_type"
-    t.integer "status", default: 1, null: false
+    t.integer "status_id", default: 1, null: false
     t.bigint "company_id", null: false
-    t.index ["client_type"], name: "index_clients_on_client_type"
+    t.bigint "client_type_id"
+    t.bigint "client_status_id"
+    t.index ["client_status_id"], name: "index_clients_on_client_status_id"
+    t.index ["client_type_id"], name: "index_clients_on_client_type_id"
     t.index ["company_id"], name: "index_clients_on_company_id"
     t.index ["manager_id"], name: "index_clients_on_manager_id"
     t.index ["phone"], name: "index_clients_on_phone"
@@ -70,18 +92,40 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_13_231137) do
     t.index ["company_id"], name: "index_custom_fields_on_company_id"
   end
 
+  create_table "interaction_statuses", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "color"
+    t.index ["company_id", "name"], name: "index_interaction_statuses_on_company_id_and_name", unique: true
+    t.index ["company_id"], name: "index_interaction_statuses_on_company_id"
+  end
+
+  create_table "interaction_types", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "company_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "color"
+    t.index ["company_id", "name"], name: "index_interaction_types_on_company_id_and_name", unique: true
+    t.index ["company_id"], name: "index_interaction_types_on_company_id"
+  end
+
   create_table "interactions", force: :cascade do |t|
     t.bigint "client_id", null: false
-    t.string "interaction_type"
-    t.string "status", default: "new"
     t.text "comment"
     t.datetime "occurred_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "manager_id"
     t.bigint "company_id"
+    t.bigint "interaction_type_id"
+    t.bigint "interaction_status_id"
     t.index ["client_id"], name: "index_interactions_on_client_id"
     t.index ["company_id"], name: "index_interactions_on_company_id"
+    t.index ["interaction_status_id"], name: "index_interactions_on_interaction_status_id"
+    t.index ["interaction_type_id"], name: "index_interactions_on_interaction_type_id"
     t.index ["manager_id"], name: "index_interactions_on_manager_id"
   end
 
@@ -176,13 +220,21 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_13_231137) do
     t.index ["telegram_chat_id"], name: "index_users_on_telegram_chat_id"
   end
 
+  add_foreign_key "client_statuses", "companies"
+  add_foreign_key "client_types", "companies"
+  add_foreign_key "clients", "client_statuses"
+  add_foreign_key "clients", "client_types"
   add_foreign_key "clients", "companies"
   add_foreign_key "companies", "users", column: "manager_id"
   add_foreign_key "custom_field_values", "companies"
   add_foreign_key "custom_field_values", "custom_fields"
   add_foreign_key "custom_fields", "companies"
+  add_foreign_key "interaction_statuses", "companies"
+  add_foreign_key "interaction_types", "companies"
   add_foreign_key "interactions", "clients"
   add_foreign_key "interactions", "companies"
+  add_foreign_key "interactions", "interaction_statuses"
+  add_foreign_key "interactions", "interaction_types"
   add_foreign_key "order_items", "companies"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"

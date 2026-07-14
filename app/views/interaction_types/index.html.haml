@@ -1,0 +1,15 @@
+.box
+  .box-header
+    .flex.align-center
+      .box-header-title
+        = tm(InteractionType, :title)
+      %span.box-header-count.text-muted= @interaction_types.length > 0 ? @interaction_types.length : ''
+
+    .btn-group
+      = link_to new_modal_interaction_types_path, class: "btn btn-primary", data: { tooltip: tc(:new) }, remote: true do
+        = fa_icon(:plus)
+
+  .box-body
+    #interaction-types-table= render partial: '/interaction_types/table', locals: { interaction_types: @interaction_types }
+
+#interaction-type-modal-outer

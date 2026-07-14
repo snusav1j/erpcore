@@ -12,9 +12,9 @@
 
     .row
       .col-md-6
-        = f.input :status, as: :select, collection: Client::CLIENT_STATUSES.map { |ct| [tm(Client, "client_status_#{ct}"), ct] }
+        = f.input :client_status_id, as: :select, collection: current_company.client_statuses.map { |cs| [cs.name, cs.id] }
       .col-md-6
-        = f.input :client_type, as: :select, collection: []
+        = f.input :client_type_id, as: :select, collection: current_company.client_types.map { |ct| [ct.name, ct.id] }, required: true
     %br
 
     - if @custom_fields.present?
