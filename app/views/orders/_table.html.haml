@@ -8,5 +8,6 @@
       %th= tm(Order, :manager)
       %th
   %tbody#orders-list
-    - @orders.each do |order|
-      = render partial: '/orders/item', locals: { order: order }
+    - if orders
+      - orders.each do |order|
+        = render partial: '/orders/item', locals: { order: order }

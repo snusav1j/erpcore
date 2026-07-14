@@ -9,5 +9,6 @@
         %th= tm(Interaction, :manager)
         %th
     %tbody#interactions-list
-      - interactions.each do |interaction|
-        = render partial: '/interactions/item', locals: { interaction: interaction }
+      - if interactions
+        - interactions.each do |interaction|
+          = render partial: '/interactions/item', locals: { interaction: interaction }

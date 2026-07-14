@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     
     @order.manager_id = current_user.id
-    @client.company_id = current_company.id
+    @order.company_id = current_company.id
     
     @created = @order.save
 

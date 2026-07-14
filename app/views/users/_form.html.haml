@@ -9,7 +9,7 @@
       .col-md-6
         = f.input :role
       .col-md-6
-        = f.input :company_id, as: :select, collection: Company.all.map { |company| [company.name, company.id] }
+        = f.input :company_id, as: :select, collection: Company.all.map { |company| [company.name, company.id] }, required: true
 
     .row
       .col-md-4
