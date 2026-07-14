@@ -1,5 +1,5 @@
 class Company < ApplicationRecord
-
+  belongs_to :manager, class_name: 'User', foreign_key: :manager_id, optional: true
   has_many :users, dependent: :restrict_with_error
   has_many :clients
   has_many :products

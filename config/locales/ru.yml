@@ -59,6 +59,8 @@ ru:
     cancel: Отмена
     only_latin: Только латинские буквы A-Z
     close: Закрыть 
+    change_column_order: Изменить порядок колонок
+    change_column_order_msg: Включите, затем перетащите заголовок колонки
     last_selected_color: Последний выбранный цвет 
     edit: Редактировать
     delete: Удалить

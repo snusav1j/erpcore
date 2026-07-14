@@ -1,9 +1,9 @@
-.table-position-editor th:not(.static-position) {
+.table-position-editor.active th:not(.static-position) {
   user-select: none;
   cursor: grab;
 }
 
-.table-position-editor th{
+.table-position-editor.active th{
   user-select: none;
 }
 
@@ -46,6 +46,6 @@ th.dragging, td.dragging{
   z-index: 9998;
 }
 
-.table-position-editor th.dragging {
+.table-position-editor.active th.dragging {
   opacity: .8;
 }

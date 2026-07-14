@@ -1,0 +1,5 @@
+.flex.align-center
+  %label.align-center{ style: "gap: 2px;", for: 'edit_column_position', data: { tooltip: tgm(:change_column_order_msg) } }
+    %div= tgm(:change_column_order)
+    .small-info-icon= fa_icon('question-circle ')
+  = check_box_tag 'edit_column_position', 1, false, class: 'switch edit-column-position', autocomplete: 'off'

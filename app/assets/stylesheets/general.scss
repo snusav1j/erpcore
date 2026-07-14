@@ -801,3 +801,11 @@ table{
   background: var(--border-hover-color);
   cursor: not-allowed;
 }
+.small-info-icon{
+  .g-icon, .fa{
+    font-size: 16px !important;
+    color: var(--primary) !important;
+  }
+  font-size: 16px !important;
+  color: var(--primary) !important;
+}

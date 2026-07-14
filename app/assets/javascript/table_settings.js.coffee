@@ -15,7 +15,7 @@ originalOrder = []
 
 
 
-$(document).on 'mousedown', '.table-position-editor thead th:not(.static-position)', (e) ->
+$(document).on 'mousedown', '.table-position-editor.active thead th:not(.static-position)', (e) ->
 
   e.preventDefault()
 
@@ -65,7 +65,7 @@ $(document).on 'mousemove', (e) ->
   return unless dragging
 
 
-  table = $('.table-position-editor').first()
+  table = $('.table-position-editor.active').first()
 
 
   if dragClone
@@ -91,7 +91,7 @@ $(document).on 'mouseup', ->
 
   if dragging and dropTargetKey
 
-    table = $('.table-position-editor').first()
+    table = $('.table-position-editor.active').first()
 
 
     moveColumn(
@@ -337,8 +337,8 @@ destroyDrag = ->
 
   $('.column-indicator').remove()
 
-  $('.table-position-editor th').removeClass('dragging')
-  $('.table-position-editor td').removeClass('dragging')
+  $('.table-position-editor.active th').removeClass('dragging')
+  $('.table-position-editor.active td').removeClass('dragging')
 
   draggedKey = null
 
@@ -354,3 +354,10 @@ destroyDrag = ->
   dropPosition = null
 
   originalOrder = []
+
+$(document).on 'change', '#edit_column_position', (e) ->
+  checked = $(this).prop('checked')
+  if checked
+    $('.table-position-editor').addClass('active')
+  else
+    $('.table-position-editor').removeClass('active')
