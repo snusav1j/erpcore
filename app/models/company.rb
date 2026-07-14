@@ -17,7 +17,6 @@ class Company < ApplicationRecord
   has_many :interaction_statuses, dependent: :destroy
 
   validates :name, presence: true
-  validates :name, uniqueness: { scope: :company_id }
   validates :slug, presence: true, uniqueness: true
 
   def inactive?
