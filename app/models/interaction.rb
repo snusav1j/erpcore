@@ -27,6 +27,8 @@ class Interaction < ApplicationRecord
       self.interaction_status&.name
     when :interaction_type_id
       self.interaction_type&.name
+    when :client_id
+      self.client&.name
     when :company_id
       self.company&.name
     else

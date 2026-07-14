@@ -2,7 +2,7 @@
   .form
     .row
       .col-md-12
-        = f.input :client_id, as: :select, collection: current_user.clients.map { |c| [c.name, c.id] }, required: true
+        = f.input :client_id, as: :select, collection: current_company.clients.map { |c| [c.name, c.id] }, required: true
     .row
       %div{ class: @order.persisted? && current_user.has_admin_rights? ? "col-md-6" : "col-md-12" }
         = f.input :order_status_id, as: :select, collection: current_company.order_statuses.map { |os| [os.name, os.id] }, required: true

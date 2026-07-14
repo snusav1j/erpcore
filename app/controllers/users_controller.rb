@@ -35,9 +35,18 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
+    old_company_id = @user.company_id
+    new_company_id = user_params[:company_id]
+
+    # if old_company_id != new_company_id
+    #   update_company_dependencies(old_company_id, new_company_id)
+    # end
+
     @updated = @user.update(user_params)
 
     @users = User.all
+
     respond_to :js
   end
 
@@ -62,5 +71,29 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit!
   end
+
+  # def update_company_dependencies(old_company_id, new_company_id)
+
+  #   Client.where(company_id: old_company_id, manager_id: @user.id).update_all(company_id: new_company_id)
+
+  #   Interaction.where(company_id: old_company_id, manager_id: @user.id).update_all(company_id: new_company_id)
+
+  #   Order.where(company_id: old_company_id, manager_id: @user.id).update_all(company_id: new_company_id)
+
+  #   Product.where(company_id: old_company_id).update_all(company_id: new_company_id)
+
+  #   OrderItem.where(company_id: old_company_id).update_all(company_id: new_company_id)
+
+  #   ClientType.where(company_id: old_company_id).update_all(company_id: new_company_id)
+
+  #   ClientStatus.where(company_id: old_company_id).update_all(company_id: new_company_id)
+
+  #   OrderStatus.where(company_id: old_company_id).update_all(company_id: new_company_id)
+
+  #   InteractionType.where(company_id: old_company_id).update_all(company_id: new_company_id)
+
+  #   InteractionStatus.where(company_id: old_company_id).update_all(company_id: new_company_id)
+
+  # end
 
 end
