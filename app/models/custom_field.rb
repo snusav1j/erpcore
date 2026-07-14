@@ -42,7 +42,17 @@ class CustomField < ApplicationRecord
       company_id: company.id
     )
   end
+  
+  def self.visible_for_entity(entity, company)
+    return none unless company
 
+    fields = where(entity: entity.to_s.classify, company_id: company.id)
+
+    fields.select do |field|
+      TableSetting.visible?(entity: field.entity, column_key: field.key, company: company)
+    end
+  end
+  
   def self.create_field(entity:, key:, label:, field_type:, required: false, company:)
     self.create!(
       entity: entity.to_s.classify,

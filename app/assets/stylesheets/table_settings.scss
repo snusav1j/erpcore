@@ -5,6 +5,7 @@
 
 .table-position-editor.active th{
   user-select: none;
+
 }
 
 .column-drag-clone {
@@ -20,9 +21,31 @@ th.dragging, td.dragging{
   opacity: 0.1 !important;
   cursor: grabbing !important;
 }
+.column-drag-clone th,
+.column-drag-clone td {
+  height: 30px;
+}
+th.dragging{
+  .change-column-position-icons{
+    display: block !important;
+  }
+}
+.column-drag-clone {
+  display: table;
+  border-collapse: collapse;
+}
+
+.column-drag-clone tr {
+  display: table-row;
+}
+
+.column-drag-clone th,
+.column-drag-clone td {
+  display: table-cell;
+}
 
 .column-drag-clone .drag-cell {
-  display: block;
+  display: table;
   border: 1px solid #ddd;
   padding: 8px;
   white-space: nowrap;
@@ -43,10 +66,31 @@ th.dragging, td.dragging{
 .column-indicator {
   position: absolute;
   width: 3px;
-  background: var(--primary);
+  background: var(--hover-primary);
   z-index: 9998;
 }
 
 .table-position-editor.active th.dragging {
   opacity: .8;
+}
+@media screen and (max-width: 767px){
+  .change-column-position-block{
+    display: none;
+  }
+  table td, th{
+    font-size: 12px !important;
+    padding: 4px 6px;
+  }
+}
+.change-column-position-icons{
+  display: none !important;
+  font-size: 18px !important;
+}
+.custom-field-badge{
+  .fa{
+    color: var(--hover-primary) !important;
+    font-size: 14.5px !important;
+  }
+  color: var(--hover-primary) !important;
+  font-size: 14.5px !important;
 }

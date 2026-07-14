@@ -13,7 +13,14 @@ dropPosition = null
 
 originalOrder = []
 
-
+$(document).on 'change', '.column-visible', ->
+  $.ajax
+    url: '/table_settings/update_visibility'
+    method: 'PATCH'
+    data:
+      entity: $(this).data('entity')
+      column_key: $(this).data('column-key')
+      visible: $(this).prop('checked')
 
 $(document).on 'mousedown', '.table-position-editor.active thead th:not(.static-position)', (e) ->
 
@@ -110,48 +117,45 @@ $(document).on 'mouseup', ->
 
   destroyDrag()
 
-
-
 createDragClone = (table, key) ->
 
-  clone = $('<div class="column-drag-clone"></div>')
+  clone = $('<table class="column-drag-clone"></table>')
 
+  thead = $('<thead><tr></tr></thead>')
+  tbody = $('<tbody></tbody>')
 
-  table.find('tr').each ->
+  header = table.find("thead th[data-column-key='#{key}']").clone()
+  header.removeAttr('id')
+  header.addClass('drag-cell')
 
-    cell = $(this)
-      .find("[data-column-key='#{key}']")
-      .clone()
+  thead.find('tr').append(header)
 
+  table.find('tbody tr').each ->
+
+    row = $('<tr></tr>')
+
+    cell = $(this).find("td[data-column-key='#{key}']").clone()
 
     cell.removeAttr('id')
-
     cell.addClass('drag-cell')
 
+    row.append(cell)
 
-    clone.append(cell)
+    tbody.append(row)
 
-
+  clone.append(thead)
+  clone.append(tbody)
 
   $('body').append(clone)
 
-
-  source = table.find(
-    "[data-column-key='#{key}']"
-  ).first()
-
+  source = table.find("[data-column-key='#{key}']").first()
 
   clone.css(
     left: source.offset().left
     top: table.offset().top
-    width: source.outerWidth()
   )
 
-
   dragClone = clone
-
-
-
 createIndicator = ->
 
   columnIndicator = $('<div class="column-indicator"></div>')

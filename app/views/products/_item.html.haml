@@ -1,7 +1,11 @@
 %tr.product-row{ data: { product_id: product.id } }
   - columns.each do |column|
-    %td{ data: { column_key: column[:key], position: column[:position] } }
-      - if column[:key] == :product_status_id
+    %td{ style: column[:visible] ? 'display: table-cell;' : 'display: none;', data: { column_key: column[:key], position: column[:position] } }
+      - if column[:key] == :created_at
+        = small_datetime(product.created_at)
+      - elsif column[:key] == :updated_at
+        = small_datetime(product.updated_at)
+      - elsif column[:key] == :product_status_id
         = color_badge(product.product_status&.name, product.product_status&.color)
       - else
         = product.table_value(column[:key])

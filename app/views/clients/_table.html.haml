@@ -3,8 +3,14 @@
     %thead
       %tr
         - columns.each do |column|
-          %th{ data: { column_key: column[:key], position: column[:position] } }
-            = column[:label]
+          %th{ style: column[:visible] ? 'display: table-cell;' : 'display: none;', data: { column_key: column[:key], position: column[:position] } }
+            .flex.align-center{ style: "gap: 2px;" }
+              = column[:label]
+              - if column[:custom]
+                %span.custom-field-badge{ data: { tooltip: tgm(:custom_field) } }= fa_icon('info-circle')
+            -# .flex.align-center{ style: "gap: 5px;" }
+            -#   = g_icon(:compare_arrows, 'change-column-position-icons')
+            -#   = column[:label]
         %th.static-position
 
     %tbody#clients-list

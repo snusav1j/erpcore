@@ -1,0 +1,12 @@
+<% if @updated %>
+  cell = $("table[data-entity='<%= @entity %>'] [data-column-key='<%= @column_key %>']")
+  <% if @visible %>
+    cell.css('display', 'table-cell')
+    toastr.primary('<%= tm(TableSetting, :column_shown, label: @column[:label]) %>')
+  <% else %>
+    cell.css('display', 'none')
+    toastr.primary('<%= tm(TableSetting, :column_hidden, label: @column[:label]) %>')
+  <% end %>
+<% else %>
+  toastr.danger('<%= tgm(:error) %>')
+<% end %>

@@ -73,6 +73,22 @@ class User < ApplicationRecord
     self.user_setting&.hide_sidebar
   end
 
+  def set_column_visibility_block_state(state)
+    (self.user_setting || self.create_user_setting).update(column_visibility_block_state: state)
+  end
+
+  def get_column_visibility_block_state
+    self.user_setting&.column_visibility_block_state
+  end
+
+  def set_custom_fields_block_state(state)
+    (self.user_setting || self.create_user_setting).update(custom_fields_block_state: state)
+  end
+
+  def get_custom_fields_block_state
+    self.user_setting&.custom_fields_block_state
+  end
+
   def fullname
     if self.last_name.present? && self.first_name.present? && self.middle_name.present?
       "#{self.last_name} #{self.first_name} #{self.middle_name}"

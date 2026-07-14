@@ -26,6 +26,11 @@ class TableSetting < ApplicationRecord
 
   end
 
+  def self.visible?(entity:, column_key:, company:)
+    setting = self.find_by(entity: entity, column_key: column_key, company: company)
+
+    setting.nil? || setting.visible
+  end
 
   def self.update_positions(entity:, columns:, company:)
 

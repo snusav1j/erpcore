@@ -1,6 +1,13 @@
 <% if @created %>
   addTableColumn("<%= @entity %>", <%= raw @column.to_json %>)
-  $("#custom_fields_table").html("<%= j render partial: '/custom_fields/custom_fields_table', locals: { custom_fields: @custom_fields } %>");
+  $("#custom_fields_table").replaceWith("<%= j render partial: '/custom_fields/custom_fields_table', locals: { custom_fields: @custom_fields } %>");
+  
+  block_body = $(".toggle-block .block-body[data-block-type='custom_fields_table']")
+  block_header = $(".toggle-block .block-header[data-block-type='custom_fields_table']")
+  block_body.slideDown()
+  block_header.find('.hide-body-btn').show()
+  block_header.find('.show-body-btn').hide()
+  
   $("#custom-field-modal").modal('hide')
   toastr.success('<%= tm(CustomField, :column_created, label: @custom_field.label) %>')
 <% else %>

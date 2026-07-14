@@ -15,7 +15,7 @@ class ApplicationRecord < ActiveRecord::Base
   end
     
   def self.table_columns(company = nil)
-    ignore_columns = %w[created_at updated_at]
+    ignore_columns = %w[company_id]
 
     return [] unless company
     columns = []
@@ -28,6 +28,12 @@ class ApplicationRecord < ActiveRecord::Base
         label: I18n.t(
           "activerecord.attributes.#{self.model_name.i18n_key}.#{column}",
           default: column.humanize
+        ),
+        custom: false,
+        visible: TableSetting.visible?(
+          entity: self.name,
+          column_key: column,
+          company: company
         ),
         position: company ? TableSetting.position(
           entity: self.name,
@@ -43,6 +49,11 @@ class ApplicationRecord < ActiveRecord::Base
           key: field.key.to_sym,
           label: field.label,
           custom: true,
+          visible: TableSetting.visible?(
+            entity: self.name,
+            column_key: field.key,
+            company: company
+          ),
           position: TableSetting.position(
             entity: self.name,
             column_key: field.key,
@@ -62,8 +73,6 @@ class ApplicationRecord < ActiveRecord::Base
     send(column)
 
   end
-
-  private
 
   def custom_field?(column)
     CustomField.exists?(entity: self.class.name, key: column.to_s, company: company)

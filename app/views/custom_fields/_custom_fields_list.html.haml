@@ -3,6 +3,7 @@
   .text-muted.custom-fields-title= tm(CustomField, :title)
   .row
     - custom_fields.each do |field|
+      
       .col-md-6
         - value = model.custom_field_values.find_by(custom_field_id: field.id)&.value
         

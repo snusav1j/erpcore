@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   resources :table_settings, only: [:index] do
     collection do
       patch :update_positions
+      patch :update_visibility
+      get :index_modal
     end
   end
 
@@ -19,6 +21,17 @@ Rails.application.routes.draw do
     collection do
       get :new_modal
       get :edit_modal
+    end
+  end
+  
+  resources :user_settings do
+    collection do
+      post :set_sidebar_state
+      post :set_column_visibility_block_state
+      post :set_custom_fields_table_block_state
+    end
+    
+    member do
     end
   end
 
@@ -45,7 +58,6 @@ Rails.application.routes.draw do
   resources :custom_fields, only: [:index, :new, :create, :destroy, :update] do
     collection do
       get :new_modal
-      get :index_modal
     end
     
     member do
@@ -73,27 +85,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :client_statuses do
-    collection do
-      get :new_modal
-      get :edit_modal
-    end
-    
-    member do
-    end
-  end
-
-  resources :interaction_statuses do
-    collection do
-      get :new_modal
-      get :edit_modal
-    end
-    
-    member do
-    end
-  end
-
-  resources :interaction_types do
+  resources :clients do
     collection do
       get :new_modal
       get :edit_modal
@@ -113,19 +105,10 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :clients do
+  resources :client_statuses do
     collection do
       get :new_modal
       get :edit_modal
-    end
-    
-    member do
-    end
-  end
-  
-  resources :user_settings do
-    collection do
-      post :set_sidebar_state
     end
     
     member do
@@ -141,4 +124,25 @@ Rails.application.routes.draw do
     member do
     end
   end
+  
+  resources :interaction_types do
+    collection do
+      get :new_modal
+      get :edit_modal
+    end
+    
+    member do
+    end
+  end
+  
+  resources :interaction_statuses do
+    collection do
+      get :new_modal
+      get :edit_modal
+    end
+    
+    member do
+    end
+  end
+
 end

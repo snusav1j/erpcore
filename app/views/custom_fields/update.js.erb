@@ -1,6 +1,6 @@
 <% if @updated %>
   updateTableColumn("<%= @entity %>", <%= raw @column.to_json %>)
-  $("#custom_fields_table").html("<%= j render partial: '/custom_fields/custom_fields_table', locals: { custom_fields: @custom_fields } %>");
+  $("#custom_fields_table").replaceWith("<%= j render partial: '/custom_fields/custom_fields_table', locals: { custom_fields: @custom_fields } %>");
   $("#custom-field-modal").modal('hide')
   toastr.success('<%= tm(CustomField, :column_updated, label: @custom_field.label) %>')
 <% else %>

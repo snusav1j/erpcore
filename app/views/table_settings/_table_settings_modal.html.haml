@@ -1,0 +1,53 @@
+.modal.fade#custom-fields-modal
+  .modal-dialog.modal-sm
+    .modal-content
+      .modal-header
+        
+        %h4.modal-title= tc(:title)
+        .flex.align-center
+          = link_to new_modal_custom_fields_path(entity: @entity), remote: true, class: 'btn btn-primary' do
+            = tm(CustomField, :add_field)
+          %button.close{ "aria-label" => "Close", "data-dismiss" => "modal", "type" => "button" }
+            %span{"aria-hidden" => "true"}= g_icon(:close)
+
+      .modal-body
+        .row
+          .col-md-12
+
+            .toggle-block
+              - block_state = current_user.get_custom_fields_block_state
+              - body_style = block_state ? "display: block;" : "display: none;"
+              - hide_btn_style = block_state ? "display: block;" : "display: none;"
+              - show_btn_style = block_state ? "display: none;" : "display: block;"
+
+              .block-header{ data: { block_type: 'custom_fields_table' } }
+                .flex.justify-space-between.align-center
+                  .custom-fields-title= tm(CustomField, :title)
+
+                  .hide-body-btn{ style: hide_btn_style }= g_icon(:keyboard_arrow_up)
+                  .show-body-btn{ style: show_btn_style }= g_icon(:keyboard_arrow_down)
+
+              .block-body{ style: body_style, data: { block_type: 'custom_fields_table' } }
+                = render partial: '/custom_fields/custom_fields_table', locals: { custom_fields: @custom_fields }
+
+        .row
+          .col-md-12
+
+            .toggle-block
+              - block_state = current_user.get_column_visibility_block_state
+              - body_style = block_state ? "display: block;" : "display: none;"
+              - hide_btn_style = block_state ? "display: block;" : "display: none;"
+              - show_btn_style = block_state ? "display: none;" : "display: block;"
+
+              .block-header{ data: { block_type: 'column_visibility' } }
+                .flex.justify-space-between.align-center
+                  .custom-fields-title= tm(TableSetting, :hide_show_columns)
+
+                  .hide-body-btn{ style: hide_btn_style }= g_icon(:keyboard_arrow_up)
+                  .show-body-btn{ style: show_btn_style }= g_icon(:keyboard_arrow_down)
+
+              .block-body{ style: body_style, data: { block_type: 'column_visibility' } }
+                = render partial: '/table_settings/column_visibility', locals: { columns: @columns, entity: @entity }
+
+      .modal-footer
+        %button.btn.btn-default.pull-right{"data-dismiss" => "modal", :type => "button"}= tgm(:close)

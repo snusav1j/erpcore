@@ -14,7 +14,7 @@ class ClientsController < ApplicationController
 
   def new_modal
     @client = Client.new
-    @custom_fields = CustomField.for_entity(:client, current_company)
+    @custom_fields = CustomField.visible_for_entity(:client, current_company)
 
     respond_to :js
   end
@@ -22,7 +22,7 @@ class ClientsController < ApplicationController
 
   def edit_modal
     @client = current_user.company.clients.find(params[:id])
-    @custom_fields = CustomField.for_entity(:client, current_company)
+    @custom_fields = CustomField.visible_for_entity(:client, current_company)
 
     respond_to :js
   end

@@ -1,0 +1,8 @@
+%table#table_settings_column_visibility
+  %tbody
+    - columns.each do |column|
+      %tr
+        %td
+          %span= column[:label]
+        %td
+          = check_box_tag "column_#{column[:key]}", column[:key], column[:visible], class: 'switch column-visible', data: { entity: entity, column_key: column[:key] }

@@ -85,3 +85,26 @@ $ ->
     $('.tabs li').removeClass('active')
     $(this).parent().addClass('active')
 
+
+  $(document).on 'click', '.toggle-block .block-header', (e) ->
+    toggle_block = $(this).parent('.toggle-block')
+    block_type = $(this).attr('data-block-type')
+
+    hide_body_btn = toggle_block.find('.hide-body-btn')
+    show_body_btn = toggle_block.find('.show-body-btn')
+
+    toggle_block.find('.block-body').slideToggle(200)
+    setTimeout ->
+      toggle_block.find('.hide-body-btn').toggle()
+      toggle_block.find('.show-body-btn').toggle()
+    , 150
+
+    if block_type
+      block_hidden = show_body_btn.is(':visible')
+      $.ajax 
+        url: "/user_settings/set_#{block_type}_block_state",
+        type: 'POST'
+        dataType: 'script'
+        async: true
+        data:
+          block_hidden: block_hidden

@@ -8,7 +8,7 @@
 
     .btn-group
       = render partial: '/table_settings/change_column_poistion_btn'
-      = link_to index_modal_custom_fields_path(entity: "Order"), remote: true, data: { tooltip: tm(:CustomField, :table_settings) }, class: "btn btn-default" do
+      = link_to index_modal_table_settings_path(entity: "Order"), remote: true, data: { tooltip: tm(:CustomField, :table_settings) }, class: "btn btn-default" do
         = fa_icon(:gear)
       = link_to new_modal_orders_path, class: "btn btn-primary", data: { tooltip: tc(:new) }, remote: true do 
         = fa_icon(:plus)

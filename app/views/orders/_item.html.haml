@@ -1,7 +1,11 @@
 %tr.order-row{ data: { order_id: order.id } }
   - columns.each do |column|
-    %td{ data: { column_key: column[:key], position: column[:position] } }
-      - if column[:key] == :order_status_id
+    %td{ style: column[:visible] ? 'display: table-cell;' : 'display: none;', data: { column_key: column[:key], position: column[:position] } }
+      - if column[:key] == :created_at
+        = small_datetime(order.created_at)
+      - elsif column[:key] == :updated_at
+        = small_datetime(order.updated_at)
+      - elsif column[:key] == :order_status_id
         = color_badge(order.order_status&.name, order.order_status&.color)
       - else
         = order.table_value(column[:key])

@@ -1,17 +1,16 @@
-.text-muted.custom-fields-title{ style: "margin-bottom: 5px;" }= tm(CustomField, :title)
-%table.table
+%table#custom_fields_table.table
   %thead
     %tr
       %th= tm(CustomField, :id)
-      %th= tm(CustomField, :key)
       %th= tm(CustomField, :label)
+      %th= tm(CustomField, :key)
       %th= tm(CustomField, :field_type)
       %th{ colspan: 2 }
   - custom_fields.each do |field|
     %tr{ data: { entity: field.entity, key: field.key } }
       %td= field.id
-      %td= field.key
       %td= field.label
+      %td= field.key
       %td= field.field_type
       %td
 

@@ -3,13 +3,6 @@ class CustomFieldsController < ApplicationController
     get_custom_fields
   end
 
-  def index_modal
-    @entity = params[:entity]
-    @custom_fields = CustomField.for_entity(@entity, current_company)
-
-    respond_to :js
-  end
-
   def new_modal
     @entity = params[:entity]
     @custom_field = CustomField.new(entity: @entity, company_id: current_company.id)

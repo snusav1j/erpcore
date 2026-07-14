@@ -3,7 +3,7 @@
     %thead
       %tr
         - columns.each do |column|
-          %th{ data: { column_key: column[:key], position: column[:position] } }
+          %th{ style: column[:visible] ? 'display: table-cell;' : 'display: none;', data: { column_key: column[:key], position: column[:position] } }
             = column[:label]
         %th.static-position
 

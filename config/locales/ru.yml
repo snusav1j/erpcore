@@ -30,9 +30,11 @@ ru:
       new: Новое взаимодействие
       edit: Редактировать взаимодействие
     custom_fields:
-      title: Настройка таблиц
+      title: Настройка полей
       new: Новое поле
       edit: Редактировать поле
+    table_settings:
+      title: Настройка таблиц
     companies:
       title: Компании
       new: Новая компания
@@ -59,6 +61,7 @@ ru:
     cancel: Отмена
     only_latin: Только латинские буквы A-Z
     close: Закрыть 
+    custom_field: Пользовательское поле 
     change_column_order: Изменить порядок колонок
     change_column_order_msg: Включите, затем перетащите заголовок колонки
     last_selected_color: Последний выбранный цвет 
@@ -97,8 +100,8 @@ ru:
         telegram_chat_id: Telegram Chat ID
         company: Компания
         company_id: ID Компании
-        created_at: Создано в
-        updated_at: Обновлено в
+        created_at: Создано
+        updated_at: Обновлено
 
         role_ceo: CEO
         role_director: Директор
@@ -131,8 +134,8 @@ ru:
         manager_id: Менеджер
         client_status_id: Статус
         client_type_id: Тип
-        created_at: Создано в
-        updated_at: Обновлено в
+        created_at: Создано
+        updated_at: Обновлено
         company: Компания
         company_id: Компания
 
@@ -157,8 +160,8 @@ ru:
         closed_at: Дата закрытия
         manager: Менеджер
         manager_id: Менеджер
-        created_at: Создано в
-        updated_at: Обновлено в
+        created_at: Создано
+        updated_at: Обновлено
         
         order_created: Заказ создан
         order_updated: Заказ обновлен
@@ -176,12 +179,17 @@ ru:
         comment: Комментарий
         company: Компания
         company_id: Компания
-        created_at: Создано в
-        updated_at: Обновлено в
+        created_at: Создано
+        updated_at: Обновлено
 
         product_created: Товар создан
         product_updated: Товар обновлен
         product_destroyed: Товар удален
+
+      table_setting:
+        column_shown: Колонка «%{label}» показана
+        column_hidden: Колонка «%{label}» скрыта
+        hide_show_columns: Скрыть/Показать колонки
 
       custom_field:
         id: ID
@@ -191,17 +199,17 @@ ru:
         label: Название
         field_type: Тип поля
         required: Обязательное поле
-        created_at: Создано в
-        updated_at: Обновлено в
+        created_at: Создано
+        updated_at: Обновлено
         title: Пользовательские поля
         table_settings: Настройка таблиц
         new: Новое поле
         edit: Редактировать поле
+        add_field: Добавить поле
 
         column_created: Колонка «%{label}» добавлена
         column_updated: Колонка «%{label}» обновлена
         column_destroyed: Колонка «%{label}» удалена
-
       company:
         id: ID
         title: Компании
@@ -226,8 +234,8 @@ ru:
         occurred_at: Дата обращения
         manager: Менеджер
         manager_id: Менеджер
-        created_at: Создано в
-        updated_at: Обновлено в
+        created_at: Создано
+        updated_at: Обновлено
         company: Компания
         company_id: Компания
         interaction_type_id: Тип взаимодействия
@@ -243,8 +251,8 @@ ru:
         name: Название
         company: Компания
         color: Код цвета
-        created_at: Создано в
-        updated_at: Обновлено в
+        created_at: Создано
+        updated_at: Обновлено
 
         client_type_created: Тип клиентов создан
         client_type_updated: Тип клиентов обновлен
@@ -256,8 +264,8 @@ ru:
         name: Название
         company: Компания
         color: Код цвета
-        created_at: Создано в
-        updated_at: Обновлено в
+        created_at: Создано
+        updated_at: Обновлено
 
         interaction_type_created: Тип взаимодействий создан
         interaction_type_updated: Тип взаимодействий обновлен
@@ -269,8 +277,8 @@ ru:
         name: Название
         company: Компания
         color: Код цвета
-        created_at: Создано в
-        updated_at: Обновлено в
+        created_at: Создано
+        updated_at: Обновлено
 
         interaction_status_created: Статус взаимодействий создан
         interaction_status_updated: Статус взаимодействий обновлен
@@ -282,8 +290,8 @@ ru:
         name: Название
         company: Компания
         color: Код цвета
-        created_at: Создано в
-        updated_at: Обновлено в
+        created_at: Создано
+        updated_at: Обновлено
 
         order_status_created: Статус заказов создан
         order_status_updated: Статус заказов обновлен
@@ -295,8 +303,8 @@ ru:
         name: Название
         color: Код цвета
         company: Компания
-        created_at: Создано в
-        updated_at: Обновлено в
+        created_at: Создано
+        updated_at: Обновлено
 
         client_status_created: Статус клиентов создан
         client_status_updated: Статус клиентов обновлен
