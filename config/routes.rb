@@ -63,6 +63,16 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :order_statuses do
+    collection do
+      get :new_modal
+      get :edit_modal
+    end
+    
+    member do
+    end
+  end
+
   resources :client_statuses do
     collection do
       get :new_modal

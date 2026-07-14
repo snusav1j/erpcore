@@ -1,7 +1,10 @@
 class ApplicationController < ActionController::Base
+  include Pundit::Authorization
   include ApplicationHelper
   include TranslateHelper
 
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  
   before_action :authenticate_user!
   before_action :set_global_vars
 	before_action :load_custom_fields
@@ -130,4 +133,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def user_not_authorized
+    redirect_to root_path, alert: tgm(:access_denied)
+  end
 end

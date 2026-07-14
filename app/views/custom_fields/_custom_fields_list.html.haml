@@ -1,9 +1,10 @@
+%br
 #form-custom-fields
   .text-muted.custom-fields-title= tm(CustomField, :title)
   .row
     - custom_fields.each do |field|
       .col-md-6
-        - value = @client.custom_field_values.find_by(custom_field_id: field.id)&.value
+        - value = model.custom_field_values.find_by(custom_field_id: field.id)&.value
         
         - if field.field_type != "boolean"
           .custom-input-label

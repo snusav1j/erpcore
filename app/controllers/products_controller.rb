@@ -11,11 +11,13 @@ class ProductsController < ApplicationController
 
   def new_modal
     @product = Product.new
+    @custom_fields = CustomField.for_entity(:product, current_company)
     respond_to :js
   end
 
   def edit_modal
     @product = Product.find(params[:id])
+    @custom_fields = CustomField.for_entity(:product, current_company)
     respond_to :js
   end
 
@@ -25,6 +27,7 @@ class ProductsController < ApplicationController
     @product.manager_id = current_user.id
 
     @created = @product.save
+    CustomFieldsHandler.new(@product, params, current_company).save if @created
 
     get_products
     respond_to :js
@@ -34,6 +37,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     @updated = @product.update(product_params)
+    CustomFieldsHandler.new(@product, params, current_company).save if @updated
 
     get_products
     respond_to :js
@@ -55,7 +59,7 @@ class ProductsController < ApplicationController
   end
 
   def get_columns
-    @columns = Product.table_columns
+    @columns = Product.table_columns(current_company)
   end
 
   def product_params

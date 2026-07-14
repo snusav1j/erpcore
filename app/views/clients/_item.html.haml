@@ -1,7 +1,7 @@
 %tr.client-row{ data: { client_id: client.id } }
   - columns.each do |column|
     %td{ data: { column_key: column[:key], position: column[:position] } }
-      - if column[:key] == :status_id
+      - if column[:key] == :client_status_id
         = color_badge(client.client_status&.name, client.client_status&.color)
       - else
         = client.table_value(column[:key])

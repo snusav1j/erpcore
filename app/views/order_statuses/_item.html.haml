@@ -1,0 +1,7 @@
+%tr.order-status-row{ data: { order_status_id: order_status.id } }
+  %td= order_status.id
+  %td= order_status&.name
+  %td= color_badge(order_status&.color, order_status&.color)
+  %td
+    = link_to order_status_path(order_status), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true do
+      = g_icon(:delete, 'sm-g-icon')

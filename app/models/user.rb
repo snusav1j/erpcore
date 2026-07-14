@@ -14,32 +14,55 @@ class User < ApplicationRecord
 
   scope :active, -> { where.not(banned: true) }
 
-  ROLES = %w[user worker director manager].freeze
+  ROLES = %w[ceo director manager].freeze
 
   validates :role, inclusion: { in: ROLES }
 
+  def roles_for_edit
+    if self.ceo?
+      %w[ceo director manager]
+    elsif self.director?
+      %w[director manager]
+    end
+  end
+
+  def has_admin_rights?
+    self.ceo? || self.director?
+  end
+
+  def can_edit_company_for?(user)
+    return true if self.ceo?
+  end
+
+  def can_edit_role_for?(user)
+    return true if self.ceo?
+    return false if self.manager?
+
+    if self.director?
+      return user.manager?
+    end
+
+    false
+  end
+
   def can_interact_with_client?(client)
-    (self.id == client.manager_id) || self.director?
+    (self.id == client.manager_id) || self.has_admin_rights?
   end
 
   def banned?
     self.banned == true
   end
 
-  def user?
-    role == 'user'
-  end
-
-  def worker?
-    role == 'worker'
+  def ceo?
+    self.role == 'ceo'
   end
 
   def director?
-    role == 'director'
+    self.role == 'director'
   end
 
   def manager?
-    role == 'manager'
+    self.role == 'manager'
   end
 
   def set_sidebar_state(state)
@@ -48,6 +71,16 @@ class User < ApplicationRecord
 
   def get_sidebar_state
     self.user_setting&.hide_sidebar
+  end
+
+  def fullname
+    if self.last_name.present? && self.first_name.present? && self.middle_name.present?
+      "#{self.last_name} #{self.first_name} #{self.middle_name}"
+    elsif self.last_name.present? && self.first_name.present?
+      "#{self.last_name} #{self.first_name}"
+    else
+      self.email
+    end
   end
 
   private

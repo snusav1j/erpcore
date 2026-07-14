@@ -17,4 +17,22 @@ class Interaction < ApplicationRecord
   def interaction_type_name
     tm(Interaction, "interaction_type_#{self.interaction_type}")
   end
+
+  def table_value(column)
+
+    case column.to_sym
+    when :manager_id
+      manager&.email
+    when :interaction_status_id
+      self.interaction_status&.name
+    when :interaction_type_id
+      self.interaction_type&.name
+    when :company_id
+      self.company&.name
+    else
+      super
+    end
+
+  end
+
 end

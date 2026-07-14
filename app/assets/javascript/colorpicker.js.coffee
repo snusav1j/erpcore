@@ -24,11 +24,13 @@ jQuery.fn.colorPicker = (last_color_title='last color') ->
     pickr.on 'init', ->
       $(pickr.getRoot().app).find('.pcr-last-color').attr('data-tooltip', last_color_title)
 
-    pickr.on 'change', (color) ->
-      $(input).val(color.toHEXA().toString())
+      if $(input).val()
+        $(pickr.getRoot().button).attr('style', "--pcr-color: #{$(input).val()};")
 
-    pickr.on 'save', (color) ->
-      $(input).val(color.toHEXA().toString())
-      pickr.hide()
+    pickr.on 'change', (color) ->
+      hex = color.toHEXA().toString()
+
+      $(input).val(hex)
+      $(pickr.getRoot().button).attr('style', "--pcr-color: #{hex};")
 
   this

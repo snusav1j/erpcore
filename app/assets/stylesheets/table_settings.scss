@@ -3,8 +3,7 @@
   cursor: grab;
 }
 
-.table-position-editor th,
-.table-position-editor td {
+.table-position-editor th{
   user-select: none;
 }
 
@@ -16,9 +15,11 @@
   opacity: .8;
   box-shadow: 0 5px 20px rgba(0,0,0,.25);
 }
+
 th.dragging, td.dragging{
   opacity: 0.1 !important;
 }
+
 .column-drag-clone .drag-cell {
   display: block;
   border: 1px solid #ddd;
@@ -44,7 +45,6 @@ th.dragging, td.dragging{
   background: var(--primary);
   z-index: 9998;
 }
-
 
 .table-position-editor th.dragging {
   opacity: .8;

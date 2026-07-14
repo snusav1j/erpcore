@@ -1,0 +1,16 @@
+.box
+  .box-header
+    .flex.align-center
+      .box-header-title
+        = tm(OrderStatus, :title)
+      %span.box-header-count.text-muted= @order_statuses.length > 0 ? @order_statuses.length : ''
+
+    .btn-group
+      = link_to new_modal_order_statuses_path, class: "btn btn-primary", data: { tooltip: tc(:new) }, remote: true do
+        = fa_icon(:plus)
+
+  .box-body
+    #order-statuses-table= render partial: '/order_statuses/table', locals: { order_statuses: @order_statuses }
+
+
+#order-status-modal-outer

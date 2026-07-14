@@ -1,4 +1,6 @@
 class CompaniesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_action
   before_action :get_columns, only: [:index, :create, :update]
 
   def index
@@ -44,6 +46,10 @@ class CompaniesController < ApplicationController
   end
 
   private
+
+  def authorize_action
+    authorize :company
+  end
 
   def get_columns
     @columns = Company.table_columns

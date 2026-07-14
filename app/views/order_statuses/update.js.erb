@@ -1,0 +1,7 @@
+<% if @updated %>
+  $("tr.order-status-row[data-order-status-id='<%= @order_status.id %>']").replaceWith("<%= j render partial: '/order_statuses/item', locals: { order_status: @order_status } %>");
+  $('#order-status-modal').modal('hide');
+  toastr.success('<%= tm(OrderStatus, :order_status_updated) %>')
+<% else %>
+  toastr.danger('<%= tgm(:error) %>')
+<% end %>

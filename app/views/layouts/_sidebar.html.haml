@@ -39,29 +39,39 @@
         = g_icon(:circle_circle)
         .sidebar-title
           = tm(InteractionStatus, :title)
-    %br
 
+    %br
     .sidebar-item{ class: orders_path.include?(@cur_url) ? 'active' : '' }
       = link_to orders_path do
         = g_icon(:receipt_long)
         .sidebar-title
           = tm(Order, :title)
+
+    .sidebar-item{ class: order_statuses_path.include?(@cur_url) ? 'active' : '' }
+      = link_to order_statuses_path do
+        = g_icon(:circle_circle)
+        .sidebar-title
+          = tm(OrderStatus, :title)
         
+    %br
     .sidebar-item{ class: products_path.include?(@cur_url) ? 'active' : '' }
       = link_to products_path do
         = g_icon(:package_2)
         .sidebar-title
           = tm(Product, :title)
-    %br
-    .sidebar-item{ class: companies_path.include?(@cur_url) ? 'active' : '' }
-      = link_to companies_path do
-        = g_icon(:corporate_fare)
-        .sidebar-title
-          = tm(Company, :title)
+
         
-    .sidebar-item{ class: users_path.include?(@cur_url) ? 'active' : '' }
-      = link_to users_path do
-        = g_icon(:groups)
-        .sidebar-title
-          = tm(User, :title)
+    - if policy(:user).index?
+      %br
+      .sidebar-item{ class: users_path.include?(@cur_url) ? 'active' : '' }
+        = link_to users_path do
+          = g_icon(:groups)
+          .sidebar-title
+            = tm(User, :title)
+    - if policy(:company).index?
+      .sidebar-item{ class: companies_path.include?(@cur_url) ? 'active' : '' }
+        = link_to companies_path do
+          = g_icon(:corporate_fare)
+          .sidebar-title
+            = tm(Company, :title)
 

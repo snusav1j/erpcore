@@ -11,11 +11,13 @@ class InteractionsController < ApplicationController
 
   def new_modal
     @interaction = Interaction.new
+    @custom_fields = CustomField.for_entity(:interaction, current_company)
     respond_to :js
   end
 
   def edit_modal
     @interaction = Interaction.find(params[:id])
+    @custom_fields = CustomField.for_entity(:interaction, current_company)
     respond_to :js
   end
 
@@ -25,7 +27,9 @@ class InteractionsController < ApplicationController
     
     @created = @interaction.save
 
-    @interaction.client.update(status: Client::CLIENT_STATUS_POTENTIAL) if @created
+    if @created
+      CustomFieldsHandler.new(@interaction, params, current_company).save
+    end
     
     get_interactions
     respond_to :js
@@ -34,6 +38,7 @@ class InteractionsController < ApplicationController
   def update
     @interaction = Interaction.find(params[:id])
     @updated = @interaction.update(interaction_params) if current_user.can_interact_with_client?(@interaction.client)
+    CustomFieldsHandler.new(@interaction, params, current_company).save if @updated
 
     get_interactions
     respond_to :js
@@ -55,7 +60,7 @@ class InteractionsController < ApplicationController
 
 
   def get_columns
-    @columns = Interaction.table_columns
+    @columns = Interaction.table_columns(current_company)
   end
 
   def interaction_params

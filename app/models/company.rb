@@ -12,10 +12,12 @@ class Company < ApplicationRecord
   
   has_many :client_types, dependent: :destroy
   has_many :client_statuses, dependent: :destroy
+  has_many :order_statuses, dependent: :destroy
   has_many :interaction_types, dependent: :destroy
   has_many :interaction_statuses, dependent: :destroy
 
   validates :name, presence: true
+  validates :name, uniqueness: { scope: :company_id }
   validates :slug, presence: true, uniqueness: true
 
   def inactive?

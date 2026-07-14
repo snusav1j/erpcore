@@ -1,0 +1,8 @@
+<% if @created %>
+  $("#order-statuses-list").append("<%= j render partial: '/order_statuses/item', locals: { order_status: @order_status } %>");
+  $('#order-status-modal').modal('hide');
+  toastr.success('<%= tm(OrderStatus, :order_status_created) %>')
+<% else %>
+  toastr.danger('<%= tgm(:error) %>')
+<% end %>
+

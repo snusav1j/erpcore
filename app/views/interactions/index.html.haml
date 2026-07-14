@@ -13,6 +13,6 @@
         = fa_icon(:plus)
 
   .box-body
-    = render partial: '/interactions/table', locals: { interactions: @interactions }
+    #interactions-table= render partial: '/interactions/table', locals: { interactions: @interactions, columns: @columns, entity: 'Interaction' }
 
 #interaction-modal-outer

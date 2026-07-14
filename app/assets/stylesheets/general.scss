@@ -795,3 +795,9 @@ table{
   padding: 2px 4px;
   border-radius: 3px;
 }
+
+.custom-disabled {
+  pointer-events: none;
+  background: var(--border-hover-color);
+  cursor: not-allowed;
+}

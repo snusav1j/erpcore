@@ -1,0 +1,12 @@
+= simple_form_for @order_status, remote: true, html: { id: 'order-status-form', novalidate: false } do |f|
+  .form
+    .row
+      .col-md-12
+        = f.input :name, required: true
+      
+    .row
+      .col-md-12
+        .form-group
+          %label Цвет статуса
+          .colorpicker-wrapper
+            = f.input_field :color, class: 'colorpicker-input'

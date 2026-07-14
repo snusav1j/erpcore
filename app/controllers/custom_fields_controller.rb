@@ -12,7 +12,6 @@ class CustomFieldsController < ApplicationController
 
   def new_modal
     @entity = params[:entity]
-
     @custom_field = CustomField.new(entity: @entity, company_id: current_company.id)
 
     respond_to :js

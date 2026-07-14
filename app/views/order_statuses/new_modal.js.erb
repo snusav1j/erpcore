@@ -1,0 +1,3 @@
+$('#order-status-modal-outer').html("<%= j render partial: '/order_statuses/order_status_modal', locals: { title: tc(:new) } %>");
+$('.colorpicker-input').colorPicker('<%= tgm(:last_selected_color) %>')
+$('#order-status-modal').modal('show');

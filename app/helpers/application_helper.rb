@@ -106,7 +106,7 @@ module ApplicationHelper
 
     brightness = ((r * 299) + (g * 587) + (b * 114)) / 1000
 
-    brightness > 150 ? '#000000' : '#ffffff'
+    brightness > 160 ? '#000000' : '#ffffff'
   end
 
 end

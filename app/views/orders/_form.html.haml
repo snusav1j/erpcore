@@ -1,12 +1,20 @@
 = simple_form_for @order, remote: true, html: { id: 'order-form', novalidate: false } do |f|
   .form
-    = f.input :client_id, as: :select, collection: Client.all.map { |wu| [wu.name, wu.id] }, required: true
-    = f.input :status
+    .row
+      .col-md-12
+        = f.input :client_id, as: :select, collection: Client.all.map { |c| [c.name, c.id] }, required: true
+    .row
+      %div{ class: @order.persisted? && current_user.has_admin_rights? ? "col-md-6" : "col-md-12" }
+        = f.input :order_status_id, as: :select, collection: current_company.order_statuses.map { |os| [os.name, os.id] }, required: true
 
-    - if @order.persisted?
-      = f.input :closed_at, as: :datetime, as: :string, input_html: { class: 'datetime-picker' }
+      - if current_user.has_admin_rights? && @order.persisted?
+        .col-md-6
+          = f.input :manager_id, as: :select, collection: User.all.map { |u| [u.fullname, u.id] }
+          
+    - if @custom_fields.present?
+      = render partial: '/custom_fields/custom_fields_list', locals: { custom_fields: @custom_fields, model: @order }
 
-    - if current_user.director?
-      = f.input :manager_id
     %br
-    = f.input :comment
+    .row
+      .col-md-12
+        = f.input :comment

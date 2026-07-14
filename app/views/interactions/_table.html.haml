@@ -1,14 +1,13 @@
 .table-responsive
-  %table
+  %table.table-position-editor{ data: { entity: entity } }
     %thead
       %tr
-        %th= tm(Interaction, :client)
-        %th= tm(Interaction, :interaction_type)
-        %th= tm(Interaction, :status)
-        %th= tm(Interaction, :comment)
-        %th= tm(Interaction, :manager)
-        %th
+        - columns.each do |column|
+          %th{ data: { column_key: column[:key], position: column[:position] } }
+            = column[:label]
+        %th.static-position
+
     %tbody#interactions-list
       - if interactions
         - interactions.each do |interaction|
-          = render partial: '/interactions/item', locals: { interaction: interaction }
+          = render partial: 'item', locals: { interaction: interaction, columns: columns }

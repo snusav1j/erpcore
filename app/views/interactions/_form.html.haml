@@ -1,7 +1,21 @@
 = simple_form_for @interaction, remote: true, html: { id: 'interaction-form', novalidate: false } do |f|
   .form
-    = f.input :client_id, as: :select, collection: Client.all.map { |wu| [wu.name, wu.id] }, required: true
-    = f.input :interaction_type_id, as: :select, collection: current_company.interaction_types.map { |it| [it.name, it.id] }, required: true
+    .row
+      .col-md-6
+        = f.input :client_id, as: :select, collection: Client.all.map { |c| [c.name, c.id] }, required: true
+      .col-md-6
+        - if current_user.has_admin_rights?
+          = f.input :manager_id, as: :select, collection: User.all.map { |u| [u.fullname, u.id] }, selected: @interaction.manager_id
+    .row
+      .col-md-6
+        = f.input :interaction_type_id, as: :select, collection: current_company.interaction_types.map { |it| [it.name, it.id] }, required: true
 
-    = f.input :interaction_status_id, as: :select, collection: current_company.interaction_statuses.map { |is| [is.name, is.id] }
-    = f.input :comment
+      .col-md-6
+        = f.input :interaction_status_id, as: :select, collection: current_company.interaction_statuses.map { |is| [is.name, is.id] }
+
+    - if @custom_fields.present?
+      = render partial: '/custom_fields/custom_fields_list', locals: { custom_fields: @custom_fields, model: @interaction }
+    %br
+    .row
+      .col-md-12
+        = f.input :comment

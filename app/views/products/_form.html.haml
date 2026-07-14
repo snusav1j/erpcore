@@ -1,28 +1,23 @@
 = simple_form_for @product, remote: true, html: { id: 'product-form', novalidate: false } do |f|
   .form
     .row
-      .col-md-6
+      .col-md-12
         = f.input :name, required: true
-      .col-md-6
-        = f.input :sku
+
+    .justify-end
+
+      .row.align-center
+        .col-md-6
+          = f.input :price, required: true
+
+        .col-md-6.justify-end
+          .form-group
+            = f.label :in_stock
+            = f.check_box :in_stock, class: 'switch'
+
+    %br
     .row
       .col-md-12
         = f.input :comment
-
-    %br
-    .justify-end
-      .row
-        .col-md-6
-
-        .col-md-6
-          .row
-            .col-md-6
-              = f.input :price, required: true
-
-            .col-md-6
-              .form-group
-                = f.label :in_stock
-                = f.check_box :in_stock, class: 'switch'
-
     -# - if current_user.director?
     -#   = f.input :manager_id, as: :select, collection: User.all.map { |u| [u.email, u.id] }

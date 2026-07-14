@@ -5,11 +5,15 @@
         = tm(Product, :title)
       %span.box-header-count.text-muted
         = @products ? (@products.length > 0 ? @products.length : '')  : ''
+
     .btn-group
-      = link_to new_modal_products_path, class: "btn btn-primary", remote: true, data: { tooltip: tc(:new) } do 
+      = link_to index_modal_custom_fields_path(entity: "Product"), remote: true, data: { tooltip: tm(:CustomField, :table_settings) }, class: "btn btn-default" do
+        = fa_icon(:gear)
+      = link_to new_modal_products_path, class: "btn btn-primary", data: { tooltip: tc(:new) }, remote: true do 
         = fa_icon(:plus)
 
   .box-body
-    = render partial: '/products/table', locals: { products: @products }
+    #products-table= render partial: '/products/table', locals: { products: @products, columns: @columns, entity: 'Product' }
+
 
 #product-modal-outer

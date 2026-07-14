@@ -9,7 +9,9 @@ class Client < ApplicationRecord
   belongs_to :client_type
   belongs_to :client_status
 
+  validates :name, presence: true
   validates :name, uniqueness: { scope: :company_id }
+  
   self.custom_fields_enabled = true
 
   CLIENT_STATUS_NEW = 1
@@ -36,11 +38,13 @@ class Client < ApplicationRecord
 
     case column.to_sym
     when :manager_id
-      manager&.email
-    when :status_id
+      manager&.fullname
+    when :client_status_id
       self.client_status&.name
     when :client_type_id
       self.client_type&.name
+    when :company_id
+      self.company&.name
     else
       super
     end

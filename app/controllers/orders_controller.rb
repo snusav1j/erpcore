@@ -11,11 +11,13 @@ class OrdersController < ApplicationController
 
   def new_modal
     @order = Order.new
+    @custom_fields = CustomField.for_entity(:order, current_company)
     respond_to :js
   end
 
   def edit_modal
     @order = Order.find(params[:id])
+    @custom_fields = CustomField.for_entity(:order, current_company)
     respond_to :js
   end
 
@@ -24,16 +26,15 @@ class OrdersController < ApplicationController
     @order.manager_id = current_user.id
     
     @created = @order.save
-
-    @order.client.update(status: Client::CLIENT_STATUS_ACTIVE) if @created
+    CustomFieldsHandler.new(@order, params, current_company).save if @created
     
-    get_orders
     respond_to :js
   end
 
   def update
     @order = Order.find(params[:id])
     @updated = @order.update(order_params)
+    CustomFieldsHandler.new(@order, params, current_company).save if @updated
 
     get_orders
     respond_to :js
@@ -54,7 +55,7 @@ class OrdersController < ApplicationController
   end
 
   def get_columns
-    @columns = Order.table_columns
+    @columns = Order.table_columns(current_company)
   end
 
   def order_params

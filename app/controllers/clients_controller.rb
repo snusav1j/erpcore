@@ -1,6 +1,8 @@
 class ClientsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :authorize_action
   before_action :get_columns, only: [:index, :create, :update]
-  
+
   def index
     get_clients
   end
@@ -53,7 +55,6 @@ class ClientsController < ApplicationController
     respond_to :js
   end
 
-
   def destroy
     @client = current_user.company.clients.find(params[:id])
     @destroyed = @client.destroy
@@ -63,8 +64,11 @@ class ClientsController < ApplicationController
     respond_to :js
   end
 
-
   private
+
+  def authorize_action
+    authorize @client || Client
+  end
 
   def get_clients
     @clients = current_company&.clients

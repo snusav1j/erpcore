@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2026_07_14_120543) do
+ActiveRecord::Schema[8.0].define(version: 2026_07_14_173235) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -42,7 +42,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_14_120543) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "manager_id"
-    t.integer "status_id", default: 1, null: false
     t.bigint "company_id", null: false
     t.bigint "client_type_id"
     t.bigint "client_status_id"
@@ -115,7 +114,6 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_14_120543) do
   create_table "interactions", force: :cascade do |t|
     t.bigint "client_id", null: false
     t.text "comment"
-    t.datetime "occurred_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "manager_id"
@@ -143,9 +141,18 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_14_120543) do
     t.index ["product_id"], name: "index_order_items_on_product_id"
   end
 
+  create_table "order_statuses", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.string "name", null: false
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id", "name"], name: "index_order_statuses_on_company_id_and_name", unique: true
+    t.index ["company_id"], name: "index_order_statuses_on_company_id"
+  end
+
   create_table "orders", force: :cascade do |t|
     t.bigint "client_id", null: false
-    t.string "status", default: "new"
     t.datetime "closed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -153,14 +160,15 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_14_120543) do
     t.decimal "final_price", precision: 12, scale: 2
     t.text "comment"
     t.bigint "company_id"
+    t.bigint "order_status_id"
     t.index ["client_id"], name: "index_orders_on_client_id"
     t.index ["company_id"], name: "index_orders_on_company_id"
     t.index ["manager_id"], name: "index_orders_on_manager_id"
+    t.index ["order_status_id"], name: "index_orders_on_order_status_id"
   end
 
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
-    t.string "sku"
     t.bigint "manager_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -238,8 +246,10 @@ ActiveRecord::Schema[8.0].define(version: 2026_07_14_120543) do
   add_foreign_key "order_items", "companies"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
+  add_foreign_key "order_statuses", "companies"
   add_foreign_key "orders", "clients"
   add_foreign_key "orders", "companies"
+  add_foreign_key "orders", "order_statuses"
   add_foreign_key "products", "companies"
   add_foreign_key "table_settings", "companies"
   add_foreign_key "users", "companies"

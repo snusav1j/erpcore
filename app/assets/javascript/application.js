@@ -20,6 +20,7 @@
 //= require interaction_types
 //= require client_types
 //= require client_statuses
+//= require order_statuses
 //= require interaction_statuses
 //= require table_settings
 //= require interactions

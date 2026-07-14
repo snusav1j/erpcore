@@ -1,5 +1,6 @@
 .box
   .box-header
+    = current_user.company&.name
+    = current_user.fullname
     = current_user.email
-    = current_user.company_id
   .box-body

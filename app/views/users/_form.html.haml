@@ -7,16 +7,18 @@
 
     .row
       .col-md-6
-        = f.input :role
+        - if current_user.can_edit_role_for?(@user)
+          = f.input :role, collection: current_user.roles_for_edit.map { |role| [tm(User, "role_#{role}"), role] }, include_blank: true, required: true
       .col-md-6
-        = f.input :company_id, as: :select, collection: Company.all.map { |company| [company.name, company.id] }, required: true
+        - if current_user.has_admin_rights? && current_user.can_edit_company_for?(@user)
+          = f.input :company_id, as: :select, collection: Company.all.map { |company| [company.name, company.id] }, required: true
 
     .row
       .col-md-4
-        = f.input :last_name
+        = f.input :last_name, required: true
 
       .col-md-4
-        = f.input :first_name
+        = f.input :first_name, required: true
 
       .col-md-4
         = f.input :middle_name 

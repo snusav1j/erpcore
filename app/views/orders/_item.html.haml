@@ -1,9 +1,11 @@
 %tr.order-row{ data: { order_id: order.id } }
-  %td= order.client&.name
-  %td= order.status
-  %td= order.comment
-  %td= order.closed_at
-  %td= order.manager&.email
-  %td
+  - columns.each do |column|
+    %td{ data: { column_key: column[:key], position: column[:position] } }
+      - if column[:key] == :order_status_id
+        = color_badge(order.order_status&.name, order.order_status&.color)
+      - else
+        = order.table_value(column[:key])
+
+  %td.static-position
     = link_to order_path(order), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true do
       = g_icon(:delete, 'sm-g-icon')

@@ -1,8 +1,12 @@
 = simple_form_for @client, remote: true, html: { id: 'client-form', novalidate: false } do |f|
   .form
     .row
-      .col-md-12
+      %div{ class: current_user.has_admin_rights? ? "col-md-6" : "col-md-12" }
         = f.input :name, required: true
+      
+      - if current_user.has_admin_rights?
+        .col-md-6
+          = f.input :manager_id, as: :select, collection: User.all.map { |u| [u.fullname, u.id] }, selected: @client.manager_id
 
     .row
       .col-md-6
@@ -12,14 +16,12 @@
 
     .row
       .col-md-6
-        = f.input :client_status_id, as: :select, collection: current_company.client_statuses.map { |cs| [cs.name, cs.id] }
+        = f.input :client_status_id, as: :select, collection: current_company.client_statuses.map { |cs| [cs.name, cs.id] }, required: true
       .col-md-6
         = f.input :client_type_id, as: :select, collection: current_company.client_types.map { |ct| [ct.name, ct.id] }, required: true
-    %br
-
+      
     - if @custom_fields.present?
-      = render partial: '/custom_fields/custom_fields_list', locals: { custom_fields: @custom_fields }
-
+      = render partial: '/custom_fields/custom_fields_list', locals: { custom_fields: @custom_fields, model: @client }
     %br
     .row
       .col-md-12

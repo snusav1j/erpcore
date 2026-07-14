@@ -17,6 +17,10 @@ ru:
       title: Заказы
       new: Новый заказ
       edit: Редактировать заказ
+    order_statuses:
+      title: Статусы заказов
+      new: Новый статус заказов
+      edit: Редактировать статус заказов
     products:
       title: Товары
       new: Новый товар
@@ -43,12 +47,12 @@ ru:
       edit: Редактировать статус клиента
     interaction_types:
       title: Типы взаимодействий
-      new: Новый тип взаимодействия
-      edit: Редактировать тип взаимодействия
+      new: Новый тип взаимодействий
+      edit: Редактировать тип взаимодействий
     interaction_statuses:
       title: Статусы взаимодействий
-      new: Новый статус взаимодействия
-      edit: Редактировать статус взаимодействия
+      new: Новый статус взаимодействий
+      edit: Редактировать статус взаимодействий
   global:
     error: Произошла ошибка
     save: Сохранить
@@ -94,6 +98,10 @@ ru:
         created_at: Создано в
         updated_at: Обновлено в
 
+        role_ceo: CEO
+        role_director: Директор
+        role_manager: Менеджер
+
         inactive_company: Компания неактивна
         banned: Аккаунт заблокирован
         access_denied: Доступ ограничен
@@ -115,19 +123,16 @@ ru:
         phone: Телефон
         client_type: Тип клиента
         email: Email
-        status: Статус
         source: Источник
         comment: Комментарий
         manager: Менеджер
         manager_id: Менеджер
+        client_status_id: Статус
+        client_type_id: Тип
         created_at: Создано в
         updated_at: Обновлено в
-        
-        client_status_1: Новый
-        client_status_2: Потенциальный
-        client_status_3: Активный
-        client_status_4: Неактивный
-        client_status_5: Постоянный
+        company: Компания
+        company_id: Компания
 
         client_created: Клиент создан
         client_updated: Клиент обновлен
@@ -136,18 +141,23 @@ ru:
         id: ID
         title: Заказы
         client: Клиент
+        client_id: Клиент
         status: Статус
+        status_id: Статус
+        order_status_id: Статус
         amount: Сумма
         expense: Расходы
+        final_price: Сумма заказа
         profit: Прибыль
         comment: Комментарий
+        company: Компания
+        company_id: Компания
         closed_at: Дата закрытия
         manager: Менеджер
         manager_id: Менеджер
         created_at: Создано в
         updated_at: Обновлено в
         
-
         order_created: Заказ создан
         order_updated: Заказ обновлен
         order_destroyed: Заказ удален
@@ -161,6 +171,9 @@ ru:
         manager_id: Менеджер
         price: Цена
         in_stock: В наличии
+        comment: Комментарий
+        company: Компания
+        company_id: Компания
         created_at: Создано в
         updated_at: Обновлено в
 
@@ -206,14 +219,17 @@ ru:
         id: ID
         title: Взаимодействия
         client: Клиент
-        interaction_type: Тип взаимодействия
-        status: Статус
+        client_id: Клиент
         comment: Комментарий
         occurred_at: Дата обращения
         manager: Менеджер
         manager_id: Менеджер
         created_at: Создано в
         updated_at: Обновлено в
+        company: Компания
+        company_id: Компания
+        interaction_type_id: Тип взаимодействия
+        interaction_status_id: Статус взаимодействия
 
         interaction_created: Взаимодействие создано
         interaction_updated: Взаимодействие обновлено
@@ -228,9 +244,9 @@ ru:
         created_at: Создано в
         updated_at: Обновлено в
 
-        client_type_created: Тип клиента создан
-        client_type_updated: Тип клиента обновлен
-        client_type_destroyed: Тип клиента удален
+        client_type_created: Тип клиентов создан
+        client_type_updated: Тип клиентов обновлен
+        client_type_destroyed: Тип клиентов удален
 
       interaction_type:
         id: ID
@@ -241,9 +257,9 @@ ru:
         created_at: Создано в
         updated_at: Обновлено в
 
-        interaction_type_created: Тип взаимодействия создан
-        interaction_type_updated: Тип взаимодействия обновлен
-        interaction_type_destroyed: Тип взаимодействия удален
+        interaction_type_created: Тип взаимодействий создан
+        interaction_type_updated: Тип взаимодействий обновлен
+        interaction_type_destroyed: Тип взаимодействий удален
 
       interaction_status:
         id: ID
@@ -254,9 +270,22 @@ ru:
         created_at: Создано в
         updated_at: Обновлено в
 
-        interaction_status_created: Статус взаимодействия создан
-        interaction_status_updated: Статус взаимодействия обновлен
-        interaction_status_destroyed: Статус взаимодействия удален
+        interaction_status_created: Статус взаимодействий создан
+        interaction_status_updated: Статус взаимодействий обновлен
+        interaction_status_destroyed: Статус взаимодействий удален
+
+      order_status:
+        id: ID
+        title: Статусы заказов
+        name: Название
+        company: Компания
+        color: Код цвета
+        created_at: Создано в
+        updated_at: Обновлено в
+
+        order_status_created: Статус заказов создан
+        order_status_updated: Статус заказов обновлен
+        order_status_destroyed: Статус заказов удален
 
       client_status:
         id: ID
@@ -267,11 +296,12 @@ ru:
         created_at: Создано в
         updated_at: Обновлено в
 
-        client_status_created: Статус клиента создан
-        client_status_updated: Статус клиента обновлен
-        client_status_destroyed: Статус клиента удален
+        client_status_created: Статус клиентов создан
+        client_status_updated: Статус клиентов обновлен
+        client_status_destroyed: Статус клиентов удален
     models:
       client: Клиенты
+      interaction: Взаимодействия
       product: Товары
       order: Заказы
 
