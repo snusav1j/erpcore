@@ -18,11 +18,14 @@ production:
   primary:
     <<: *default
     database: erpcore
+    migrations_paths: db/migrate
 
   queue:
     <<: *default
     database: erpcore_queue
+    migrations_paths: db/queue_migrate
 
   cache:
     <<: *default
     database: erpcore_cache
+    migrations_paths: db/cache_migrate

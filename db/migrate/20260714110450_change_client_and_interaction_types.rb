@@ -1,5 +1,6 @@
 class ChangeClientAndInteractionTypes < ActiveRecord::Migration[8.0]
   def change
+    
     rename_column :clients, :status, :status_id
 
     remove_column :clients, :client_type, :integer
