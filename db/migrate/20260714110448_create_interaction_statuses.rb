@@ -8,6 +8,6 @@ class CreateInteractionStatuses < ActiveRecord::Migration[8.0]
       t.timestamps
     end
 
-    add_index :interaction_status, [:company_id, :name], unique: true
+    add_index :interaction_statuses, [:company_id, :name], unique: true
   end
 end
