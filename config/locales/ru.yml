@@ -106,7 +106,13 @@ ru:
         manager_id: Менеджер
         created_at: Создано в
         updated_at: Обновлено в
-
+        
+        client_status_1: Новый
+        client_status_2: Потенциальный
+        client_status_3: Активный
+        client_status_4: Неактивный
+        client_status_5: Постоянный
+        
         client_created: Клиент создан
         client_updated: Клиент обновлен
         client_destroyed: Клиент удален
