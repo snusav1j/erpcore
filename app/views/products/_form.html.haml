@@ -20,4 +20,4 @@
       .col-md-12
         = f.input :comment
     -# - if current_user.director?
-    -#   = f.input :manager_id, as: :select, collection: User.all.map { |u| [u.email, u.id] }
+    -#   = f.input :manager_id, as: :select, collection: current_company.users.map { |u| [u.email, u.id] }

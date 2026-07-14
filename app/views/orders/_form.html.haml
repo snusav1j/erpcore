@@ -2,14 +2,14 @@
   .form
     .row
       .col-md-12
-        = f.input :client_id, as: :select, collection: Client.all.map { |c| [c.name, c.id] }, required: true
+        = f.input :client_id, as: :select, collection: current_user.clients.map { |c| [c.name, c.id] }, required: true
     .row
       %div{ class: @order.persisted? && current_user.has_admin_rights? ? "col-md-6" : "col-md-12" }
         = f.input :order_status_id, as: :select, collection: current_company.order_statuses.map { |os| [os.name, os.id] }, required: true
 
       - if current_user.has_admin_rights? && @order.persisted?
         .col-md-6
-          = f.input :manager_id, as: :select, collection: User.all.map { |u| [u.fullname, u.id] }
+          = f.input :manager_id, as: :select, collection: current_company.users.map { |u| [u.fullname, u.id] }
           
     - if @custom_fields.present?
       = render partial: '/custom_fields/custom_fields_list', locals: { custom_fields: @custom_fields, model: @order }

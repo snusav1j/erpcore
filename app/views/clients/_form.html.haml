@@ -6,7 +6,7 @@
       
       - if current_user.has_admin_rights?
         .col-md-6
-          = f.input :manager_id, as: :select, collection: User.all.map { |u| [u.fullname, u.id] }, selected: @client.manager_id
+          = f.input :manager_id, as: :select, collection: current_company.users.map { |u| [u.fullname, u.id] }, selected: @client.manager_id
 
     .row
       .col-md-6
