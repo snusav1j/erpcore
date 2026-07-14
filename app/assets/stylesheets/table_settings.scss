@@ -18,6 +18,7 @@
 
 th.dragging, td.dragging{
   opacity: 0.1 !important;
+  cursor: grabbing !important;
 }
 
 .column-drag-clone .drag-cell {
