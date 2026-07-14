@@ -1,6 +1,6 @@
 class CreateInteractionStatuses < ActiveRecord::Migration[8.0]
   def change
-    create_table :interaction_status do |t|
+    create_table :interaction_statuses do |t|
       t.string :name, null: false
 
       t.references :company, null: false, foreign_key: true
