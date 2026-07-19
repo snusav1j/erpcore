@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :get_columns, only: [:index, :create, :update]
+  before_action :get_custom_fields, only: [:new_modal, :edit_modal, :index]
 
   def index
     get_orders
@@ -11,13 +12,13 @@ class OrdersController < ApplicationController
 
   def new_modal
     @order = Order.new
-    @custom_fields = CustomField.for_entity(:order, current_company)
+
     respond_to :js
   end
 
   def edit_modal
     @order = Order.find(params[:id])
-    @custom_fields = CustomField.for_entity(:order, current_company)
+
     respond_to :js
   end
 
@@ -49,7 +50,11 @@ class OrdersController < ApplicationController
   end
 
   private
-  
+
+  def get_custom_fields
+    @custom_fields = CustomField.visible_for_entity(:order, current_company)
+  end
+
   def get_orders
     @orders = current_company&.orders
   end

@@ -1,5 +1,6 @@
 class InteractionsController < ApplicationController
   before_action :get_columns, only: [:index, :create, :update]
+  before_action :get_custom_fields, only: [:new_modal, :edit_modal, :index]
 
   def index
     get_interactions
@@ -11,13 +12,13 @@ class InteractionsController < ApplicationController
 
   def new_modal
     @interaction = Interaction.new
-    @custom_fields = CustomField.for_entity(:interaction, current_company)
+    
     respond_to :js
   end
 
   def edit_modal
     @interaction = Interaction.find(params[:id])
-    @custom_fields = CustomField.for_entity(:interaction, current_company)
+    
     respond_to :js
   end
 
@@ -53,6 +54,11 @@ class InteractionsController < ApplicationController
   end
 
   private
+
+  def get_custom_fields
+    @custom_fields = CustomField.visible_for_entity(:interaction, current_company)
+  end
+
 
   def get_interactions
     @interactions = current_company&.interactions

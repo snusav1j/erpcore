@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :get_columns, only: [:index, :create, :update]
+  before_action :get_custom_fields, only: [:new_modal, :edit_modal, :index]
 
   def index
     get_products
@@ -11,13 +12,13 @@ class ProductsController < ApplicationController
 
   def new_modal
     @product = Product.new
-    @custom_fields = CustomField.for_entity(:product, current_company)
+    
     respond_to :js
   end
 
   def edit_modal
     @product = Product.find(params[:id])
-    @custom_fields = CustomField.for_entity(:product, current_company)
+    
     respond_to :js
   end
 
@@ -53,6 +54,10 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def get_custom_fields
+    @custom_fields = CustomField.visible_for_entity(:product, current_company)
+  end
 
   def get_products
     @products = current_company&.products

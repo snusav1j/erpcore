@@ -2,6 +2,7 @@ class ClientsController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_action
   before_action :get_columns, only: [:index, :create, :update]
+  before_action :get_custom_fields, only: [:new_modal, :edit_modal, :index]
 
   def index
     get_clients
@@ -14,7 +15,6 @@ class ClientsController < ApplicationController
 
   def new_modal
     @client = Client.new
-    @custom_fields = CustomField.visible_for_entity(:client, current_company)
 
     respond_to :js
   end
@@ -22,7 +22,6 @@ class ClientsController < ApplicationController
 
   def edit_modal
     @client = current_user.company.clients.find(params[:id])
-    @custom_fields = CustomField.visible_for_entity(:client, current_company)
 
     respond_to :js
   end
@@ -65,6 +64,10 @@ class ClientsController < ApplicationController
   end
 
   private
+
+  def get_custom_fields
+    @custom_fields = CustomField.visible_for_entity(:client, current_company)
+  end
 
   def authorize_action
     authorize @client || Client
