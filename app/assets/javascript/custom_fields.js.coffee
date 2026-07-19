@@ -92,8 +92,14 @@ $(document).on 'input', '#custom_field_key', ->
   value = $(this).val()
 
   value = value.replace(/[^a-zA-Z_]/g, '').toLowerCase()
+  value = value.replace(/_{2,}/g, '_')
+
+  $(this).val(value)
+
+$(document).on 'blur', '#custom_field_key', ->
+  value = $(this).val()
+
   value = value.replace(/^_+/, '')
   value = value.replace(/_+$/, '')
-  value = value.replace(/_{2,}/g, '_')
 
   $(this).val(value)
