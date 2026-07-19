@@ -14,7 +14,8 @@
           .form-group
             = f.label :in_stock
             = f.check_box :in_stock, class: 'switch'
-
+    - if @custom_fields.present?
+      = render partial: '/custom_fields/custom_fields_list', locals: { custom_fields: @custom_fields, model: @interaction }
     %br
     .row
       .col-md-12
