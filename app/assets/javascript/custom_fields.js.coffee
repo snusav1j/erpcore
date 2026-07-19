@@ -88,6 +88,12 @@ insertColumn = (row, element, position) ->
 
   target.before(element)
 
-
 $(document).on 'input', '#custom_field_key', ->
-  @value = @value.replace(/[^a-zA-Z]/g, '').toLowerCase()
+  value = $(this).val()
+
+  value = value.replace(/[^a-zA-Z_]/g, '').toLowerCase()
+  value = value.replace(/^_+/, '')
+  value = value.replace(/_+$/, '')
+  value = value.replace(/_{2,}/g, '_')
+
+  $(this).val(value)
