@@ -3,7 +3,7 @@
 - case column[:field_type]
 - when 'link'
   - if value.present?
-    = link_to value, target: '_blank' do
+    = link_to normalize_url(value), target: '_blank' do
       .link-btn
         = tgm(:link)
         = g_icon(:open_in_new)

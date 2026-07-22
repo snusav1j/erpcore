@@ -80,6 +80,12 @@ module ApplicationHelper
     image_tag "/icons/vexodus_mini.png"
   end
 
+  def normalize_url(value)
+    return unless value.present?
+
+    value.start_with?('http://', 'https://') ? value : "https://#{value}"
+  end
+
   def g_icon icon_name, class_name=''
     content_tag(:span, icon_name, class: "material-symbols-outlined g-icon #{class_name}")
   end
