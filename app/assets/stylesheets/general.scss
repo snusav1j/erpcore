@@ -9,8 +9,8 @@
   --danger: #c41f2d;
   --hover-danger: #da2d3b;
   
-  --default: #fdfdfd;
-  --hover-default: #fdfdfd;
+  --default: #ffff;
+  --hover-default: #fcfcfc;
 
   --success: #25b670;
   --hover-success: #29cf7f;
@@ -825,10 +825,19 @@ table{
   }
 }
 
-#form-custom-fields{
+// #form-custom-fields{
+//   display: flex;
+//   flex-direction: column;
+//   gap: 5px;
+// }
+
+#form-custom-fields {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  padding: 10px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 10px;
 }
 .custom-fields-title{
   font-weight: 600;
@@ -867,5 +876,33 @@ table{
   .block-body{
     padding: 10px;
     border-top: 1px solid var(--dark-border-color);
+  }
+}
+.link-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  padding: 5px;
+  border: var(--border);
+  border-radius: 5px;
+  transition: .1s ease;
+  .g-icon{
+    transition: .1s ease;
+    font-size: 14px;
+  }
+}
+.link-btn:hover{
+  background: var(--hover-default);
+  .g-icon{
+    color: var(--primary);
+  }
+}
+
+.btn-sm {
+  padding: 5px !important;
+  width: fit-content;
+  .g-icon, .fa{
+    font-size: 12px;
   }
 }

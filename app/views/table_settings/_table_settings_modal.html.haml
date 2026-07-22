@@ -1,18 +1,17 @@
 .modal.fade#custom-fields-modal
-  .modal-dialog.modal-sm
+  .modal-dialog.modal-md
     .modal-content
       .modal-header
         
         %h4.modal-title= tc(:title)
         .flex.align-center
-          = link_to new_modal_custom_fields_path(entity: @entity), remote: true, class: 'btn btn-primary' do
-            = tm(CustomField, :add_field)
+
           %button.close{ "aria-label" => "Close", "data-dismiss" => "modal", "type" => "button" }
             %span{"aria-hidden" => "true"}= g_icon(:close)
 
       .modal-body
-        .row
-          .col-md-12
+        .row-start
+          .col-md-6
 
             .toggle-block
               - block_state = current_user.get_custom_fields_block_state
@@ -30,8 +29,7 @@
               .block-body{ style: body_style, data: { block_type: 'custom_fields_table' } }
                 = render partial: '/custom_fields/custom_fields_table', locals: { custom_fields: @custom_fields }
 
-        .row
-          .col-md-12
+          .col-md-6
 
             .toggle-block
               - block_state = current_user.get_column_visibility_block_state

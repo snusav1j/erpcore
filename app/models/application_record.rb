@@ -49,6 +49,7 @@ class ApplicationRecord < ActiveRecord::Base
           key: field.key.to_sym,
           label: field.label,
           custom: true,
+          field_type: field.field_type,
           visible: TableSetting.visible?(
             entity: self.name,
             column_key: field.key,
@@ -68,7 +69,11 @@ class ApplicationRecord < ActiveRecord::Base
 
   def table_value(column)
 
-    return custom_value(column) if custom_field?(column)
+    if custom_field?(column)
+      field = custom_fields.find { |f| f.key == column.to_s }
+
+      return field.render_value(custom_value(column))
+    end
 
     send(column)
 

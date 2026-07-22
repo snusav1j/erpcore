@@ -61,6 +61,8 @@ ru:
     cancel: Отмена
     only_latin: Только латинские буквы A-Z
     close: Закрыть 
+    go_to: Перейти
+    link: Ссылка
     custom_field: Пользовательское поле 
     change_column_order: Изменить порядок колонок
     change_column_order_msg: Включите, затем перетащите заголовок колонки

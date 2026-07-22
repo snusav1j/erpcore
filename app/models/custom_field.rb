@@ -7,10 +7,27 @@ class CustomField < ApplicationRecord
                             ['Строка', 'string'],
                             ['Текст', 'text'],
                             ['Число', 'number'],
+                            ['Ссылка', 'link'],
                             ['Да/Нет', 'boolean'],
                             ['Дата', 'date'],
                           ]
+  def render_value(value)
 
+    case field_type
+    when 'link'
+      value.present? ? value : nil
+
+    when 'boolean'
+      value.to_s == '1' ? 'Да' : 'Нет'
+
+    when 'date'
+      value.present? ? value : nil
+
+    else
+      value
+    end
+
+  end
   def self.available_entities
     Rails.application.eager_load! if Rails.env.development?
 

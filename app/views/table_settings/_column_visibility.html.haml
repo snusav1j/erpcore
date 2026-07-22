@@ -1,8 +1,11 @@
 %table#table_settings_column_visibility
   %tbody
     - columns.each do |column|
-      %tr
+      %tr{ data: { entity: entity, key: column[:key] } }
         %td
-          %span= column[:label]
+          .flex.align-center{ style: "gap: 2px;" }
+            = column[:label]
+            - if column[:custom]
+              %span.custom-field-badge{ data: { tooltip: tgm(:custom_field) } }= fa_icon('info-circle')
         %td
           = check_box_tag "column_#{column[:key]}", column[:key], column[:visible], class: 'switch column-visible', data: { entity: entity, column_key: column[:key] }

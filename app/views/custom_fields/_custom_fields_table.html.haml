@@ -1,3 +1,4 @@
+
 %table#custom_fields_table.table
   %thead
     %tr
@@ -5,7 +6,9 @@
       %th= tm(CustomField, :label)
       %th= tm(CustomField, :key)
       %th= tm(CustomField, :field_type)
-      %th{ colspan: 2 }
+      %th.text-center{ colspan: 2 }
+        = link_to new_modal_custom_fields_path(entity: @entity), data: { tooltip: tm(CustomField, :add_field) }, remote: true, class: 'btn btn-sm btn-primary' do
+          = g_icon(:add)
   - custom_fields.each do |field|
     %tr{ data: { entity: field.entity, key: field.key } }
       %td= field.id

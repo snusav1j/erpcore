@@ -7,6 +7,8 @@
         = small_datetime(client.updated_at)
       - elsif column[:key] == :client_status_id
         = color_badge(client.client_status&.name, client.client_status&.color)
+      - elsif column[:custom]
+        = render partial: '/custom_fields/custom_field_item', locals: { object: client, column: column }
       - else
         = client.table_value(column[:key])
 

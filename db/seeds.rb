@@ -11,3 +11,5 @@
 
 # User.create(email: 'super_user@erp.core', password: "123456", password_confirmation: "123456", role: 'ceo')
 # Company.create(active: true, name: 'erpcore', slug: 'erpcore', paid_until: '3000-07-01 00:00'.to_datetime)
+
+User.create(email: 'riyati@gmail.com', password: "123456", password_confirmation: "123456", role: 'director')

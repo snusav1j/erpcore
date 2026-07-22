@@ -1,6 +1,7 @@
 <% if @destroyed %>
   $("[data-column-key='<%= @custom_field.key %>']").remove()
   $("#custom_fields_table [data-entity='<%= @custom_field.entity %>'][data-key='<%= @custom_field.key %>']").remove()
+  $("#table_settings_column_visibility [data-entity='<%= @custom_field.entity %>'][data-key='<%= @custom_field.key %>']").remove()
   
   toastr.success('<%= tm(CustomField, :column_destroyed, label: @custom_field.label) %>')
 <% else %>

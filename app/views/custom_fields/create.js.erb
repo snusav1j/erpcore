@@ -1,6 +1,7 @@
 <% if @created %>
   addTableColumn("<%= @entity %>", <%= raw @column.to_json %>)
   $("#custom_fields_table").replaceWith("<%= j render partial: '/custom_fields/custom_fields_table', locals: { custom_fields: @custom_fields } %>");
+  $("#table_settings_column_visibility").replaceWith("<%= j render partial: '/table_settings/column_visibility', locals: { columns: @columns, entity: @entity } %>");
   
   block_body = $(".toggle-block .block-body[data-block-type='custom_fields_table']")
   block_header = $(".toggle-block .block-header[data-block-type='custom_fields_table']")

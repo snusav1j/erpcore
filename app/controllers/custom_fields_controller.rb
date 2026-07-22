@@ -25,6 +25,7 @@ class CustomFieldsController < ApplicationController
     if @created
       @entity = @custom_field.entity
       model = @entity.constantize.where(company: current_company)
+      @columns = @entity.constantize.table_columns(current_company)
       @column = @custom_field.table_column_data(model, company: current_company)
       @custom_fields = CustomField.for_entity(@entity, current_company)
     end

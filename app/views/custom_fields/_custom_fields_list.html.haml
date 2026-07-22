@@ -1,36 +1,13 @@
 %br
 #form-custom-fields
   .text-muted.custom-fields-title= tm(CustomField, :title)
-  .row
-    - custom_fields.each do |field|
-      
-      .col-md-6
-        - value = model.custom_field_values.find_by(custom_field_id: field.id)&.value
-        
-        - if field.field_type != "boolean"
-          .custom-input-label
-            - if field.required
-              %abbr{ title: "required" } *
-            = label_tag "custom_fields[#{field.id}]", field.label
 
-        - case field.field_type
-        - when "string"
-          = text_field_tag "custom_fields[#{field.id}]", value, class: "form-control", required: field.required
-
-        - when "text"
-          = text_area_tag "custom_fields[#{field.id}]", value, class: "form-control", required: field.required
-
-        - when "date"
-          = date_field_tag "custom_fields[#{field.id}]", value, class: "form-control", required: field.required
-
-        - when "number"
-          = number_field_tag "custom_fields[#{field.id}]", value, class: "form-control", required: field.required
-
-        - when "boolean"
-          .align-center.flex
-            .custom-input-label
-              - if field.required
-                %abbr{ title: "required" } *
-              = label_tag "custom_fields[#{field.id}]", field.label
-            = hidden_field_tag "custom_fields[#{field.id}]", "0"
-            = check_box_tag "custom_fields[#{field.id}]", "1", value.to_s == "true" || value.to_s == "1", class: "switch", required: false
+  - custom_fields.each_slice(2) do |fields|
+    .row
+      - if fields.size == 1
+        .col-md-12
+          = render partial: '/custom_fields/custom_field_input', locals: { field: fields.first, model: model }
+      - else
+        - fields.each do |field|
+          .col-md-6
+            = render partial: '/custom_fields/custom_field_input', locals: { field: field, model: model }
