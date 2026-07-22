@@ -3,7 +3,7 @@
     %thead
       %tr
         - columns.each do |column|
-          %th{ style: column[:visible] ? 'display: table-cell;' : 'display: none;', data: { column_key: column[:key], position: column[:position] } }
+          %th{ class: column[:key] == :id ? 'text-center' : '', style: column[:visible] ? 'display: table-cell;' : 'display: none;', data: { column_key: column[:key], position: column[:position] } }
             .flex.align-center{ style: "gap: 2px;" }
               = column[:label]
               -# - if column[:custom]
@@ -11,9 +11,11 @@
             -# .flex.align-center{ style: "gap: 5px;" }
             -#   = g_icon(:compare_arrows, 'change-column-position-icons')
             -#   = column[:label]
-        %th.static-position
+        %th.text-center.static-position{ colspan: 2 }
+          = render partial: '/table_settings/change_column_poistion_btn'
 
     %tbody#clients-list
       - if clients
         - clients.each do |client|
           = render partial: 'item', locals: { client: client, columns: columns }
+

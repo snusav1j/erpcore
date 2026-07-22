@@ -887,6 +887,8 @@ table{
   border: var(--border);
   border-radius: 5px;
   transition: .1s ease;
+  width: fit-content;
+  justify-content: center;
   .g-icon{
     transition: .1s ease;
     font-size: 14px;

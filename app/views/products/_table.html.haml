@@ -3,9 +3,10 @@
     %thead
       %tr
         - columns.each do |column|
-          %th{ style: column[:visible] ? 'display: table-cell;' : 'display: none;', data: { column_key: column[:key], position: column[:position] } }
+          %th{ class: column[:key] == :id ? 'text-center' : '', style: column[:visible] ? 'display: table-cell;' : 'display: none;', data: { column_key: column[:key], position: column[:position] } }
             = column[:label]
-        %th.static-position
+        %th.static-position.text-center{ colspan: 2 }
+          = render partial: '/table_settings/change_column_poistion_btn'
 
     %tbody#products-list
       - if products

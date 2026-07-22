@@ -1,6 +1,6 @@
 %tr.order-row{ data: { order_id: order.id } }
   - columns.each do |column|
-    %td{ style: column[:visible] ? 'display: table-cell;' : 'display: none;', data: { column_key: column[:key], position: column[:position] } }
+    %td{ class: column[:key] == :id ? 'text-center' : '', style: column[:visible] ? 'display: table-cell;' : 'display: none;', data: { column_key: column[:key], position: column[:position] } }
       - if column[:key] == :created_at
         = small_datetime(order.created_at)
       - elsif column[:key] == :updated_at
@@ -9,7 +9,10 @@
         = color_badge(order.order_status&.name, order.order_status&.color)
       - else
         = order.table_value(column[:key])
-
+        
+  %td.static-position
+    = link_to edit_modal_orders_path(id: order.id), class: 'text-default', remote: true do
+      = g_icon(:edit, 'sm-g-icon')
   %td.static-position
     = link_to order_path(order), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true do
       = g_icon(:delete, 'sm-g-icon')
