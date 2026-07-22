@@ -1,6 +1,6 @@
 %tr.order-row{ data: { order_id: order.id } }
   - columns.each do |column|
-    %td{ class: column[:key] == :id ? 'text-center' : '', style: column[:visible] ? 'display: table-cell;' : 'display: none;', data: { column_key: column[:key], position: column[:position] } }
+    %td{ class: (column[:key] == :id || column[:field_type] == 'link') ? 'text-center' : '', style: column[:visible] ? 'display: table-cell;' : 'display: none;', data: { column_key: column[:key], position: column[:position] } }
       - if column[:key] == :created_at
         = small_datetime(order.created_at)
       - elsif column[:key] == :updated_at
