@@ -9,7 +9,7 @@
       - elsif column[:key] == :interaction_status_id
         = color_badge(interaction.interaction_status&.name, interaction.interaction_status&.color)
       - elsif column[:key] == :comment
-        %span.break-all{ data: { tooltip: interaction.comment }, style: "max-width: 150px;" }
+        .break-all{ data: { tooltip: interaction.comment }, style: "max-width: 150px;" }
           = interaction.comment
       - else
         = interaction.table_value(column[:key])
