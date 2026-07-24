@@ -241,7 +241,7 @@ ru:
       interaction:
         id: ID
         title: Взаимодействия
-        client_interactions: Взаимодействия клиента
+        client_interactions: Все взаимодействия клиента
         client: Клиент
         client_id: Клиент
         comment: Комментарий
