@@ -252,8 +252,8 @@ ru:
         updated_at: Обновлено
         company: Компания
         company_id: Компания
-        interaction_type_id: Тип взаимодействия
-        interaction_status_id: Статус взаимодействия
+        interaction_type_id: Тип
+        interaction_status_id: Статус
 
         new: Новое взаимодействие
         edit: Редактировать взаимодействие

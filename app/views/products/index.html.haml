@@ -7,7 +7,6 @@
         = @products ? (@products.length > 0 ? @products.length : '')  : ''
 
     .btn-group
-      = render partial: '/table_settings/change_column_poistion_btn'
       = link_to index_modal_table_settings_path(entity: "Product"), remote: true, data: { tooltip: tm(:CustomField, :table_settings) }, class: "btn btn-default" do
         = fa_icon(:gear)
       = link_to new_modal_products_path, class: "btn btn-primary", data: { tooltip: tc(:new) }, remote: true do 
