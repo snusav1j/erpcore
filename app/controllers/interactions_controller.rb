@@ -1,4 +1,5 @@
 class InteractionsController < ApplicationController
+  before_action :get_client_columns, only: [:create]
   before_action :get_columns, only: [:new_modal, :edit_modal, :index, :create, :update]
   before_action :get_custom_fields, only: [:new_modal, :edit_modal, :index]
 
@@ -28,11 +29,11 @@ class InteractionsController < ApplicationController
   def create
     @interaction = current_company.interactions.new(interaction_params)
     @interaction.manager_id = current_user.id
-    
     @created = @interaction.save
-
+    
     if @created
       CustomFieldsHandler.new(@interaction, params, current_company).save
+      @client = @interaction.client
     end
     
     get_interactions
@@ -62,11 +63,13 @@ class InteractionsController < ApplicationController
     @custom_fields = CustomField.visible_for_entity(:interaction, current_company)
   end
 
-
   def get_interactions
     @interactions = current_company&.interactions
   end
 
+  def get_client_columns
+    @client_columns = Client.table_columns(current_company)
+  end
 
   def get_columns
     @columns = Interaction.table_columns(current_company)
