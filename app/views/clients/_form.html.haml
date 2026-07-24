@@ -10,16 +10,16 @@
 
     .row
       .col-md-6
-        = f.input :phone, required: true
-      .col-md-6
-        = f.input :email
-
-    .row
-      .col-md-6
-        = f.input :client_status_id, as: :select, collection: current_company.client_statuses.map { |cs| [cs.name, cs.id] }, required: true
+        = f.input :client_status_id, as: :select, collection: current_company.client_statuses.map { |cs| [cs.name, cs.id] }
       .col-md-6
         = f.input :client_type_id, as: :select, collection: current_company.client_types.map { |ct| [ct.name, ct.id] }, required: true
       
+
+    .row
+      .col-md-6
+        = f.input :phone
+      .col-md-6
+        = f.input :email
     - if @custom_fields.present?
       = render partial: '/custom_fields/custom_fields_list', locals: { custom_fields: @custom_fields, model: @client }
     %br

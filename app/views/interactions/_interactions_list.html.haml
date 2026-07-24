@@ -1,0 +1,12 @@
+.table-responsive
+  %table.table-position-editor
+    %thead
+      %tr
+        - @columns.each do |column|
+          %th{ class: column[:key] == :id ? 'text-center' : '', style: column[:visible] ? 'display: table-cell;' : 'display: none;', data: { column_key: column[:key], position: column[:position] } }
+            = column[:label]
+
+    %tbody#interactions-info-list
+      - if interactions
+        - interactions.each do |interaction|
+          = render partial: '/interactions/info_item', locals: { interaction: interaction, columns: @columns }

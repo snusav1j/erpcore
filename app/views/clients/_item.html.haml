@@ -13,8 +13,17 @@
         = client.table_value(column[:key])
 
   %td.static-position
-    = link_to edit_modal_clients_path(id: client.id), class: 'text-default', remote: true do
+    - interaction_length = client.interactions&.length
+    .item-with-count
+      = link_to new_modal_interactions_path(client_id: client.id), class: "text-primary #{interaction_length > 0 ? "has-count" : ""}", remote: true, data: { tooltip: tm(Interaction, :new) } do 
+        = g_icon(:forum, 'sm-g-icon')
+        - if interaction_length > 0
+          .item-count
+            = interaction_length >= 9 ? "#{interaction_length}+" : interaction_length
+
+  %td.static-position
+    = link_to edit_modal_clients_path(id: client.id), class: 'text-default', remote: true, data: { tooltip: tc(:edit) } do
       = g_icon(:edit, 'sm-g-icon')
   %td.static-position
-    = link_to client_path(client), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true do
+    = link_to client_path(client), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true, data: { tooltip: tc(:destroy) } do
       = g_icon(:delete, 'sm-g-icon')

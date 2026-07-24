@@ -1,12 +1,25 @@
 .modal.fade#interaction-modal
-  .modal-dialog.modal-sm
+  .modal-dialog.modal-sm{ style: @client_interactions.present? ? "width: fit-content; max-width: fit-content;" : ""}
     .modal-content
       .modal-header
-        %h4.modal-title= title
+        %h4.modal-title
+          = title
+          .text-muted{ style: "font-weight: 400 !important; font-size: 12px !important;" }
+            - if @client.present?
+              %span.text-muted= "для клиента"
+              %strong.text-muted= @client.name
         %button.close{ "aria-label" => "Close", "data-dismiss" => "modal", "type" => "button" }
           %span{"aria-hidden" => "true"}= g_icon(:close)
       .modal-body
-        = render partial: '/interactions/form'
+        .flex
+          #interaction-form-block{ style: @client_interactions.present? ? "min-width: 500px;" : ""}= render partial: '/interactions/form'
+          - if @client_interactions.present?
+            
+            #interactions-list-block
+              .interactions-list-block-title
+                = tm(Interaction, :client_interactions)
+                %strong= "#{@client&.name}:"
+              .interactions-list-block-table= render partial: '/interactions/interactions_list', locals: { interactions: @client_interactions }
       .modal-footer
         %button.btn.btn-default.pull-left{"data-dismiss" => "modal", :type => "button"}= tgm(:cancel)
         %button.btn.btn-primary.pull-right{:type => "submit", form: 'interaction-form'}= tgm(:save)

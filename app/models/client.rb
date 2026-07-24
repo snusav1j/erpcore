@@ -7,7 +7,7 @@ class Client < ApplicationRecord
   
   belongs_to :company
   belongs_to :client_type
-  belongs_to :client_status
+  belongs_to :client_status, optional: true
 
   validates :name, presence: true
   validates :name, uniqueness: { scope: :company_id }

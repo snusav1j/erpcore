@@ -35,6 +35,7 @@ class ClientsController < ApplicationController
     @created = @client.save
 
     CustomFieldsHandler.new(@client, params, current_company).save if @created
+    Rails.logger.debug @client.errors.full_messages
 
     get_clients
 

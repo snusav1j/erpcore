@@ -1,0 +1,12 @@
+%tr.interaction-info-row{ data: { interaction_id: interaction.id } }
+  - columns.each do |column|
+    %td{ class: (column[:key] == :id || column[:field_type] == 'link') ? 'text-center' : '', style: column[:visible] ? 'display: table-cell;' : 'display: none;', data: { column_key: column[:key], position: column[:position] } }
+
+      - if column[:key] == :created_at
+        = small_datetime(interaction.created_at)
+      - elsif column[:key] == :updated_at
+        = small_datetime(interaction.updated_at)
+      - elsif column[:key] == :interaction_status_id
+        = color_badge(interaction.interaction_status&.name, interaction.interaction_status&.color)
+      - else
+        = interaction.table_value(column[:key])

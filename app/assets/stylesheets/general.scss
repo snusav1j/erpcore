@@ -4,7 +4,7 @@
   --text-primary: #2789E4;
   --light-primary: #E7F1FB;
   --primary: #0176E0;
-  --hover-primary: #1281e9;
+  --hover-primary: #2088e9;
   
   --danger: #c41f2d;
   --hover-danger: #da2d3b;
@@ -142,7 +142,7 @@ select:disabled{
   border-radius: 5px;
   color: #fff;
   display: flex;
-  gap: 10px;
+  gap: 5px;
   align-items: center;
   justify-content: space-between;
   span, i{
@@ -153,29 +153,36 @@ select:disabled{
   display: flex;
   justify-content: space-between;
 }
-.btn-primary, .btn-primary .fa-icon, .btn-primary .g-icon{
+.btn-primary{
   background: var(--primary) !important;
   color: #fff;
   cursor: pointer;
 }
-.btn-danger, .btn-danger .fa-icon, .btn-danger .g-icon{
+.btn-light-primary{
+  background: var(--hover-primary) !important;
+  color: #fff;
+  cursor: pointer;
+}
+.btn-danger{
   background: var(--danger) !important;
   color: #fff;
   cursor: pointer;
 }
-.btn-success, .btn-success .fa-icon, .btn-success .g-icon{
+.btn-success{
   background: var(--success) !important;
   color: #fff;
   cursor: pointer;
 }
-.btn-warnig, .btn-warnig .fa-icon, .btn-warnig .g-icon{
+.btn-warnig{
   background: var(--warnig) !important;
   color: #fff;
   cursor: pointer;
 }
-.btn-default, .btn-default .fa-icon, .btn-default .g-icon{
-  background: var(--default) !important;
+.btn-default{
   border: var(--border);
+}
+.btn-default, .btn-default .fa, .btn-default .g-icon{
+  background: var(--default) !important;
   span, i{
     color: #252525 !important;
   }
@@ -204,22 +211,22 @@ select:disabled{
 }
 
 .text-primary,
-.text-primary .fa-icon,
+.text-primary .fa,
 .text-primary .g-icon{
   color: var(--primary) !important;
 }
 .text-danger,
-.text-danger .fa-icon,
+.text-danger .fa,
 .text-danger .g-icon{
   color: var(--danger) !important;
 }
 .text-success,
-.text-success .fa-icon,
+.text-success .fa,
 .text-success .g-icon{
   color: var(--success) !important;
 }
 .text-warning,
-.text-warning .fa-icon,
+.text-warning .fa,
 .text-warning .g-icon{
   color: var(--warnig) !important;
 }
@@ -770,8 +777,11 @@ table{
 @media screen and (max-width: 767px){
   .flex{
     gap: 5px !important;
+    flex-direction: column;
   }
+
 }
+
 .justify-space-between{
   display: flex;
   justify-content: space-between;
@@ -906,5 +916,38 @@ table{
   width: fit-content;
   .g-icon, .fa{
     font-size: 12px;
+  }
+}
+
+.item-with-count {
+  position: relative;
+  display: inline-flex;
+  // &.has-count {
+  //   margin-top: 3px;
+  //   margin-right: 8px;
+  // }
+  .item-count {
+    position: absolute;
+    left: 11px;
+    top: -7px;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 1;
+    color: #fff;
+    background: var(--hover-primary);
+    border-radius: 999px;
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (max-width: 767px){
+  #interaction-form-block{
+    min-width: unset !important;
   }
 }

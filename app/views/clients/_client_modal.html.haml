@@ -9,4 +9,9 @@
         = render partial: '/clients/form'
       .modal-footer
         %button.btn.btn-default.pull-left{"data-dismiss" => "modal", :type => "button"}= tgm(:cancel)
-        %button.btn.btn-primary.pull-right{:type => "submit", form: 'client-form'}= tgm(:save)
+        .pull-right.flex
+          - if @client.persisted?
+            = link_to new_modal_interactions_path(client_id: @client.id), class: "btn btn-primary", remote: true, data: { tooltip: tm(Interaction, :new) } do 
+              = fa_icon(:plus)
+              = g_icon(:forum, 'sm-g-icon')
+          %button.btn.btn-primary{:type => "submit", form: 'client-form'}= tgm(:save)

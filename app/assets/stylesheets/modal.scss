@@ -18,7 +18,7 @@
 .modal-dialog {
   width: 40%;
   max-width: 900px;
-  margin: 5% auto;
+  margin: 3.33% auto;
   pointer-events: auto;
   transform: translateY(-30px);
   transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -28,14 +28,14 @@
   transform: translateY(0);
 }
 .modal-header{
-  border-radius: 5px 5px 0 0 !important;
+  border-radius: 5px 5px 0 0;
 }
 .modal-header{
-  border-bottom: 1px solid var(--border-color) !important;
+  border-bottom: 1px solid var(--border-color);
 
 }
 .modal-footer{
-  border-top: 1px solid var(--border-color) !important;
+  border-top: 1px solid var(--border-color);
 }
 .modal-header, .modal-footer{
   background: var(--main-color);
@@ -51,34 +51,35 @@
 }
 .modal-footer{
   display: flow-root;
-  border-radius: 0 0 5px 5px !important;
+  border-radius: 0 0 5px 5px;
 }
 .modal-content {
-  border-radius: 10px !important;
+  border-radius: 10px;
   position: relative;
-  border: 2px solid var(--border) !important;
+  border: 2px solid var(--border);
 }
 
 .modal-df{
-  width: 80% !important;
-  max-width: 800px !important;
+  width: 80%;
+  max-width: 800px;
 }
 .modal-md{
-  width: 80% !important;
-  max-width: 1000px !important;
+  width: 80%;
+  max-width: 1000px;
 }
 .modal-lg{
-  width: 100% !important;
-  max-width: 1200px !important;
+  width: 100%;
+  max-width: 1200px;
 }
 .modal-sm{
-  width: 30% !important;
+  width: 30%;
 }
 #confirm-alert-modal{
   z-index: 9999999999;
 }
 
 @media screen and (max-width: 767px){
+  .modal-dialog,
   .modal-md,
   .modal-lg,
   .modal-df,

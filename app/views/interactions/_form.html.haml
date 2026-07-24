@@ -2,7 +2,7 @@
   .form
     .row
       .col-md-6
-        = f.input :client_id, as: :select, collection: current_company.clients.map { |c| [c.name, c.id] }, required: true
+        = f.input :client_id, as: :select, collection: current_company.clients.map { |c| [c.name, c.id] }, required: true, input_html: { class: @interaction.client_id.present? ? "custom-disable" : "" }
       .col-md-6
         - if current_user.has_admin_rights?
           = f.input :manager_id, as: :select, collection: current_company.users.map { |u| [u.fullname, u.id] }, selected: @interaction.manager_id

@@ -1,5 +1,5 @@
 class InteractionsController < ApplicationController
-  before_action :get_columns, only: [:index, :create, :update]
+  before_action :get_columns, only: [:new_modal, :edit_modal, :index, :create, :update]
   before_action :get_custom_fields, only: [:new_modal, :edit_modal, :index]
 
   def index
@@ -12,13 +12,16 @@ class InteractionsController < ApplicationController
 
   def new_modal
     @interaction = Interaction.new
-    
+    @interaction.client_id = params[:client_id]
+    @client = @interaction&.client
+    @client_interactions = @client&.interactions
     respond_to :js
   end
 
   def edit_modal
     @interaction = Interaction.find(params[:id])
-    
+    @client = @interaction&.client
+    @client_interactions = @client&.interactions
     respond_to :js
   end
 

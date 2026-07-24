@@ -13,48 +13,59 @@ ru:
       title: Клиенты
       new: Новый клиент
       edit: Редактировать клиента
+      destroy: Удалить клиента
     orders:
       title: Заказы
       new: Новый заказ
       edit: Редактировать заказ
+      destroy: Удалить заказ
     order_statuses:
       title: Статусы заказов
       new: Новый статус заказов
       edit: Редактировать статус заказов
+      destroy: Удалить статус заказов
     products:
       title: Товары
       new: Новый товар
       edit: Редактировать товар
+      destroy: Удалить товар
     interactions:
       title: Взаимодействия
       new: Новое взаимодействие
       edit: Редактировать взаимодействие
+      destroy: Удалить взаимодействие
     custom_fields:
       title: Настройка полей
       new: Новое поле
       edit: Редактировать поле
+      destroy: Удалить поле
     table_settings:
       title: Настройка таблиц
     companies:
       title: Компании
       new: Новая компания
       edit: Редактировать компанию
+      destroy: Удалить компанию
     client_types:
       title: Типы клиентов
       new: Новый тип клиента
       edit: Редактировать тип клиента
+      destroy: Удалить тип клиента
     client_statuses:
       title: Статусы клиентов
       new: Новый статус клиента
       edit: Редактировать статус клиента
+      destroy: Удалить статус клиента
     interaction_types:
       title: Типы взаимодействий
       new: Новый тип взаимодействий
       edit: Редактировать тип взаимодействий
+      destroy: Удалить тип клиента
     interaction_statuses:
       title: Статусы взаимодействий
       new: Новый статус взаимодействий
       edit: Редактировать статус взаимодействий
+      destroy: Удалить статус взаимодействий
   global:
     error: Произошла ошибка
     save: Сохранить
@@ -230,6 +241,7 @@ ru:
       interaction:
         id: ID
         title: Взаимодействия
+        client_interactions: Взаимодействия клиента
         client: Клиент
         client_id: Клиент
         comment: Комментарий
@@ -242,6 +254,9 @@ ru:
         company_id: Компания
         interaction_type_id: Тип взаимодействия
         interaction_status_id: Статус взаимодействия
+
+        new: Новое взаимодействие
+        edit: Редактировать взаимодействие
 
         interaction_created: Взаимодействие создано
         interaction_updated: Взаимодействие обновлено
