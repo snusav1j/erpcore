@@ -12,7 +12,7 @@
           %span{"aria-hidden" => "true"}= g_icon(:close)
       .modal-body
         .flex
-          #interaction-form-block{ style: @client_interactions.present? ? "min-width: 500px;" : ""}= render partial: '/interactions/form'
+          #interaction-form-block{ style: @client_interactions.present? ? "min-width: 500px; max-width: 500px;" : ""}= render partial: '/interactions/form'
           - if @client_interactions.present?
             
             #interactions-list-block
