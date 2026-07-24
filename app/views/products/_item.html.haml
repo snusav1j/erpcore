@@ -11,8 +11,8 @@
         = product.table_value(column[:key])
 
   %td.static-position
-    = link_to edit_modal_products_path(id: product.id), class: 'text-default', remote: true do
+    = link_to edit_modal_products_path(id: product.id), class: 'text-default', remote: true, data: { tooltip: tc(:edit) } do
       = g_icon(:edit, 'sm-g-icon')
   %td.static-position
-    = link_to product_path(product), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true do
+    = link_to product_path(product), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true, data: { tooltip: tc(:destroy) } do
       = g_icon(:delete, 'sm-g-icon')

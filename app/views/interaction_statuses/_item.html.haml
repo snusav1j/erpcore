@@ -3,5 +3,5 @@
   %td= interaction_status.name
   %td= color_badge(interaction_status.color, interaction_status.color)
   %td
-    = link_to interaction_status_path(interaction_status), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true do
+    = link_to interaction_status_path(interaction_status), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true, data: { tooltip: tc(:destroy) } do
       = g_icon(:delete, 'sm-g-icon')

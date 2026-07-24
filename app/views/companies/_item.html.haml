@@ -6,5 +6,5 @@
   %td= small_datetime company.paid_until
   %td= company.manager&.fullname
   %td
-    = link_to company_path(company), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true do
+    = link_to company_path(company), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true, data: { tooltip: tc(:destroy) } do
       = g_icon(:delete, 'sm-g-icon')

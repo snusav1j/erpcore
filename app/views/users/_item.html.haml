@@ -9,5 +9,5 @@
   %td= user.company.name
   %td= user.banned
   %td
-    = link_to user_path(user), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true do
+    = link_to user_path(user), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true, data: { tooltip: tc(:destroy) } do
       = g_icon(:delete, 'sm-g-icon')

@@ -10,8 +10,8 @@
       - else
         = interaction.table_value(column[:key])
   %td.static-position
-    = link_to edit_modal_interactions_path(id: interaction.id), class: 'text-default', remote: true do
+    = link_to edit_modal_interactions_path(id: interaction.id), class: 'text-default', remote: true, data: { tooltip: tc(:edit) } do
       = g_icon(:edit, 'sm-g-icon')
   %td.static-position
-    = link_to interaction_path(interaction), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true do
+    = link_to interaction_path(interaction), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true, data: { tooltip: tc(:destroy) } do
       = g_icon(:delete, 'sm-g-icon')

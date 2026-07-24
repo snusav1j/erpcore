@@ -2,5 +2,5 @@
   %td= interaction_type.id
   %td= interaction_type.name
   %td
-    = link_to interaction_type_path(interaction_type), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true do
+    = link_to interaction_type_path(interaction_type), method: :delete, class: 'text-danger', data: { confirm: tgm(:are_you_sure) }, remote: true, data: { tooltip: tc(:destroy) } do
       = g_icon(:delete, 'sm-g-icon')
